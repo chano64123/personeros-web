@@ -117,4 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="accionIndex" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="acta" xml:space="preserve">
+    <value>Acta/Index</value>
+  </data>
+  <data name="distrito" xml:space="preserve">
+    <value>Distrito/Index</value>
+  </data>
+  <data name="institucion" xml:space="preserve">
+    <value>Institucion/Index</value>
+  </data>
+  <data name="mesa" xml:space="preserve">
+    <value>Mesa/Index</value>
+  </data>
+  <data name="persona" xml:space="preserve">
+    <value>Persona/Index</value>
+  </data>
+  <data name="tipoEleccion" xml:space="preserve">
+    <value>TipoEleccion/Index</value>
+  </data>
+  <data name="tipoUsuario" xml:space="preserve">
+    <value>TipoUsuario/Index</value>
+  </data>
+  <data name="usuario" xml:space="preserve">
+    <value>Usuario/Index</value>
+  </data>
 </root>

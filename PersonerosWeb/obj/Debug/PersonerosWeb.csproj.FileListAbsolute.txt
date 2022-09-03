@@ -1,6 +1,5 @@
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.csproj.AssemblyReference.cache
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.Recursos.resources
-C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.Rutas.resources
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.csproj.GenerateResource.cache
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.csproj.CoreCompileInputs.cache
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\bin\PersonerosWeb.dll.config
@@ -100,3 +99,6 @@ C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.ErrorMessage.resources
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.IconAlert.resources
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.TitutloAlert.resources
+C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.Icono.resources
+C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.Opcion.resources
+C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.Ruta.resources

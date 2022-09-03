@@ -118,27 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="acta" xml:space="preserve">
-    <value>Acta</value>
+    <value>bx bx-file-blank</value>
   </data>
   <data name="distrito" xml:space="preserve">
-    <value>Distrito</value>
+    <value>bx bx-building-house</value>
   </data>
   <data name="institucion" xml:space="preserve">
-    <value>Institucion</value>
+    <value>bx bxs-institution</value>
   </data>
   <data name="mesa" xml:space="preserve">
-    <value>Mesa</value>
+    <value>bx bx-chalkboard</value>
   </data>
   <data name="persona" xml:space="preserve">
-    <value>Persona</value>
+    <value>bx bx-user</value>
   </data>
   <data name="tipoEleccion" xml:space="preserve">
-    <value>TipoEleccion</value>
+    <value>bx bx-select-multiple</value>
   </data>
   <data name="tipoUsuario" xml:space="preserve">
-    <value>TipoUsuario</value>
+    <value>bx bxs-user-account</value>
   </data>
   <data name="usuario" xml:space="preserve">
-    <value>Usuario</value>
+    <value>bx bx-user-circle</value>
   </data>
 </root>

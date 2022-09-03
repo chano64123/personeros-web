@@ -81,6 +81,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -244,6 +245,7 @@
     <Compile Include="Controllers\InstitucionController.cs" />
     <Compile Include="Controllers\MesaController.cs" />
     <Compile Include="Controllers\TipoEleccionController.cs" />
+    <Compile Include="Helpers\MenuHelper.cs" />
     <Compile Include="Models\Acta.cs" />
     <Compile Include="Models\Distrito.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
@@ -277,27 +279,48 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IconAlert.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Icono.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Icono.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Opcion.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Opcion.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Recursos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Recursos.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Rutas.Designer.cs">
+    <Compile Include="Resources\Ruta.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Rutas.resx</DependentUpon>
+      <DependentUpon>Ruta.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\TitutloAlert.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TitutloAlert.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service\IInstitucionServicio.cs" />
+    <Compile Include="Service\IDistritoServicio.cs" />
+    <Compile Include="Service\ITipoEleccionServicio.cs" />
     <Compile Include="Service\ITipoUsuarioServicio.cs" />
     <Compile Include="Utility\HtmlUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
+    <Content Include="Views\Distrito\Index.cshtml" />
+    <Content Include="Views\Distrito\DetalleDistrito.cshtml" />
+    <Content Include="Views\Distrito\AgregarModificarDistrito.cshtml" />
+    <Content Include="Views\Distrito\EliminarDistrito.cshtml" />
+    <Content Include="Views\Institucion\Index.cshtml" />
+    <Content Include="Views\Institucion\DetalleInstitucion.cshtml" />
+    <Content Include="Views\Institucion\AgregarModificarInstitucion.cshtml" />
+    <Content Include="Views\Institucion\EliminarInstitucion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -309,8 +332,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
     <Folder Include="Views\Acta\" />
-    <Folder Include="Views\Distrito\" />
-    <Folder Include="Views\Institucion\" />
     <Folder Include="Views\Mesa\" />
     <Folder Include="Views\Persona\" />
     <Folder Include="Views\TipoEleccion\" />
@@ -332,14 +353,24 @@
       <LastGenOutput>IconAlert.Designer.cs</LastGenOutput>
       <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Icono.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Icono.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Opcion.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Opcion.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Recursos.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Recursos.Designer.cs</LastGenOutput>
       <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Rutas.resx">
+    <EmbeddedResource Include="Resources\Ruta.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Rutas.Designer.cs</LastGenOutput>
+      <LastGenOutput>Ruta.Designer.cs</LastGenOutput>
       <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\TitutloAlert.resx">

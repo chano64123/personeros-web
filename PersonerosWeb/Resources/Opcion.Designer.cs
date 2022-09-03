@@ -22,14 +22,14 @@ namespace PersonerosWeb.Resourses {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Rutas {
+    public class Opcion {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Rutas() {
+        internal Opcion() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PersonerosWeb.Resourses {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PersonerosWeb.Resources.Rutas", typeof(Rutas).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PersonerosWeb.Resources.Opcion", typeof(Opcion).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,78 @@ namespace PersonerosWeb.Resourses {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Actas.
+        /// </summary>
+        public static string acta {
+            get {
+                return ResourceManager.GetString("acta", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Distritos.
+        /// </summary>
+        public static string distrito {
+            get {
+                return ResourceManager.GetString("distrito", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Instituciones.
+        /// </summary>
+        public static string institucion {
+            get {
+                return ResourceManager.GetString("institucion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Mesas.
+        /// </summary>
+        public static string mesa {
+            get {
+                return ResourceManager.GetString("mesa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Personas.
+        /// </summary>
+        public static string persona {
+            get {
+                return ResourceManager.GetString("persona", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tipos de Elecciones.
+        /// </summary>
+        public static string tipoEleccion {
+            get {
+                return ResourceManager.GetString("tipoEleccion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tipos de Usuarios.
+        /// </summary>
+        public static string tipoUsuario {
+            get {
+                return ResourceManager.GetString("tipoUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Usuarios.
+        /// </summary>
+        public static string usuario {
+            get {
+                return ResourceManager.GetString("usuario", resourceCulture);
             }
         }
     }

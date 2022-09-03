@@ -118,27 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="acta" xml:space="preserve">
-    <value>Acta</value>
+    <value>Actas</value>
   </data>
   <data name="distrito" xml:space="preserve">
-    <value>Distrito</value>
+    <value>Distritos</value>
   </data>
   <data name="institucion" xml:space="preserve">
-    <value>Institucion</value>
+    <value>Instituciones</value>
   </data>
   <data name="mesa" xml:space="preserve">
-    <value>Mesa</value>
+    <value>Mesas</value>
   </data>
   <data name="persona" xml:space="preserve">
-    <value>Persona</value>
+    <value>Personas</value>
   </data>
   <data name="tipoEleccion" xml:space="preserve">
-    <value>TipoEleccion</value>
+    <value>Tipos de Elecciones</value>
   </data>
   <data name="tipoUsuario" xml:space="preserve">
-    <value>TipoUsuario</value>
+    <value>Tipos de Usuarios</value>
   </data>
   <data name="usuario" xml:space="preserve">
-    <value>Usuario</value>
+    <value>Usuarios</value>
   </data>
 </root>

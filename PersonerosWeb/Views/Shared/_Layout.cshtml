@@ -5,6 +5,16 @@
 @{
     Layout = null;
     Usuario usuario = SessionHelper.GetUser();
+    List<MenuHelper> opcionesMenu = new List<MenuHelper>{ 
+        new MenuHelper(Controlador.acta, Ruta.acta, Icono.acta, Opcion.acta),
+        new MenuHelper(Controlador.distrito, Ruta.distrito, Icono.distrito, Opcion.distrito),
+        new MenuHelper(Controlador.institucion, Ruta.institucion, Icono.institucion, Opcion.institucion),
+        new MenuHelper(Controlador.mesa, Ruta.mesa, Icono.mesa, Opcion.mesa),
+        new MenuHelper(Controlador.persona, Ruta.persona, Icono.persona, Opcion.persona),
+        new MenuHelper(Controlador.tipoEleccion, Ruta.tipoEleccion, Icono.tipoEleccion, Opcion.tipoEleccion),
+        new MenuHelper(Controlador.tipoUsuario, Ruta.tipoUsuario, Icono.tipoUsuario, Opcion.tipoUsuario),
+        new MenuHelper(Controlador.usuario, Ruta.usuario, Icono.usuario, Opcion.usuario)
+    };
 }
 
 <!DOCTYPE html>
@@ -58,24 +68,17 @@
             <span class="logo_name">SCPFT</span>
         </div>
         <ul class="nav-links pe-1">
-            @*<li class="py-2 @Html.IsActive(Rutas.controladorCargo, Rutas.accionIndex)">
-                <a href="~/@Rutas.controladorCargo">
-                    <i class='bx bxs-user-account'></i>
-                    <span class="link_name">@Recursos.gestionCargos</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li>@Html.ActionLink(Recursos.gestionCargos, Rutas.accionIndex, Rutas.controladorCargo, null, new { @class = "link_name" })</li>
-                </ul>
-            </li>*@
-            <li class="py-2 @Html.IsActive("Version", "Index")">
-                <a href="~/Version">
-                    <i class='bx bx-time-five'></i>
-                    <span class="link_name">Version de Elementos de Configuración</span>
-                </a>
-                <ul class="sub-menu blank">
-                    <li>@Html.ActionLink("Version de Elementos de Configuración", "Index", "Version", null, new { @class = "link_name" })</li>
-                </ul>
-            </li>
+            @foreach(MenuHelper menu in opcionesMenu) {
+                <li class="py-2 @Html.IsActive(menu.controlador, Ruta.accionIndex)">
+                    <a href="~/@menu.ruta">
+                        <i class='@menu.icono'></i>
+                        <span class="link_name">@menu.opcion</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li>@Html.ActionLink(menu.opcion, Ruta.accionIndex, menu.controlador, null, new { @class = "link_name" })</li>
+                    </ul>
+                </li>
+            }
             <li class="py-2">
                 <div class="profile-details">
                     <div class="name-job ms-3">

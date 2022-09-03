@@ -22,14 +22,14 @@ namespace PersonerosWeb.Resourses {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Controlador {
+    public class Icono {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Controlador() {
+        internal Icono() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PersonerosWeb.Resourses {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PersonerosWeb.Resources.Controlador", typeof(Controlador).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PersonerosWeb.Resources.Icono", typeof(Icono).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Acta.
+        ///   Busca una cadena traducida similar a bx bx-file-blank.
         /// </summary>
         public static string acta {
             get {
@@ -70,7 +70,7 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Distrito.
+        ///   Busca una cadena traducida similar a bx bx-building-house.
         /// </summary>
         public static string distrito {
             get {
@@ -79,7 +79,7 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Institucion.
+        ///   Busca una cadena traducida similar a bx bxs-institution.
         /// </summary>
         public static string institucion {
             get {
@@ -88,7 +88,7 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Mesa.
+        ///   Busca una cadena traducida similar a bx bx-chalkboard.
         /// </summary>
         public static string mesa {
             get {
@@ -97,7 +97,7 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Persona.
+        ///   Busca una cadena traducida similar a bx bx-user.
         /// </summary>
         public static string persona {
             get {
@@ -106,7 +106,7 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a TipoEleccion.
+        ///   Busca una cadena traducida similar a bx bx-select-multiple.
         /// </summary>
         public static string tipoEleccion {
             get {
@@ -115,7 +115,7 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a TipoUsuario.
+        ///   Busca una cadena traducida similar a bx bxs-user-account.
         /// </summary>
         public static string tipoUsuario {
             get {
@@ -124,7 +124,7 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Usuario.
+        ///   Busca una cadena traducida similar a bx bx-user-circle.
         /// </summary>
         public static string usuario {
             get {
