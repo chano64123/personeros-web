@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace PersonerosWeb.Controllers
 {
-    public class PruebaController : Controller
+    public class MesaController : Controller
     {
-        // GET: Prueba
+        // GET: Mesa
         public ActionResult Index()
         {
             return View();

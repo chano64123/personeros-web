@@ -3,6 +3,10 @@
 @model List<TipoUsuario>
 @{
     ViewBag.Title = "Tipos de Usuario";
+
+    ViewBag.messageAlert = Session["messageAlert"];
+    ViewBag.titleAlert = Session["titleAlert"];
+    ViewBag.iconAlert = Session["iconAlert"];
 }
 
 <div class="row mt-3">
@@ -88,17 +92,26 @@
     let mensaje = "@ViewBag.messageAlert";
     let tipo = "@ViewBag.iconAlert";
 
-    console.log(titulo)
-    console.log(mensaje)
-    console.log(tipo)
-
     function mostrar() {
         Swal.fire(titulo, mensaje, tipo)
     }
 
+    function limpiar() {
+        @{
+            Session["titleAlert"] = "";
+            Session["messageAlert"] = "";
+            Session["iconAlert"] = "";
+            ViewBag.titleAlert = "";
+            ViewBag.messageAlert = "";
+            ViewBag.iconAlert = "";
+        }
+        titulo = ""
+        mensaje = ""
+        tipo = ""
+    }
+
     if (titulo != "") {
-        console.log(titulo);
         mostrar()
-        @(Session["titulo"] = "")
+        limpiar()
     }
 </script>

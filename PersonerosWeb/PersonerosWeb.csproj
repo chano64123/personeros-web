@@ -224,6 +224,7 @@
     <Content Include="Assets\chosen\Content\bootstrap-chosen.less" />
     <Content Include="Assets\chosen\Content\bootstrap-chosen.scss" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Img\icon.png" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
@@ -231,7 +232,6 @@
     <Content Include="Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Prueba\Index.cshtml" />
     <Content Include="Views\TipoUsuario\Index.cshtml" />
     <Content Include="Views\TipoUsuario\AgregarModificarTipoUsuario.cshtml" />
     <Content Include="Views\TipoUsuario\DetalleTipoUsuario.cshtml" />
@@ -239,9 +239,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\Distrito.cs" />
+    <Compile Include="Controllers\ActaController.cs" />
+    <Compile Include="Controllers\DistritoController.cs" />
+    <Compile Include="Controllers\InstitucionController.cs" />
+    <Compile Include="Controllers\MesaController.cs" />
+    <Compile Include="Controllers\TipoEleccionController.cs" />
+    <Compile Include="Models\Acta.cs" />
+    <Compile Include="Models\Distrito.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
-    <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Controllers\TipoUsuarioController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -249,8 +254,11 @@
     </Compile>
     <Compile Include="Helpers\MessageHelper.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
+    <Compile Include="Models\Institucion.cs" />
+    <Compile Include="Models\Mesa.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\TipoEleccion.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -300,8 +308,12 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
-    <Folder Include="Img\" />
+    <Folder Include="Views\Acta\" />
+    <Folder Include="Views\Distrito\" />
+    <Folder Include="Views\Institucion\" />
+    <Folder Include="Views\Mesa\" />
     <Folder Include="Views\Persona\" />
+    <Folder Include="Views\TipoEleccion\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>

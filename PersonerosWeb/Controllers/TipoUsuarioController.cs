@@ -47,9 +47,7 @@ namespace PersonerosWeb.Controllers {
         public ActionResult GuardarTipoUsuario(TipoUsuario tipoUsuario) {
             if(ModelState.IsValid) {
                 var response = tipoUsuario.idTipoUsuario == 0 ? tipoUsuario.crearTipoUsuario() : tipoUsuario.modificarTipoUsuario(tipoUsuario.idTipoUsuario);
-                ViewBag.messageAlert = response.displayMessage;
-                ViewBag.titleAlert = response.success ? TitutloAlert.Success : TitutloAlert.Error;
-                ViewBag.iconAlert = response.success ? IconAlert.Success : IconAlert.Error;
+                construirAlert(response);
                 //ControllerContext.HttpContext.Response.SetCookie(new HttpCookie("alert", resultado));
                 return Redirect("~/TipoUsuario/Index");
             } else {
@@ -69,11 +67,15 @@ namespace PersonerosWeb.Controllers {
         [HttpPost]
         public ActionResult EliminarTipoUsuario(int id) {
             var response = tipoUsuario.eliminarTipoUsuario(id);
-            ViewBag.messageAlert = response.displayMessage;
-            ViewBag.titleAlert = response.success ? TitutloAlert.Success : TitutloAlert.Error;
-            ViewBag.iconAlert = response.success ? IconAlert.Success : IconAlert.Error;
+            construirAlert(response);
             //ControllerContext.HttpContext.Response.SetCookie(new HttpCookie("alert", result));
             return Redirect("~/TipoUsuario/Index");
+        }
+
+        private void construirAlert(Response<TipoUsuario> response) {
+            Session["messageAlert"] = response.displayMessage;
+            Session["titleAlert"] = response.success ? TitutloAlert.Success : TitutloAlert.Error;
+            Session["iconAlert"] = response.success ? IconAlert.Success : IconAlert.Error;
         }
     }
 }
