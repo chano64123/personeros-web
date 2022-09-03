@@ -1,0 +1,377 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0E8F0BE2-46F1-4A42-978F-713943BF3F7B}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PersonerosWeb</RootNamespace>
+    <AssemblyName>PersonerosWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44373</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=3.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.2.1\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=104.3.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.104.3.3\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Retrofit.Net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Retrofit.Net.1.0.0.0\lib\net45\Retrofit.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\chosen\Content\bootstrap-chosen.css" />
+    <Content Include="Assets\chosen\Content\chosen-sprite%402x.png" />
+    <Content Include="Assets\chosen\Content\chosen-sprite.png" />
+    <Content Include="Assets\chosen\Scripts\chosen.jquery.js" />
+    <Content Include="Assets\chosen\Scripts\chosen.jquery.min.js" />
+    <None Include="Assets\chosen\Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Assets\chosen\Scripts\jquery-1.6.4.js" />
+    <Content Include="Assets\chosen\Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Assets\css\bootstrap\bootstrap-grid.css" />
+    <Content Include="Assets\css\bootstrap\bootstrap-grid.min.css" />
+    <Content Include="Assets\css\bootstrap\bootstrap-reboot.css" />
+    <Content Include="Assets\css\bootstrap\bootstrap-reboot.min.css" />
+    <Content Include="Assets\css\bootstrap\bootstrap.css" />
+    <Content Include="Assets\css\bootstrap\bootstrap.min.css" />
+    <Content Include="Assets\css\datatable\DataTables-1.11.3\images\sort_asc.png" />
+    <Content Include="Assets\css\datatable\DataTables-1.11.3\images\sort_asc_disabled.png" />
+    <Content Include="Assets\css\datatable\DataTables-1.11.3\images\sort_both.png" />
+    <Content Include="Assets\css\datatable\DataTables-1.11.3\images\sort_desc.png" />
+    <Content Include="Assets\css\datatable\DataTables-1.11.3\images\sort_desc_disabled.png" />
+    <Content Include="Assets\css\datatable\datatables.css" />
+    <Content Include="Assets\css\datatable\datatables.min.css" />
+    <Content Include="Assets\css\fancybox\jquery.fancybox.css" />
+    <Content Include="Assets\css\highcharts\highcharts.css" />
+    <Content Include="Assets\css\layout\style.css" />
+    <Content Include="Assets\css\login\login.css" />
+    <Content Include="Assets\datatable\css\dataTables.bootstrap.css" />
+    <Content Include="Assets\datatable\css\dataTables.bootstrap.min.css" />
+    <Content Include="Assets\datatable\css\dataTables.bootstrap4.css" />
+    <Content Include="Assets\datatable\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Assets\datatable\css\dataTables.bootstrap5.css" />
+    <Content Include="Assets\datatable\css\dataTables.bootstrap5.min.css" />
+    <Content Include="Assets\datatable\css\dataTables.bulma.css" />
+    <Content Include="Assets\datatable\css\dataTables.bulma.min.css" />
+    <Content Include="Assets\datatable\css\dataTables.dataTables.css" />
+    <Content Include="Assets\datatable\css\dataTables.dataTables.min.css" />
+    <Content Include="Assets\datatable\css\dataTables.foundation.css" />
+    <Content Include="Assets\datatable\css\dataTables.foundation.min.css" />
+    <Content Include="Assets\datatable\css\dataTables.jqueryui.css" />
+    <Content Include="Assets\datatable\css\dataTables.jqueryui.min.css" />
+    <Content Include="Assets\datatable\css\dataTables.semanticui.css" />
+    <Content Include="Assets\datatable\css\dataTables.semanticui.min.css" />
+    <Content Include="Assets\datatable\css\jquery.dataTables.css" />
+    <Content Include="Assets\datatable\css\jquery.dataTables.min.css" />
+    <Content Include="Assets\datatable\images\sort_asc.png" />
+    <Content Include="Assets\datatable\images\sort_asc_disabled.png" />
+    <Content Include="Assets\datatable\images\sort_both.png" />
+    <Content Include="Assets\datatable\images\sort_desc.png" />
+    <Content Include="Assets\datatable\images\sort_desc_disabled.png" />
+    <Content Include="Assets\datatable\js\dataTables.bootstrap.js" />
+    <Content Include="Assets\datatable\js\dataTables.bootstrap.min.js" />
+    <Content Include="Assets\datatable\js\dataTables.bootstrap4.js" />
+    <Content Include="Assets\datatable\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Assets\datatable\js\dataTables.bootstrap5.js" />
+    <Content Include="Assets\datatable\js\dataTables.bootstrap5.min.js" />
+    <Content Include="Assets\datatable\js\dataTables.bulma.js" />
+    <Content Include="Assets\datatable\js\dataTables.bulma.min.js" />
+    <Content Include="Assets\datatable\js\dataTables.dataTables.js" />
+    <Content Include="Assets\datatable\js\dataTables.dataTables.min.js" />
+    <Content Include="Assets\datatable\js\dataTables.foundation.js" />
+    <Content Include="Assets\datatable\js\dataTables.foundation.min.js" />
+    <Content Include="Assets\datatable\js\dataTables.jqueryui.js" />
+    <Content Include="Assets\datatable\js\dataTables.jqueryui.min.js" />
+    <Content Include="Assets\datatable\js\dataTables.semanticui.js" />
+    <Content Include="Assets\datatable\js\dataTables.semanticui.min.js" />
+    <Content Include="Assets\datatable\js\jquery.dataTables.js" />
+    <Content Include="Assets\datatable\js\jquery.dataTables.min.js" />
+    <Content Include="Assets\js\bootstrap\bootstrap.js" />
+    <Content Include="Assets\js\bootstrap\bootstrap.min.js" />
+    <Content Include="Assets\js\datatable\datatables.js" />
+    <Content Include="Assets\js\datatable\datatables.min.js" />
+    <Content Include="Assets\js\fancybox\jquery.fancybox.js" />
+    <Content Include="Assets\js\highcharts\accessibility.js" />
+    <Content Include="Assets\js\highcharts\export-data.js" />
+    <Content Include="Assets\js\highcharts\exporting.js" />
+    <Content Include="Assets\js\highcharts\gantt.js" />
+    <Content Include="Assets\js\highcharts\highcharts-3d.js" />
+    <Content Include="Assets\js\highcharts\highcharts-gantt.js" />
+    <Content Include="Assets\js\highcharts\highcharts-more.js" />
+    <Content Include="Assets\js\highcharts\highcharts.js" />
+    <Content Include="Assets\js\highcharts\offline-exporting.js" />
+    <Content Include="Assets\js\jquery\jquery-3.6.0.min.js" />
+    <Content Include="Assets\js\jquery\jquery.validate.min.js" />
+    <Content Include="Assets\js\jquery\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Assets\js\layout\script.js" />
+    <Content Include="Assets\js\login\ini.js" />
+    <Content Include="Assets\js\login\jquery.form.js" />
+    <Content Include="Assets\js\login\jquery.js" />
+    <Content Include="Assets\js\login\jquery.validate.min.js" />
+    <Content Include="Assets\js\login\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Assets\js\login\registro.js" />
+    <Content Include="Assets\js\models\mesa.js" />
+    <Content Include="Assets\js\models\tipoEleccion.js" />
+    <Content Include="Assets\js\models\acta.js" />
+    <Content Include="Assets\js\models\tipoUsuario.js" />
+    <Content Include="Assets\js\models\distrito.js" />
+    <Content Include="Assets\js\models\institucion.js" />
+    <Content Include="Assets\js\models\usuario.js" />
+    <Content Include="Assets\js\models\persona.js" />
+    <Content Include="Assets\js\validation\validation.bootstrap.js" />
+    <Content Include="Content\bootstrap-chosen.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\bootstrap-chosen.scss" />
+    <Content Include="Content\bootstrap-chosen.less" />
+    <Content Include="Assets\chosen\Content\bootstrap-chosen.less" />
+    <Content Include="Assets\chosen\Content\bootstrap-chosen.scss" />
+    <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Prueba\Index.cshtml" />
+    <Content Include="Views\TipoUsuario\Index.cshtml" />
+    <Content Include="Views\TipoUsuario\AgregarModificarTipoUsuario.cshtml" />
+    <Content Include="Views\TipoUsuario\DetalleTipoUsuario.cshtml" />
+    <Content Include="Views\TipoUsuario\EliminarTipoUsuario.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Distrito.cs" />
+    <Compile Include="Controllers\PersonaController.cs" />
+    <Compile Include="Controllers\PruebaController.cs" />
+    <Compile Include="Controllers\TipoUsuarioController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\MessageHelper.cs" />
+    <Compile Include="Helpers\SessionHelper.cs" />
+    <Compile Include="Models\Persona.cs" />
+    <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\TipoUsuario.cs" />
+    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Controlador.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Controlador.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ErrorMessage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessage.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\IconAlert.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IconAlert.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Recursos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Recursos.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Rutas.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Rutas.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\TitutloAlert.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TitutloAlert.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service\ITipoUsuarioServicio.cs" />
+    <Compile Include="Utility\HtmlUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <None Include="packages.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Img\" />
+    <Folder Include="Views\Persona\" />
+    <Folder Include="Views\Usuario\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Controlador.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Controlador.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ErrorMessage.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessage.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\IconAlert.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>IconAlert.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Recursos.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Recursos.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Rutas.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Rutas.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\TitutloAlert.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TitutloAlert.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>5475</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44373/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
