@@ -6,14 +6,14 @@
     Layout = null;
     Usuario usuario = SessionHelper.GetUser();
     List<MenuHelper> opcionesMenu = new List<MenuHelper>{ 
-        new MenuHelper(Controlador.acta, Ruta.acta, Icono.acta, Opcion.acta),
-        new MenuHelper(Controlador.distrito, Ruta.distrito, Icono.distrito, Opcion.distrito),
-        new MenuHelper(Controlador.institucion, Ruta.institucion, Icono.institucion, Opcion.institucion),
-        new MenuHelper(Controlador.mesa, Ruta.mesa, Icono.mesa, Opcion.mesa),
-        new MenuHelper(Controlador.persona, Ruta.persona, Icono.persona, Opcion.persona),
-        new MenuHelper(Controlador.tipoEleccion, Ruta.tipoEleccion, Icono.tipoEleccion, Opcion.tipoEleccion),
-        new MenuHelper(Controlador.tipoUsuario, Ruta.tipoUsuario, Icono.tipoUsuario, Opcion.tipoUsuario),
-        new MenuHelper(Controlador.usuario, Ruta.usuario, Icono.usuario, Opcion.usuario)
+        new MenuHelper(Controlador.acta, Ruta.acta, Icono.acta, Opcion.acta, false),
+        new MenuHelper(Controlador.distrito, Ruta.distrito, Icono.distrito, Opcion.distrito, true),
+        new MenuHelper(Controlador.institucion, Ruta.institucion, Icono.institucion, Opcion.institucion, true),
+        new MenuHelper(Controlador.mesa, Ruta.mesa, Icono.mesa, Opcion.mesa, false),
+        new MenuHelper(Controlador.persona, Ruta.persona, Icono.persona, Opcion.persona, false),
+        new MenuHelper(Controlador.tipoEleccion, Ruta.tipoEleccion, Icono.tipoEleccion, Opcion.tipoEleccion, false),
+        new MenuHelper(Controlador.tipoUsuario, Ruta.tipoUsuario, Icono.tipoUsuario, Opcion.tipoUsuario, true),
+        new MenuHelper(Controlador.usuario, Ruta.usuario, Icono.usuario, Opcion.usuario, false)
     };
 }
 
@@ -69,15 +69,17 @@
         </div>
         <ul class="nav-links pe-1">
             @foreach(MenuHelper menu in opcionesMenu) {
-                <li class="py-2 @Html.IsActive(menu.controlador, Ruta.accionIndex)">
-                    <a href="~/@menu.ruta">
-                        <i class='@menu.icono'></i>
-                        <span class="link_name">@menu.opcion</span>
-                    </a>
-                    <ul class="sub-menu blank">
-                        <li>@Html.ActionLink(menu.opcion, Ruta.accionIndex, menu.controlador, null, new { @class = "link_name" })</li>
-                    </ul>
-                </li>
+                if(menu.muestra) {
+                    <li class="py-2 @Html.IsActive(menu.controlador, Ruta.accionIndex)">
+                        <a href="~/@menu.ruta">
+                            <i class='@menu.icono'></i>
+                            <span class="link_name">@menu.opcion</span>
+                        </a>
+                        <ul class="sub-menu blank">
+                            <li>@Html.ActionLink(menu.opcion, Ruta.accionIndex, menu.controlador, null, new { @class = "link_name" })</li>
+                        </ul>
+                    </li>
+                }
             }
             <li class="py-2">
                 <div class="profile-details">
