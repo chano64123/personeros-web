@@ -48,7 +48,7 @@ namespace PersonerosWeb.Controllers
 
         public ActionResult GuardarDistrito(Distrito distrito) {
             if(ModelState.IsValid) {
-                var response = distrito.idDistrito == 0 ? distrito.crearDistrito() : distrito.modificarDistrito(distrito.idDistrito);
+                var response = distrito.idDistrito == 0 ? distrito.crearDistrito() : distrito.modificarDistrito();
                 construirAlert(response);
                 //ControllerContext.HttpContext.Response.SetCookie(new HttpCookie("alert", resultado));
                 return Redirect("~/Distrito/Index");

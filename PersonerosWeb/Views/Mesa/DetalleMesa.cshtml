@@ -1,0 +1,35 @@
+﻿@using PersonerosWeb.Models;
+@model Mesa
+@{
+    ViewBag.Title = "Detalle de la Mesa";
+    Layout = null;
+}
+
+<div class="card">
+    <div class="card-body">
+        <dl class="dl-horizontal">
+            <dt>ID</dt>
+            <dd>@Model.idMesa</dd>
+            <div class="row">
+                <div class="col-6">
+                    <dt>Institución</dt>
+                    <dd>@Model.institucion.nombre</dd>
+                </div>
+                <div class="col-6">
+                    <dt>Distrito</dt>
+                    <dd>@Model.institucion.distrito.nombre</dd>
+                </div>
+                <div class="col-6">
+                    <dt>Aula</dt>
+                    <dd>@Model.aula</dd>
+                </div>
+                <div class="col-6">
+                    <dt>Número</dt>
+                    <dd>@Model.numero</dd>
+                </div>
+            </div>
+            <dt>Cantidad de Electores</dt>
+            <dd>@Model.cantidadElectores</dd>
+        </dl>
+    </div>
+</div>

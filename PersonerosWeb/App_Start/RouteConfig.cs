@@ -16,7 +16,7 @@ namespace PersonerosWeb
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "TipoUsuario", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Mesa", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

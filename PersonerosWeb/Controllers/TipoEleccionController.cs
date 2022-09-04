@@ -55,7 +55,7 @@ namespace PersonerosWeb.Controllers
                 tipoEleccion.personaCandidato = null;
 
                 //todo normal
-                var response = tipoEleccion.idTipoEleccion == 0 ? tipoEleccion.crearTipoEleccion() : tipoEleccion.modificarTipoEleccion(tipoEleccion.idTipoEleccion);
+                var response = tipoEleccion.idTipoEleccion == 0 ? tipoEleccion.crearTipoEleccion() : tipoEleccion.modificarTipoEleccion();
                 construirAlert(response);
                 //ControllerContext.HttpContext.Response.SetCookie(new HttpCookie("alert", resultado));
                 return Redirect("~/TipoEleccion/Index");

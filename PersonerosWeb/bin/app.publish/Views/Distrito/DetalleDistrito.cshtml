@@ -1,0 +1,17 @@
+﻿@using PersonerosWeb.Models;
+@model Distrito
+@{
+    ViewBag.Title = "Detalle del Distrito";
+    Layout = null;
+}
+
+<div class="card">
+    <div class="card-body">
+        <dl class="dl-horizontal">
+            <dt>ID</dt>
+            <dd>@Model.idDistrito</dd>
+            <dt>Nombre</dt>
+            <dd>@Model.nombre</dd>
+        </dl>
+    </div>
+</div>

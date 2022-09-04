@@ -25,7 +25,7 @@ namespace PersonerosWeb.Helpers {
                     user.nombreUsuario = userData[3];
                     user.clave = userData[4];
                     user.cantidadMaximaMesas = Convert.ToInt32(userData[5]);
-                    user.cantidadMaximaColegios = Convert.ToInt32(userData[6]);
+                    user.cantidadMaximaInstituciones = Convert.ToInt32(userData[6]);
                     //user.tipoUsuario = userData[7];
                     //user.persona = userData[8];
                 }

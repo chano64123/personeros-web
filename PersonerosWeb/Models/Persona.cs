@@ -77,7 +77,7 @@ namespace PersonerosWeb.Models {
             return response;
         }
 
-        public Response<Persona> modificarPersona(int id) {
+        public Response<Persona> modificarPersona() {
             var response = new Response<Persona>();
             try {
                 var institucion = new Persona();

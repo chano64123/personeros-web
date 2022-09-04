@@ -54,7 +54,7 @@ namespace PersonerosWeb.Controllers
                 institucion.idDistrito = institucion.distrito.idDistrito;
                 institucion.distrito = null;
                 
-                var response = institucion.idInstitucion == 0 ? institucion.crearInstitucion() : institucion.modificarInstitucion(institucion.idInstitucion);
+                var response = institucion.idInstitucion == 0 ? institucion.crearInstitucion() : institucion.modificarInstitucion();
                 construirAlert(response);
                 //ControllerContext.HttpContext.Response.SetCookie(new HttpCookie("alert", resultado));
                 return Redirect("~/Institucion/Index");

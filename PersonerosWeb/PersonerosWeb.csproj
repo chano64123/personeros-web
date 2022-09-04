@@ -304,9 +304,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TitutloAlert.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service\IDistritoServicio.cs" />
+    <Compile Include="Service\IActaServicio.cs" />
+    <Compile Include="Service\IMesaServicio.cs" />
     <Compile Include="Service\IPersonaServicio.cs" />
     <Compile Include="Service\IInstitucionServicio.cs" />
-    <Compile Include="Service\IDistritoServicio.cs" />
+    <Compile Include="Service\IUsuarioServicio.cs" />
     <Compile Include="Service\ITipoEleccionServicio.cs" />
     <Compile Include="Service\ITipoUsuarioServicio.cs" />
     <Compile Include="Utility\HtmlUtility.cs" />
@@ -330,6 +333,10 @@
     <Content Include="Views\TipoEleccion\DetalleTipoEleccion.cshtml" />
     <Content Include="Views\TipoEleccion\AgregarModificarTipoEleccion.cshtml" />
     <Content Include="Views\TipoEleccion\EliminarTipoEleccion.cshtml" />
+    <Content Include="Views\Mesa\EliminarMesa.cshtml" />
+    <Content Include="Views\Mesa\AgregarModificarMesa.cshtml" />
+    <Content Include="Views\Mesa\DetalleMesa.cshtml" />
+    <Content Include="Views\Mesa\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -341,7 +348,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
     <Folder Include="Views\Acta\" />
-    <Folder Include="Views\Mesa\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>

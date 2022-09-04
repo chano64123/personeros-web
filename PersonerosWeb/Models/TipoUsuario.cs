@@ -66,7 +66,7 @@ namespace PersonerosWeb.Models {
             return response;
         }
 
-        public Response<TipoUsuario> modificarTipoUsuario(int id) {
+        public Response<TipoUsuario> modificarTipoUsuario() {
             var response = new Response<TipoUsuario>();
             try {
                 var tipoUsuario = new TipoUsuario();

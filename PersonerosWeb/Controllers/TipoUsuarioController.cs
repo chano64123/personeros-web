@@ -46,7 +46,7 @@ namespace PersonerosWeb.Controllers {
 
         public ActionResult GuardarTipoUsuario(TipoUsuario tipoUsuario) {
             if(ModelState.IsValid) {
-                var response = tipoUsuario.idTipoUsuario == 0 ? tipoUsuario.crearTipoUsuario() : tipoUsuario.modificarTipoUsuario(tipoUsuario.idTipoUsuario);
+                var response = tipoUsuario.idTipoUsuario == 0 ? tipoUsuario.crearTipoUsuario() : tipoUsuario.modificarTipoUsuario();
                 construirAlert(response);
                 //ControllerContext.HttpContext.Response.SetCookie(new HttpCookie("alert", resultado));
                 return Redirect("~/TipoUsuario/Index");

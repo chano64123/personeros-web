@@ -19,7 +19,7 @@ namespace PersonerosWeb.Models {
         [Display(Name = "Cantidad máxima de mesas")]
         public int cantidadMaximaMesas { get; set; }
         [Display(Name = "Cantidad máxima de instituciones")]
-        public int cantidadMaximaColegios { get; set; }
+        public int cantidadMaximaInstituciones { get; set; }
         public TipoUsuario tipoUsuario { get; set; }
         public Persona persona { get; set; }
 

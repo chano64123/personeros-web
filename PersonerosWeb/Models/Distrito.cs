@@ -61,7 +61,7 @@ namespace PersonerosWeb.Models {
             return response;
         }
 
-        public Response<Distrito> modificarDistrito(int id) {
+        public Response<Distrito> modificarDistrito() {
             var response = new Response<Distrito>();
             try {
                 var distrito = new Distrito();

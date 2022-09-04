@@ -64,7 +64,7 @@ namespace PersonerosWeb.Models {
             return response;
         }
 
-        public Response<TipoEleccion> modificarTipoEleccion(int id) {
+        public Response<TipoEleccion> modificarTipoEleccion() {
             var response = new Response<TipoEleccion>();
             try {
                 var tipoEleccion = new TipoEleccion();

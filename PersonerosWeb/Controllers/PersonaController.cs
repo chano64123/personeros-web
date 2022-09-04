@@ -57,7 +57,7 @@ namespace PersonerosWeb.Controllers {
                 persona.idInstitucionVotacion = persona.institucionVotacion.idInstitucion;
                 persona.institucionVotacion = null;
 
-                var response = persona.idPersona == 0 ? persona.crearPersona() : persona.modificarPersona(persona.idPersona);
+                var response = persona.idPersona == 0 ? persona.crearPersona() : persona.modificarPersona();
                 construirAlert(response);
                 //ControllerContext.HttpContext.Response.SetCookie(new HttpCookie("alert", resultado));
                 return Redirect("~/Persona/Index");
