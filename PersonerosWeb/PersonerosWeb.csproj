@@ -326,6 +326,10 @@
     <Content Include="Views\Persona\DetallePersona.cshtml" />
     <Content Include="Views\Persona\AgregarModificarPersona.cshtml" />
     <Content Include="Views\Persona\EliminarPersona.cshtml" />
+    <Content Include="Views\TipoEleccion\Index.cshtml" />
+    <Content Include="Views\TipoEleccion\DetalleTipoEleccion.cshtml" />
+    <Content Include="Views\TipoEleccion\AgregarModificarTipoEleccion.cshtml" />
+    <Content Include="Views\TipoEleccion\EliminarTipoEleccion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -338,7 +342,6 @@
     <Folder Include="Filters\" />
     <Folder Include="Views\Acta\" />
     <Folder Include="Views\Mesa\" />
-    <Folder Include="Views\TipoEleccion\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>

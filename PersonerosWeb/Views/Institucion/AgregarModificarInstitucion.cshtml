@@ -20,7 +20,7 @@
             </div>
             <div class="form-floating mb-3">
                 @Html.DropDownListFor(model => model.distrito.idDistrito, distritos, new { @class = "form-select", @required = "required" })
-                @Html.LabelFor(model => model.idDistrito)
+                @*@Html.LabelFor(model => model.idDistrito)*@
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.distrito.idDistrito, null, new { @class = "text-danger" })
             </div>
@@ -56,9 +56,8 @@
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 
 <script type="text/javascript">
-    var cmbDistrito = document.getElementById("idDistrito");
-    consle.log(cmbDistrito.value)
-    if (@(Model.idInstitucion == 0)) {
-        cmbDistrito.value = "";
-    }
+    $("#distrito_idDistrito").chosen({
+        no_results_text: "No se encontró el Distrito",
+        disable_search_threshold: 7,
+    });
 </script>

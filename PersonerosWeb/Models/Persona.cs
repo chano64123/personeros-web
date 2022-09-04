@@ -105,24 +105,35 @@ namespace PersonerosWeb.Models {
             return response;
         }
 
-        public List<SelectListItem> inicializarPersonaes() {
+        public List<SelectListItem> inicializarPersonasPoDistritoDeResidencia() {
             var seleccione = new SelectListItem() {
-                Text = "Seleccione Insitutción",
+                Text = "Seleccione Candidato",
                 Value = "",
                 Selected = true,
                 Disabled = true
             };
 
-            List<SelectListItem> personas = obtenerPersonas().result.OrderBy(x => x.apellidoPaterno).OrderBy(x => x.apellidoMaterno).OrderBy(x => x.nombres).ToList().ConvertAll(d => {
+            var personas = obtenerPersonas().result.OrderBy(x => x.distritoResidencia.nombre).ToList();
+
+            List<SelectListGroup> grupos = personas.Select(x => x.distritoResidencia.nombre).Distinct().Select(x => new Distrito {
+                nombre = x
+            }).ToList().ConvertAll(d => {
+                return new SelectListGroup() {
+                    Name = d.nombre
+                };
+            });
+
+            List<SelectListItem> personasItems = personas.ConvertAll(d => {
                 return new SelectListItem() {
-                    Text = d.apellidoPaterno + " " + d.apellidoMaterno + ", " + d.nombres + " (" + d.dni + ")",
+                    Text = d.nombres + " " + d.apellidoPaterno + " " + d.apellidoMaterno,
                     Value = d.idPersona.ToString(),
+                    Group = grupos.Find(x => x.Name.Equals(d.distritoResidencia.nombre)),
                     Selected = false
                 };
             });
-            personas.Insert(0, seleccione);
+            personasItems.Insert(0, seleccione);
 
-            return personas;
+            return personasItems;
         }
     }
 }

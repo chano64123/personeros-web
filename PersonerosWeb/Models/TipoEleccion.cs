@@ -4,16 +4,21 @@ using RestSharp;
 using Retrofit.Net;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 
 namespace PersonerosWeb.Models {
     public class TipoEleccion {
         public int idTipoEleccion { get; set; }
+        [Display(Name = "Candidato")]
+        public int idPersonaCandidato { get; set; }
+        [Display(Name = "Nombre")]
         public string nombre { get; set; }
-        public Persona persona { get; set; }
+        public Persona personaCandidato { get; set; }
 
         //Implementacion de Metodos
         public Response<List<TipoEleccion>> obtenerTiposElecciones() {

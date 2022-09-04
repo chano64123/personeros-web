@@ -12,6 +12,7 @@ namespace PersonerosWeb.Controllers
     {
         // GET: TipoEleccion
         TipoEleccion tipoEleccion = new TipoEleccion();
+        Persona persona = new Persona();
         public ActionResult Index() {
             var response = tipoEleccion.obtenerTiposElecciones();
             ViewBag.captionTable = response.displayMessage;
@@ -33,6 +34,7 @@ namespace PersonerosWeb.Controllers
         }
 
         public ActionResult AgregarModificarTipoEleccion(int id = 0) {
+            ViewBag.personas = persona.inicializarPersonasPoDistritoDeResidencia();
             if(id == 0) {
                 return View(new TipoEleccion());
             } else {
@@ -48,6 +50,11 @@ namespace PersonerosWeb.Controllers
 
         public ActionResult GuardarTipoEleccion(TipoEleccion tipoEleccion) {
             if(ModelState.IsValid) {
+                //para el candidato
+                tipoEleccion.idPersonaCandidato = tipoEleccion.personaCandidato.idPersona;
+                tipoEleccion.personaCandidato = null;
+
+                //todo normal
                 var response = tipoEleccion.idTipoEleccion == 0 ? tipoEleccion.crearTipoEleccion() : tipoEleccion.modificarTipoEleccion(tipoEleccion.idTipoEleccion);
                 construirAlert(response);
                 //ControllerContext.HttpContext.Response.SetCookie(new HttpCookie("alert", resultado));

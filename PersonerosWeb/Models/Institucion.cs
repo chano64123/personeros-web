@@ -105,16 +105,27 @@ namespace PersonerosWeb.Models {
                 Disabled = true
             };
 
-            List<SelectListItem> institucions = obtenerInstituciones().result.OrderBy(x => x.distrito.nombre).ToList().ConvertAll(d => {
+            var instituciones = obtenerInstituciones().result.ToList();
+
+            List<SelectListGroup> grupos = instituciones.Select(x => x.distrito.nombre).Distinct().Select(x => new Distrito {
+                nombre = x
+            }).ToList().ConvertAll(d => {
+                return new SelectListGroup() {
+                    Name = d.nombre
+                };
+            });
+
+            List<SelectListItem> institucionesItems = instituciones.ConvertAll(d => {
                 return new SelectListItem() {
-                    Text = d.nombre + " (" + d.distrito.nombre + ")",
+                    Text = d.nombre,
                     Value = d.idInstitucion.ToString(),
+                    Group = grupos.Find(x => x.Name.Equals(d.distrito.nombre)),
                     Selected = false
                 };
             });
-            institucions.Insert(0, seleccione);
+            institucionesItems.Insert(0, seleccione);
 
-            return institucions;
+            return institucionesItems;
         }
     }
 }

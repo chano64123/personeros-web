@@ -58,13 +58,13 @@
             </div>
             <div class="form-floating mb-3">
                 @Html.DropDownListFor(model => model.distritoResidencia.idDistrito, distritos, new { @class = "form-select", @required = "required" })
-                @Html.LabelFor(model => model.idDistritoDireccion)
+                @*@Html.LabelFor(model => model.idDistritoDireccion)*@
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.distritoResidencia.idDistrito, null, new { @class = "text-danger" })
             </div>
             <div class="form-floating mb-3">
                 @Html.DropDownListFor(model => model.institucionVotacion.idInstitucion, instituciones, new { @class = "form-select", @required = "required" })
-                @Html.LabelFor(model => model.idInstitucionVotacion)
+                @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.institucionVotacion.idInstitucion, null, new { @class = "text-danger" })
             </div>
@@ -82,9 +82,12 @@
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 
 <script type="text/javascript">
-    var cmbDistrito = document.getElementById("idDistrito");
-    consle.log(cmbDistrito.value)
-    if (@(Model.idPersona == 0)) {
-        cmbDistrito.value = "";
-    }
+    $("#distritoResidencia_idDistrito").chosen({
+        no_results_text: "No se encontró el Distrito",
+        disable_search_threshold: 7
+    });
+    $("#institucionVotacion_idInstitucion").chosen({
+        no_results_text: "No se encontró la Institución",
+        disable_search_threshold: 7
+    });
 </script>

@@ -98,6 +98,7 @@ namespace PersonerosWeb.Models {
             };
 
             List<SelectListItem> distritos = obtenerDistritos().result.OrderBy(x => x.nombre).ToList().ConvertAll(d => {
+                
                 return new SelectListItem() {
                     Text = d.nombre,
                     Value = d.idDistrito.ToString(),
