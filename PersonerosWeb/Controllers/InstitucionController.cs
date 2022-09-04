@@ -50,8 +50,10 @@ namespace PersonerosWeb.Controllers
 
         public ActionResult GuardarInstitucion(Institucion institucion) {
             if(ModelState.IsValid) {
+                //para distrito
                 institucion.idDistrito = institucion.distrito.idDistrito;
                 institucion.distrito = null;
+                
                 var response = institucion.idInstitucion == 0 ? institucion.crearInstitucion() : institucion.modificarInstitucion(institucion.idInstitucion);
                 construirAlert(response);
                 //ControllerContext.HttpContext.Response.SetCookie(new HttpCookie("alert", resultado));

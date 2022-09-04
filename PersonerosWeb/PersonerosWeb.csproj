@@ -304,6 +304,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TitutloAlert.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service\IPersonaServicio.cs" />
     <Compile Include="Service\IInstitucionServicio.cs" />
     <Compile Include="Service\IDistritoServicio.cs" />
     <Compile Include="Service\ITipoEleccionServicio.cs" />
@@ -321,6 +322,10 @@
     <Content Include="Views\Institucion\DetalleInstitucion.cshtml" />
     <Content Include="Views\Institucion\AgregarModificarInstitucion.cshtml" />
     <Content Include="Views\Institucion\EliminarInstitucion.cshtml" />
+    <Content Include="Views\Persona\Index.cshtml" />
+    <Content Include="Views\Persona\DetallePersona.cshtml" />
+    <Content Include="Views\Persona\AgregarModificarPersona.cshtml" />
+    <Content Include="Views\Persona\EliminarPersona.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -333,7 +338,6 @@
     <Folder Include="Filters\" />
     <Folder Include="Views\Acta\" />
     <Folder Include="Views\Mesa\" />
-    <Folder Include="Views\Persona\" />
     <Folder Include="Views\TipoEleccion\" />
     <Folder Include="Views\Usuario\" />
   </ItemGroup>

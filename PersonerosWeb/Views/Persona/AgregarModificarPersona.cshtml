@@ -1,0 +1,90 @@
+﻿@using PersonerosWeb.Models;
+@using PersonerosWeb.Resourses;
+@model Persona
+@{
+    ViewBag.Title = (Model.idPersona > 0 ? "Editar" : "Agregar") + " Persona";
+    Layout = null;
+
+    List<SelectListItem> distritos = (List<SelectListItem>)ViewBag.distritos;
+    List<SelectListItem> instituciones = (List<SelectListItem>)ViewBag.instituciones;
+}
+
+@using(Html.BeginForm("GuardarPersona", "Persona", FormMethod.Post, new { @class = "needs-validation", @novalidate = "novalidate" })) {
+    @Html.HiddenFor(m => m.idPersona)
+    <div class="card">
+        <div class="card-body">
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.dni, null, new { @class = "form-control", @placeholder = "Documento de Identidad", @required = "required", @maxlength = "8" })
+                @Html.LabelFor(model => model.dni)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.dni, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.nombres, null, new { @class = "form-control", @placeholder = "Nombres", @required = "required", @maxlength = "75" })
+                @Html.LabelFor(model => model.nombres)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.nombres, null, new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        @Html.TextBoxFor(model => model.apellidoPaterno, null, new { @class = "form-control", @placeholder = "Apellido Paterno", @required = "required", @maxlength = "75" })
+                        @Html.LabelFor(model => model.apellidoPaterno)
+                        <div class="invalid-feedback">Algo está mal!</div>
+                        @Html.ValidationMessageFor(model => model.apellidoPaterno, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-floating mb-3">
+                        @Html.TextBoxFor(model => model.apellidoMaterno, null, new { @class = "form-control", @placeholder = "Apellido Materno", @maxlength = "75" })
+                        @Html.LabelFor(model => model.apellidoMaterno)
+                        <div class="invalid-feedback">Algo está mal!</div>
+                        @Html.ValidationMessageFor(model => model.apellidoMaterno, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.celular, null, new { @class = "form-control", @placeholder = "Teléfono/Celular", @required = "required", @maxlength = "12" })
+                @Html.LabelFor(model => model.celular)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.celular, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.direccion, null, new { @class = "form-control", @placeholder = "Dirección", @required = "required", @maxlength = "255" })
+                @Html.LabelFor(model => model.direccion)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.direccion, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.DropDownListFor(model => model.distritoResidencia.idDistrito, distritos, new { @class = "form-select", @required = "required" })
+                @Html.LabelFor(model => model.idDistritoDireccion)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.distritoResidencia.idDistrito, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.DropDownListFor(model => model.institucionVotacion.idInstitucion, instituciones, new { @class = "form-select", @required = "required" })
+                @Html.LabelFor(model => model.idInstitucionVotacion)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.institucionVotacion.idInstitucion, null, new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col d-grid">
+                    <button @*data-bs-dismiss="modal"*@ type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                </div>
+                <div class="col d-grid">
+                    <a data-bs-dismiss="modal" class="btn btn-danger btn-lg">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Assets/js/validation/validation.bootstrap.js"></script>
+
+<script type="text/javascript">
+    var cmbDistrito = document.getElementById("idDistrito");
+    consle.log(cmbDistrito.value)
+    if (@(Model.idPersona == 0)) {
+        cmbDistrito.value = "";
+    }
+</script>

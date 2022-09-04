@@ -105,9 +105,9 @@ namespace PersonerosWeb.Models {
                 Disabled = true
             };
 
-            List<SelectListItem> institucions = obtenerInstituciones().result.OrderBy(x => x.distrito.idDistrito).ToList().ConvertAll(d => {
+            List<SelectListItem> institucions = obtenerInstituciones().result.OrderBy(x => x.distrito.nombre).ToList().ConvertAll(d => {
                 return new SelectListItem() {
-                    Text = d.nombre,
+                    Text = d.nombre + " (" + d.distrito.nombre + ")",
                     Value = d.idInstitucion.ToString(),
                     Selected = false
                 };
