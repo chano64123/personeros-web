@@ -337,6 +337,10 @@
     <Content Include="Views\Mesa\AgregarModificarMesa.cshtml" />
     <Content Include="Views\Mesa\DetalleMesa.cshtml" />
     <Content Include="Views\Mesa\Index.cshtml" />
+    <Content Include="Views\Usuario\EliminarUsuario.cshtml" />
+    <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Usuario\DetalleUsuario.cshtml" />
+    <Content Include="Views\Usuario\AgregarModificarUsuario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -348,7 +352,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Filters\" />
     <Folder Include="Views\Acta\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Controlador.resx">

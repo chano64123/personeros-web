@@ -62,7 +62,7 @@ namespace PersonerosWeb.Models {
                 RestResponse<Response<Mesa>> mesaResponse = service.crearMesa(this);
                 response = mesaResponse.Data;
             } catch(Exception ex) {
-                response = response.createErrorResponse(ErrorMessage.errorCrearTiopoUsuario, new List<string> { ex.ToString() });
+                response = response.createErrorResponse(ErrorMessage.errorCrearMesa, new List<string> { ex.ToString() });
             }
             return response;
         }
@@ -70,7 +70,6 @@ namespace PersonerosWeb.Models {
         public Response<Mesa> modificarMesa() {
             var response = new Response<Mesa>();
             try {
-                var mesa = new Mesa();
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IMesaServicio service = adapter.Create<IMesaServicio>();
                 RestResponse<Response<Mesa>> mesaResponse = service.modificarMesa(this);
@@ -84,7 +83,6 @@ namespace PersonerosWeb.Models {
         public Response<Mesa> eliminarMesa(int id) {
             var response = new Response<Mesa>();
             try {
-                var mesa = new Mesa();
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IMesaServicio service = adapter.Create<IMesaServicio>();
                 RestResponse<Response<Mesa>> mesaResponse = service.eliminarMesa(id);

@@ -64,7 +64,7 @@ namespace PersonerosWeb.Models {
                 RestResponse<Response<Institucion>> institucionResponse = service.crearInstitucion(this);
                 response = institucionResponse.Data;
             } catch(Exception ex) {
-                response = response.createErrorResponse(ErrorMessage.errorCrearTiopoUsuario, new List<string> { ex.ToString() });
+                response = response.createErrorResponse(ErrorMessage.errorCrearInstitucion, new List<string> { ex.ToString() });
             }
             return response;
         }
@@ -72,7 +72,6 @@ namespace PersonerosWeb.Models {
         public Response<Institucion> modificarInstitucion() {
             var response = new Response<Institucion>();
             try {
-                var institucion = new Institucion();
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IInstitucionServicio service = adapter.Create<IInstitucionServicio>();
                 RestResponse<Response<Institucion>> institucionResponse = service.modificarInstitucion(this);
@@ -86,7 +85,6 @@ namespace PersonerosWeb.Models {
         public Response<Institucion> eliminarInstitucion(int id) {
             var response = new Response<Institucion>();
             try {
-                var institucion = new Institucion();
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IInstitucionServicio service = adapter.Create<IInstitucionServicio>();
                 RestResponse<Response<Institucion>> institucionResponse = service.eliminarInstitucion(id);

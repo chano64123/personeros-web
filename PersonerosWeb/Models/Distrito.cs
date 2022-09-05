@@ -56,7 +56,7 @@ namespace PersonerosWeb.Models {
                 RestResponse<Response<Distrito>> distritoResponse = service.crearDistrito(this);
                 response = distritoResponse.Data;
             } catch(Exception ex) {
-                response = response.createErrorResponse(ErrorMessage.errorCrearTiopoUsuario, new List<string> { ex.ToString() });
+                response = response.createErrorResponse(ErrorMessage.errorCrearDistrito, new List<string> { ex.ToString() });
             }
             return response;
         }
@@ -64,7 +64,6 @@ namespace PersonerosWeb.Models {
         public Response<Distrito> modificarDistrito() {
             var response = new Response<Distrito>();
             try {
-                var distrito = new Distrito();
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IDistritoServicio service = adapter.Create<IDistritoServicio>();
                 RestResponse<Response<Distrito>> distritoResponse = service.modificarDistrito(this);
@@ -78,7 +77,6 @@ namespace PersonerosWeb.Models {
         public Response<Distrito> eliminarDistrito(int id) {
             var response = new Response<Distrito>();
             try {
-                var distrito = new Distrito();
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IDistritoServicio service = adapter.Create<IDistritoServicio>();
                 RestResponse<Response<Distrito>> distritoResponse = service.eliminarDistrito(id);

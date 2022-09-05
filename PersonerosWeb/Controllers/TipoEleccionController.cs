@@ -34,7 +34,7 @@ namespace PersonerosWeb.Controllers
         }
 
         public ActionResult AgregarModificarTipoEleccion(int id = 0) {
-            ViewBag.personas = persona.inicializarPersonasPoDistritoDeResidencia();
+            ViewBag.personas = persona.inicializarPersonasPorDistritoDeResidencia();
             if(id == 0) {
                 return View(new TipoEleccion());
             } else {

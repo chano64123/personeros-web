@@ -156,11 +156,11 @@
   <data name="errorCrearPersona" xml:space="preserve">
     <value>Error al crear la Persona</value>
   </data>
-  <data name="errorCrearTiopoUsuario" xml:space="preserve">
-    <value>Error al crear el Tipo de Usuario</value>
-  </data>
   <data name="errorCrearTipoEleccion" xml:space="preserve">
     <value>Error al crear el Tipo de Elección</value>
+  </data>
+  <data name="errorCrearTipoUsuario" xml:space="preserve">
+    <value>Error al crear el Tipo de Usuario</value>
   </data>
   <data name="errorCrearUsuario" xml:space="preserve">
     <value>Error al crear el Usuario</value>
@@ -188,6 +188,9 @@
   </data>
   <data name="errorEliminarUsuario" xml:space="preserve">
     <value>Error al eliminar el Usuario</value>
+  </data>
+  <data name="errorLoginUsuario" xml:space="preserve">
+    <value>Error al intentar Iniciar Sesión</value>
   </data>
   <data name="errorModificarActa" xml:space="preserve">
     <value>Error al modificar la Acta</value>

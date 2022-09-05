@@ -178,20 +178,20 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Error al crear el Tipo de Usuario.
-        /// </summary>
-        public static string errorCrearTiopoUsuario {
-            get {
-                return ResourceManager.GetString("errorCrearTiopoUsuario", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Error al crear el Tipo de Elección.
         /// </summary>
         public static string errorCrearTipoEleccion {
             get {
                 return ResourceManager.GetString("errorCrearTipoEleccion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al crear el Tipo de Usuario.
+        /// </summary>
+        public static string errorCrearTipoUsuario {
+            get {
+                return ResourceManager.GetString("errorCrearTipoUsuario", resourceCulture);
             }
         }
         
@@ -273,6 +273,15 @@ namespace PersonerosWeb.Resourses {
         public static string errorEliminarUsuario {
             get {
                 return ResourceManager.GetString("errorEliminarUsuario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al intentar Iniciar Sesión.
+        /// </summary>
+        public static string errorLoginUsuario {
+            get {
+                return ResourceManager.GetString("errorLoginUsuario", resourceCulture);
             }
         }
         

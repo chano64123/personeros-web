@@ -1,0 +1,80 @@
+﻿@using PersonerosWeb.Models;
+@using PersonerosWeb.Resourses;
+@model Usuario
+@{
+    ViewBag.Title = (Model.idUsuario > 0 ? "Editar" : "Agregar") + " Usuario";
+    Layout = null;
+
+    List<SelectListItem> personas = (List<SelectListItem>)ViewBag.personas;
+    List<SelectListItem> tiposUsuario = (List<SelectListItem>)ViewBag.tiposUsuario;
+}
+
+@using(Html.BeginForm("GuardarUsuario", "Usuario", FormMethod.Post, new { @class = "needs-validation", @novalidate = "novalidate" })) {
+    @Html.HiddenFor(m => m.idUsuario)
+    <div class="card">
+        <div class="card-body">
+            <div class="form-floating mb-3">
+                @Html.DropDownListFor(model => model.persona.idPersona, personas, new { @class = "form-select", @required = "required" })
+                @*@Html.LabelFor(model => model.idDistritoDireccion)*@
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.persona.idPersona, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.DropDownListFor(model => model.tipoUsuario.idTipoUsuario, tiposUsuario, new { @class = "form-select", @required = "required" })
+                @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.tipoUsuario.idTipoUsuario, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.nombreUsuario, null, new { @class = "form-control", @placeholder = "Nombre de Usuario", @required = "required", @maxlength = "25" })
+                @Html.LabelFor(model => model.nombreUsuario)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.nombreUsuario, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @if(Model.idUsuario == 0) {
+                    @Html.TextBoxFor(model => model.clave, null, new { @class = "form-control", @placeholder = "Clave", @required = "required", @type = "password", @maxlength = "100" })
+                } else {
+                    @Html.TextBoxFor(model => model.clave, null, new { @class = "form-control", @placeholder = "Clave", @type = "password", @maxlength = "100" })
+                }
+                @Html.LabelFor(model => model.clave)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.clave, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.cantidadMaximaInstituciones, null, new { @class = "form-control", @placeholder = "Cantidad máxima de instituciones", @type = "number", @required = "required", @maxlength = "100" })
+                @Html.LabelFor(model => model.cantidadMaximaInstituciones)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.cantidadMaximaInstituciones, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.cantidadMaximaMesas, null, new { @class = "form-control", @placeholder = "Cantidad máxima de mesas", @type = "number", @required = "required", max = "100" })
+                @Html.LabelFor(model => model.cantidadMaximaMesas)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.cantidadMaximaMesas, null, new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col d-grid">
+                    <button @*data-bs-dismiss="modal"*@ type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                </div>
+                <div class="col d-grid">
+                    <a data-bs-dismiss="modal" class="btn btn-danger btn-lg">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Assets/js/validation/validation.bootstrap.js"></script>
+
+<script type="text/javascript">
+    $('#persona_idPersona').select2({
+        dropdownParent: $('#modalUsuario'),
+        placeholder: 'Selecciona una Persona',
+        language: "es"
+    });
+    $('#tipoUsuario_idTipoUsuario').select2({
+        dropdownParent: $('#modalUsuario'),
+        placeholder: 'Seleccione un Tipo de Usuario',
+        language: "es"
+    });
+</script>

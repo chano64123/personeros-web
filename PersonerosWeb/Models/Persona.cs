@@ -39,9 +39,9 @@ namespace PersonerosWeb.Models {
             try {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IPersonaServicio service = adapter.Create<IPersonaServicio>();
-                RestResponse<Response<List<Persona>>> institucionResponse = service.obtenerPersonas();
-                if(institucionResponse.StatusCode == HttpStatusCode.OK) {
-                    response = institucionResponse.Data;
+                RestResponse<Response<List<Persona>>> personaResponse = service.obtenerPersonas();
+                if(personaResponse.StatusCode == HttpStatusCode.OK) {
+                    response = personaResponse.Data;
                 }
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorObtenerPersonas, new List<string> { ex.ToString() });
@@ -54,9 +54,9 @@ namespace PersonerosWeb.Models {
             try {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IPersonaServicio service = adapter.Create<IPersonaServicio>();
-                RestResponse<Response<Persona>> institucionResponse = service.obtenerPersona(id);
-                if(institucionResponse.StatusCode == HttpStatusCode.OK) {
-                    response = institucionResponse.Data;
+                RestResponse<Response<Persona>> personaResponse = service.obtenerPersona(id);
+                if(personaResponse.StatusCode == HttpStatusCode.OK) {
+                    response = personaResponse.Data;
                 }
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorBuscarPersona, new List<string> { ex.ToString() });
@@ -69,10 +69,10 @@ namespace PersonerosWeb.Models {
             try {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IPersonaServicio service = adapter.Create<IPersonaServicio>();
-                RestResponse<Response<Persona>> institucionResponse = service.crearPersona(this);
-                response = institucionResponse.Data;
+                RestResponse<Response<Persona>> personaResponse = service.crearPersona(this);
+                response = personaResponse.Data;
             } catch(Exception ex) {
-                response = response.createErrorResponse(ErrorMessage.errorCrearTiopoUsuario, new List<string> { ex.ToString() });
+                response = response.createErrorResponse(ErrorMessage.errorCrearPersona, new List<string> { ex.ToString() });
             }
             return response;
         }
@@ -80,11 +80,10 @@ namespace PersonerosWeb.Models {
         public Response<Persona> modificarPersona() {
             var response = new Response<Persona>();
             try {
-                var institucion = new Persona();
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IPersonaServicio service = adapter.Create<IPersonaServicio>();
-                RestResponse<Response<Persona>> institucionResponse = service.modificarPersona(this);
-                response = institucionResponse.Data;
+                RestResponse<Response<Persona>> personaResponse = service.modificarPersona(this);
+                response = personaResponse.Data;
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorModificarPersona, new List<string> { ex.ToString() });
             }
@@ -94,18 +93,17 @@ namespace PersonerosWeb.Models {
         public Response<Persona> eliminarPersona(int id) {
             var response = new Response<Persona>();
             try {
-                var institucion = new Persona();
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IPersonaServicio service = adapter.Create<IPersonaServicio>();
-                RestResponse<Response<Persona>> institucionResponse = service.eliminarPersona(id);
-                response = institucionResponse.Data;
+                RestResponse<Response<Persona>> personaResponse = service.eliminarPersona(id);
+                response = personaResponse.Data;
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorEliminarPersona, new List<string> { ex.ToString() });
             }
             return response;
         }
 
-        public List<SelectListItem> inicializarPersonasPoDistritoDeResidencia() {
+        public List<SelectListItem> inicializarPersonasPorDistritoDeResidencia() {
             var seleccione = new SelectListItem() {
                 Text = "Seleccione Candidato",
                 Value = "",

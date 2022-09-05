@@ -14,12 +14,18 @@
             <dd>@Model.dni</dd>
             <dt>Nombres</dt>
             <dd>@Model.nombres</dd>
-            <dt>Apellido Paterno</dt>
-            <dd>@Model.apellidoPaterno</dd>
-            @if(@Model.apellidoMaterno != null) {
-                <dt>Apellido Mateno</dt>
-                <dd>@Model.apellidoMaterno</dd>
-            }
+            <div class="row">
+                <div class="col">
+                    <dt>Apellido Paterno</dt>
+                    <dd>@Model.apellidoPaterno</dd>
+                </div>
+                @if(@Model.apellidoMaterno != null) {
+                    <div class="col">
+                        <dt>Apellido Mateno</dt>
+                        <dd>@Model.apellidoMaterno</dd>
+                    </div>
+                }
+            </div>
             <dt>Teléfono/Celular</dt>
             <dd>@Model.celular</dd>
             <dt>Dirección de Residencia</dt>

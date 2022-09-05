@@ -61,7 +61,7 @@ namespace PersonerosWeb.Models {
                 RestResponse<Response<TipoUsuario>> tipoUsuarioResponse = service.crearTipoUsuario(this);
                 response = tipoUsuarioResponse.Data;
             } catch(Exception ex) {
-                response = response.createErrorResponse(ErrorMessage.errorCrearTiopoUsuario, new List<string> { ex.ToString() });
+                response = response.createErrorResponse(ErrorMessage.errorCrearTipoUsuario, new List<string> { ex.ToString() });
             }
             return response;
         }
@@ -69,7 +69,6 @@ namespace PersonerosWeb.Models {
         public Response<TipoUsuario> modificarTipoUsuario() {
             var response = new Response<TipoUsuario>();
             try {
-                var tipoUsuario = new TipoUsuario();
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 ITipoUsuarioServicio service = adapter.Create<ITipoUsuarioServicio>();
                 RestResponse<Response<TipoUsuario>> tipoUsuarioResponse = service.modificarTipoUsuario(this);
@@ -83,7 +82,6 @@ namespace PersonerosWeb.Models {
         public Response<TipoUsuario> eliminarTipoUsuario(int id) {
             var response = new Response<TipoUsuario>();
             try {
-                var tipoUsuario = new TipoUsuario();
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 ITipoUsuarioServicio service = adapter.Create<ITipoUsuarioServicio>();
                 RestResponse<Response<TipoUsuario>> tipoUsuarioResponse = service.eliminarTipoUsuario(id);
