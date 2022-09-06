@@ -61,7 +61,7 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a http://localhost:5001/.
+        ///   Busca una cadena traducida similar a https://personerosbackend.herokuapp.com/.
         /// </summary>
         public static string baseUrlApi {
             get {
