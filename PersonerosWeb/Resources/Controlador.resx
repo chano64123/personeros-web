@@ -120,6 +120,9 @@
   <data name="acta" xml:space="preserve">
     <value>Acta</value>
   </data>
+  <data name="dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
   <data name="distrito" xml:space="preserve">
     <value>Distrito</value>
   </data>

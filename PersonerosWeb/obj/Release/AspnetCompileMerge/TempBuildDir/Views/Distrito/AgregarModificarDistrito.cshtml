@@ -1,0 +1,30 @@
+﻿@using PersonerosWeb.Models;
+@using PersonerosWeb.Resourses;
+@model Distrito
+@{
+    ViewBag.Title = (Model.idDistrito > 0 ? "Editar" : "Agregar") + " Distrito";
+    Layout = null;
+}
+
+@using(Html.BeginForm("GuardarDistrito", "Distrito", FormMethod.Post, new { @class = "needs-validation", @novalidate = "novalidate" })) {
+    @Html.HiddenFor(m => m.idDistrito)
+    <div class="card">
+        <div class="card-body">
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.nombre, null, new { @class = "form-control", @placeholder = "Nombre", @required = "required", @maxlength = "100" })
+                @Html.LabelFor(model => model.nombre)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.nombre, null, new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col d-grid">
+                    <button @*data-bs-dismiss="modal"*@ type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                </div>
+                <div class="col d-grid">
+                    <a data-bs-dismiss="modal" class="btn btn-danger btn-lg">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Assets/js/validation/validation.bootstrap.js"></script>

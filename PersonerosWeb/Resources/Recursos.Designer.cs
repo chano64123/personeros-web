@@ -61,11 +61,29 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a https://personerosbackend.herokuapp.com/.
+        ///   Busca una cadena traducida similar a http://localhost:5001/.
         /// </summary>
         public static string baseUrlApi {
             get {
                 return ResourceManager.GetString("baseUrlApi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a https://dniruc.apisperu.com/api/v1/dni/.
+        /// </summary>
+        public static string baseUrlApiReniec {
+            get {
+                return ResourceManager.GetString("baseUrlApiReniec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InByb21vMjAxNjc0QGdtYWlsLmNvbSJ9.SDxqQGi2nMScGlxP_EP6TXOo-mwksYzZgA4y-GvB5oc.
+        /// </summary>
+        public static string tokenApiReniec {
+            get {
+                return ResourceManager.GetString("tokenApiReniec", resourceCulture);
             }
         }
     }

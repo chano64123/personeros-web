@@ -118,6 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="baseUrlApi" xml:space="preserve">
-    <value>https://personerosbackend.herokuapp.com/</value>
+    <value>http://localhost:5001/</value>
+  </data>
+  <data name="baseUrlApiReniec" xml:space="preserve">
+    <value>https://dniruc.apisperu.com/api/v1/dni/</value>
+  </data>
+  <data name="tokenApiReniec" xml:space="preserve">
+    <value>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InByb21vMjAxNjc0QGdtYWlsLmNvbSJ9.SDxqQGi2nMScGlxP_EP6TXOo-mwksYzZgA4y-GvB5oc</value>
   </data>
 </root>

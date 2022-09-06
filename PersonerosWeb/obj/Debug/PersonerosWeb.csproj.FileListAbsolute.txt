@@ -102,3 +102,5 @@ C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.Icono.resources
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.Opcion.resources
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.Ruta.resources
+C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.ColorFondo.resources
+C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Debug\PersonerosWeb.Resources.TipoDeUsuario.resources

@@ -14,13 +14,15 @@ namespace PersonerosWeb.Helpers {
         public string icono { get; set; }
         public string opcion { get; set; }
         public bool muestra { get; set; }
+        public List<int> permisos { get; set; }
 
-        public MenuHelper(string controlador, string ruta, string icono, string opcion, bool muestra) {
+        public MenuHelper(string controlador, string ruta, string icono, string opcion, bool muestra, List<int> permisos) {
             this.controlador = controlador;
             this.ruta = ruta;
             this.icono = icono;
             this.opcion = opcion;
             this.muestra = muestra;
+            this.permisos = permisos;
         }
     }
 }

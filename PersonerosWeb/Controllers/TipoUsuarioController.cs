@@ -1,4 +1,5 @@
-﻿using PersonerosWeb.Models;
+﻿using PersonerosWeb.Filters;
+using PersonerosWeb.Models;
 using PersonerosWeb.Resourses;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,8 @@ using System.Web.Mvc;
 using System.Web.Services.Description;
 
 namespace PersonerosWeb.Controllers {
+    [Autenticado]
+    [OnlyAdmin]
     public class TipoUsuarioController : Controller {
         TipoUsuario tipoUsuario = new TipoUsuario();
         // GET: TipoUsuario

@@ -1,0 +1,64 @@
+﻿@using PersonerosWeb.Models;
+@using PersonerosWeb.Resourses;
+@model Institucion
+@{
+    ViewBag.Title = (Model.idInstitucion > 0 ? "Editar" : "Agregar") + " Institución";
+    Layout = null;
+
+    List<SelectListItem> distritos = (List<SelectListItem>)ViewBag.distritos;
+}
+
+@using(Html.BeginForm("GuardarInstitucion", "Institucion", FormMethod.Post, new { @class = "needs-validation", @novalidate = "novalidate" })) {
+    @Html.HiddenFor(m => m.idInstitucion)
+    <div class="card">
+        <div class="card-body">
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.nombre, null, new { @class = "form-control", @placeholder = "Nombre", @required = "required", @maxlength = "255" })
+                @Html.LabelFor(model => model.nombre)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.nombre, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.DropDownListFor(model => model.distrito.idDistrito, distritos, new { @class = "form-select", @required = "required" })
+                @*@Html.LabelFor(model => model.idDistrito)*@
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.distrito.idDistrito, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.direccion, null, new { @class = "form-control", @placeholder = "Dirección", @required = "required", @maxlength = "255" })
+                @Html.LabelFor(model => model.direccion)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.nombre, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.cantidadMesas, new { @class = "form-control", @placeholder = "Cantidad de mesas", @type = "number", @required = "required", @max = "10000" })
+                @Html.LabelFor(model => model.cantidadMesas)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.cantidadMesas, null, new { @class = "text-danger" })
+            </div>
+            <div class="form-floating mb-3">
+                @Html.TextBoxFor(model => model.cantidadElectores, new { @class = "form-control", @placeholder = "Cantidad de electores", @type = "number", @required = "required", @max = "10000" })
+                @Html.LabelFor(model => model.cantidadElectores)
+                <div class="invalid-feedback">Algo está mal!</div>
+                @Html.ValidationMessageFor(model => model.cantidadElectores, null, new { @class = "text-danger" })
+            </div>
+            <div class="row">
+                <div class="col d-grid">
+                    <button @*data-bs-dismiss="modal"*@ type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                </div>
+                <div class="col d-grid">
+                    <a data-bs-dismiss="modal" class="btn btn-danger btn-lg">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Assets/js/validation/validation.bootstrap.js"></script>
+
+<script type="text/javascript">
+    $('#distrito_idDistrito').select2({
+        dropdownParent: $('#modalInstitucion'),
+        placeholder: 'Seleccione un Distrito',
+        language: "es"
+    });
+</script>

@@ -7,17 +7,25 @@
 
     List<SelectListItem> distritos = (List<SelectListItem>)ViewBag.distritos;
     List<SelectListItem> instituciones = (List<SelectListItem>)ViewBag.instituciones;
+
 }
 
 @using(Html.BeginForm("GuardarPersona", "Persona", FormMethod.Post, new { @class = "needs-validation", @novalidate = "novalidate" })) {
     @Html.HiddenFor(m => m.idPersona)
     <div class="card">
         <div class="card-body">
-            <div class="form-floating mb-3">
-                @Html.TextBoxFor(model => model.dni, null, new { @class = "form-control", @placeholder = "Documento de Identidad", @required = "required", @maxlength = "8" })
-                @Html.LabelFor(model => model.dni)
-                <div class="invalid-feedback">Algo está mal!</div>
-                @Html.ValidationMessageFor(model => model.dni, null, new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-10">
+                    <div class="form-floating mb-3">
+                        @Html.TextBoxFor(model => model.dni, null, new { @class = "form-control", @placeholder = "Documento de Identidad", @required = "required", @minlength= "8",  @maxlength = "8", @type = "tel", @pattern = "[0-9]+", @onkeypress = "return valideKeyNumber(event);" })
+                        @Html.LabelFor(model => model.dni)
+                        <div class="invalid-feedback">Algo está mal!</div>
+                        @Html.ValidationMessageFor(model => model.dni, null, new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="col-2">
+                    <button type=button id="buscarPersonaReniec" class="btn btn-secondary btn-lg mb-3"><i class='bx bx-search-alt-2'></i></button>
+                </div>
             </div>
             <div class="form-floating mb-3">
                 @Html.TextBoxFor(model => model.nombres, null, new { @class = "form-control", @placeholder = "Nombres", @required = "required", @maxlength = "75" })
@@ -80,16 +88,77 @@
     </div>
 }
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
-
 <script type="text/javascript">
     $('#distritoResidencia_idDistrito').select2({
         dropdownParent: $('#modalPersona'),
-        placeholder: 'Selecciona un Distrito',
+        placeholder: 'Seleccione Distrito de Residencia',
         language: "es"
     });
     $('#institucionVotacion_idInstitucion').select2({
         dropdownParent: $('#modalPersona'),
-        placeholder: 'Seleccione una Institución',
+        placeholder: 'Seleccione una Institución de Votación',
         language: "es"
+    });
+
+    //para buscar la persona
+    var txtDni = document.getElementById("dni");
+    var btnBuscarPersonReniec = document.getElementById("buscarPersonaReniec");
+
+    btnBuscarPersonReniec.addEventListener("click", function (event) {
+        let dni = txtDni.value;
+        var longitudDni = dni.length;
+        console.log(dni);
+        //valida que se haya escrito algo
+        if (dni == undefined || dni == "" || dni == null) {
+            Swal.fire("Error", "Tiene ingresar un Número de Documento para buscar", "error")
+            return;
+        }
+
+        //valida que tenga 8 digitos
+        if (longitudDni != 8) {
+            Swal.fire("Error", "Tiene ingresar 8 digitos para realizar la busqueda", "error")
+            return;
+        }
+
+        var base = "https://dniruc.apisperu.com/api/v1/dni/"
+        var token = "?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InByb21vMjAxNjc0QGdtYWlsLmNvbSJ9.SDxqQGi2nMScGlxP_EP6TXOo-mwksYzZgA4y-GvB5oc"
+
+        var endpoint = base + dni + token;
+        console.log(endpoint)
+
+        Swal.fire({
+            //title: `Buscando datos del DNI ${dni}`,
+            title: "Buscando datos del DNI " + dni,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+        fetch(endpoint).then(request => request.text())
+            .then(data => {
+                completarDatos(data)
+                Swal.close();
+            });
+
+        function completarDatos(data) {
+            var persona = JSON.parse(data);
+            var nombres = capitalizeWords(persona.nombres);
+            var apellidoPaterno = capitalizeWords(persona.apellidoPaterno);
+            var apellidoMaterno = capitalizeWords(persona.apellidoMaterno);
+
+            console.log(nombres);
+
+            if (nombres == undefined || nombres == "" || nombres == null) {
+                Swal.fire("Error", `No se encontraron datos del DNI ${dni}, ingreselos manualmente`, "error")
+                return;
+            }
+
+            var txtNombres = document.getElementById("nombres");
+            var txtApellidoPaterno = document.getElementById("apellidoPaterno");
+            var txtApellidoMaterno = document.getElementById("apellidoMaterno");
+
+            txtNombres.value = nombres;
+            txtApellidoPaterno.value = apellidoPaterno;
+            txtApellidoMaterno.value = apellidoMaterno;
+        }
     });
 </script>

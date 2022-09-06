@@ -1,0 +1,53 @@
+﻿@using PersonerosWeb.Models;
+@model Usuario
+@{
+    ViewBag.Title = "Detalle de la Persona";
+    Layout = null;
+}
+
+<div class="card">
+    <div class="card-body">
+        <dl class="dl-horizontal">
+            <div class="row">
+                <div class="col-6">
+                    <dt>ID</dt>
+                    <dd>@Model.idUsuario</dd>
+                </div>
+                <div class="col-6">
+                    <dt>Tipo de usuario</dt>
+                    <dd>@Model.tipoUsuario.nombre</dd>
+                </div>
+                <div class="col-6">
+                    <dt>Cantidad máxima de mesas a asignar</dt>
+                    <dd>@Model.cantidadMaximaMesas</dd>
+                </div>
+                <div class="col-6">
+                    <dt>Cantidad máxima de instituciones a asignar</dt>
+                    <dd>@Model.cantidadMaximaInstituciones</dd>
+                </div>
+            </div>
+            <dt>DNI</dt>
+            <dd>@Model.persona.dni</dd>
+            <dt>Nombres</dt>
+            <dd>@Model.persona.nombres</dd>
+            <div class="row">
+                <div class="col">
+                    <dt>Apellido Paterno</dt>
+                    <dd>@Model.persona.apellidoPaterno</dd>
+                </div>
+                @if(@Model.persona.apellidoMaterno != null) {
+                    <div class="col">
+                        <dt>Apellido Mateno</dt>
+                        <dd>@Model.persona.apellidoMaterno</dd>
+                    </div>
+                }
+            </div>
+            <dt>Teléfono/Celular</dt>
+            <dd>@Model.persona.celular</dd>
+            <dt>Dirección de Residencia</dt>
+            <dd>@Model.persona.direccion (@Model.persona.distritoResidencia.nombre)</dd>
+            <dt>Centro de Votación</dt>
+            <dd>@Model.persona.institucionVotacion.nombre (@Model.persona.institucionVotacion.distrito.nombre)</dd>
+        </dl>
+    </div>
+</div>

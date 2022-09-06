@@ -1,4 +1,5 @@
-﻿using PersonerosWeb.Resourses;
+﻿using PersonerosWeb.Helpers;
+using PersonerosWeb.Resourses;
 using PersonerosWeb.Service;
 using RestSharp;
 using Retrofit.Net;
@@ -100,7 +101,7 @@ namespace PersonerosWeb.Models {
                 Disabled = true
             };
 
-            List<SelectListItem> tiposUsuario = obtenerTiposUsuario().result.OrderByDescending(x => x.nombre).ToList().ConvertAll(d => {
+            List<SelectListItem> tiposUsuario = obtenerTiposUsuario().result.Where(x => x.identificador <= Convert.ToInt32(SessionHelper.GetUser().tipoUsuario.identificador)).OrderByDescending(x => x.identificador).ToList().ConvertAll(d => {
                 return new SelectListItem() {
                     Text = d.nombre,
                     Value = d.idTipoUsuario.ToString(),

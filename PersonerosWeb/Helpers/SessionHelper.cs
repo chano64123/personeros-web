@@ -1,8 +1,10 @@
 ﻿using PersonerosWeb.Models;
+using RestSharp.Deserializers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Serialization;
 using System.Web.Security;
 
 namespace PersonerosWeb.Helpers {
@@ -18,30 +20,24 @@ namespace PersonerosWeb.Helpers {
             if(HttpContext.Current.User != null && HttpContext.Current.User.Identity is FormsIdentity) {
                 FormsAuthenticationTicket ticket = ((FormsIdentity)HttpContext.Current.User.Identity).Ticket;
                 if(ticket != null) {
-                    string[] userData = ticket.UserData.ToString().Split('>');
-                    user.idUsuario = Convert.ToInt32(userData[0]);
-                    user.idTipoUsuario = Convert.ToInt32(userData[1]);
-                    user.idPersona = Convert.ToInt32(userData[2]);
-                    user.nombreUsuario = userData[3];
-                    user.clave = userData[4];
-                    user.cantidadMaximaMesas = Convert.ToInt32(userData[5]);
-                    user.cantidadMaximaInstituciones = Convert.ToInt32(userData[6]);
-                    //user.tipoUsuario = userData[7];
-                    //user.persona = userData[8];
+                    var js = new JavaScriptSerializer();
+                    user = js.Deserialize<Usuario>(ticket.UserData.ToString());
                 }
             }
             return user;
         }
-        public static void AddUserToSession(string usuario) {
+        public static void AddUserToSession(Usuario usuario) {
             bool persist = true;
             var cookie = FormsAuthentication.GetAuthCookie("usuario", persist);
 
             cookie.Name = FormsAuthentication.FormsCookieName;
             cookie.Expires = DateTime.Now.AddMonths(3);
 
+            var js = new JavaScriptSerializer();
+            var usarioString = js.Serialize(usuario);
+
             var ticket = FormsAuthentication.Decrypt(cookie.Value);
-            var newTicket = new FormsAuthenticationTicket(ticket.Version, ticket.Name, ticket.IssueDate,
-                                                          ticket.Expiration, ticket.IsPersistent, usuario);
+            var newTicket = new FormsAuthenticationTicket(ticket.Version, ticket.Name, ticket.IssueDate, ticket.Expiration, ticket.IsPersistent, usarioString);
 
             cookie.Value = FormsAuthentication.Encrypt(newTicket);
             HttpContext.Current.Response.Cookies.Add(cookie);

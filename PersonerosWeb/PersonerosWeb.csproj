@@ -207,6 +207,7 @@
     <Content Include="Assets\js\login\jquery.validate.min.js" />
     <Content Include="Assets\js\login\jquery.validate.unobtrusive.min.js" />
     <Content Include="Assets\js\login\registro.js" />
+    <Content Include="Assets\js\models\utility.js" />
     <Content Include="Assets\js\models\mesa.js" />
     <Content Include="Assets\js\models\tipoEleccion.js" />
     <Content Include="Assets\js\models\acta.js" />
@@ -226,6 +227,8 @@
     <Content Include="Assets\chosen\Content\bootstrap-chosen.scss" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Img\icon.png" />
+    <Content Include="Img\login\fondoLogin.png" />
+    <Content Include="Img\login\logo.jpg" />
     <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\chosen.jquery.min.js" />
     <Content Include="Scripts\jquery-1.6.4.js" />
@@ -241,12 +244,16 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActaController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DistritoController.cs" />
     <Compile Include="Controllers\InstitucionController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MesaController.cs" />
     <Compile Include="Controllers\TipoEleccionController.cs" />
+    <Compile Include="Filters\UserFilters.cs" />
     <Compile Include="Helpers\MenuHelper.cs" />
     <Compile Include="Models\Acta.cs" />
+    <Compile Include="Models\Dashboard.cs" />
     <Compile Include="Models\Distrito.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\TipoUsuarioController.cs" />
@@ -257,6 +264,7 @@
     <Compile Include="Helpers\MessageHelper.cs" />
     <Compile Include="Helpers\SessionHelper.cs" />
     <Compile Include="Models\Institucion.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Mesa.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\Response.cs" />
@@ -264,6 +272,11 @@
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\ColorFondo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ColorFondo.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Controlador.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -299,11 +312,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Ruta.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\TipoDeUsuario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TipoDeUsuario.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\TitutloAlert.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TitutloAlert.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service\IDashboardServicio.cs" />
     <Compile Include="Service\IDistritoServicio.cs" />
     <Compile Include="Service\IActaServicio.cs" />
     <Compile Include="Service\IMesaServicio.cs" />
@@ -341,6 +360,8 @@
     <Content Include="Views\Usuario\Index.cshtml" />
     <Content Include="Views\Usuario\DetalleUsuario.cshtml" />
     <Content Include="Views\Usuario\AgregarModificarUsuario.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -350,10 +371,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Filters\" />
     <Folder Include="Views\Acta\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\ColorFondo.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ColorFondo.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Controlador.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Controlador.Designer.cs</LastGenOutput>
@@ -387,6 +412,11 @@
     <EmbeddedResource Include="Resources\Ruta.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Ruta.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\TipoDeUsuario.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TipoDeUsuario.Designer.cs</LastGenOutput>
       <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\TitutloAlert.resx">

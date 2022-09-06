@@ -1,4 +1,6 @@
-﻿using PersonerosWeb.Models;
+﻿using PersonerosWeb.Filters;
+using PersonerosWeb.Helpers;
+using PersonerosWeb.Models;
 using PersonerosWeb.Resourses;
 using System;
 using System.Collections.Generic;
@@ -8,16 +10,18 @@ using System.Web.Mvc;
 
 namespace PersonerosWeb.Controllers
 {
+    [Autenticado]
     public class UsuarioController : Controller
     {
         Usuario usuario = new Usuario();
+        Usuario usuarioLogueado = SessionHelper.GetUser();
         TipoUsuario tipoUsuario = new TipoUsuario();
         Persona persona = new Persona();
         // GET: Usuario
         public ActionResult Index() {
             var response = usuario.obtenerUsuarios();
             ViewBag.captionTable = response.displayMessage;
-            return View(response.result);
+            return View(response.result.Where(x => x.tipoUsuario.identificador <= Convert.ToInt32(usuarioLogueado.tipoUsuario.identificador)).ToList());
         }
 
         public ActionResult DetalleUsuario(string id) {

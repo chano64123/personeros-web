@@ -1,4 +1,5 @@
-﻿using PersonerosWeb.Models;
+﻿using PersonerosWeb.Filters;
+using PersonerosWeb.Models;
 using PersonerosWeb.Resourses;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace PersonerosWeb.Controllers {
+    [Autenticado]
     public class PersonaController : Controller {
         Persona persona = new Persona();
         Institucion institucion = new Institucion();

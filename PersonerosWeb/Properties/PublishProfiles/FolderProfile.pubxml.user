@@ -308,6 +308,12 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Assets/js/validation/validation.bootstrap.js">
       <publishTime>09/03/2022 21:49:04</publishTime>
     </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>09/05/2022 02:22:51</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>09/05/2022 02:22:51</publishTime>
+    </File>
     <File Include="bin/BCrypt.Net-Next.dll">
       <publishTime>09/03/2022 21:49:05</publishTime>
     </File>
@@ -342,10 +348,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/03/2022 21:49:05</publishTime>
     </File>
     <File Include="bin/PersonerosWeb.dll">
-      <publishTime>09/04/2022 18:02:02</publishTime>
+      <publishTime>09/05/2022 02:22:37</publishTime>
     </File>
     <File Include="bin/PersonerosWeb.pdb">
-      <publishTime>09/04/2022 18:02:02</publishTime>
+      <publishTime>09/05/2022 02:22:37</publishTime>
     </File>
     <File Include="bin/RestSharp.dll">
       <publishTime>09/03/2022 21:49:05</publishTime>
@@ -551,6 +557,9 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Img/icon.png">
       <publishTime>09/03/2022 21:49:04</publishTime>
     </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>09/05/2022 02:22:42</publishTime>
+    </File>
     <File Include="Scripts/chosen.jquery.js">
       <publishTime>09/03/2022 21:49:05</publishTime>
     </File>
@@ -603,7 +612,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/04/2022 17:47:26</publishTime>
     </File>
     <File Include="Views/Persona/DetallePersona.cshtml">
-      <publishTime>09/03/2022 23:39:05</publishTime>
+      <publishTime>09/04/2022 23:55:37</publishTime>
     </File>
     <File Include="Views/Persona/EliminarPersona.cshtml">
       <publishTime>09/03/2022 21:57:27</publishTime>
@@ -612,7 +621,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/03/2022 22:25:03</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/04/2022 17:13:20</publishTime>
+      <publishTime>09/04/2022 23:14:55</publishTime>
     </File>
     <File Include="Views/TipoEleccion/AgregarModificarTipoEleccion.cshtml">
       <publishTime>09/04/2022 17:47:26</publishTime>
@@ -638,6 +647,18 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
     <File Include="Views/TipoUsuario/Index.cshtml">
       <publishTime>09/04/2022 01:20:55</publishTime>
     </File>
+    <File Include="Views/Usuario/AgregarModificarUsuario.cshtml">
+      <publishTime>09/05/2022 02:15:28</publishTime>
+    </File>
+    <File Include="Views/Usuario/DetalleUsuario.cshtml">
+      <publishTime>09/05/2022 00:01:29</publishTime>
+    </File>
+    <File Include="Views/Usuario/EliminarUsuario.cshtml">
+      <publishTime>09/04/2022 23:47:20</publishTime>
+    </File>
+    <File Include="Views/Usuario/Index.cshtml">
+      <publishTime>09/04/2022 23:44:37</publishTime>
+    </File>
     <File Include="Views/web.config">
       <publishTime>09/03/2022 21:49:05</publishTime>
     </File>
@@ -645,7 +666,7 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
       <publishTime>09/03/2022 21:49:05</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/04/2022 18:02:03</publishTime>
+      <publishTime>09/05/2022 02:22:38</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -79,6 +79,15 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Dashboard/Index.
+        /// </summary>
+        public static string dashboard {
+            get {
+                return ResourceManager.GetString("dashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Distrito/Index.
         /// </summary>
         public static string distrito {

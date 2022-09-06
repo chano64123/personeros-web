@@ -1,4 +1,5 @@
-﻿using PersonerosWeb.Resourses;
+﻿using PersonerosWeb.Helpers;
+using PersonerosWeb.Resourses;
 using PersonerosWeb.Service;
 using RestSharp;
 using Retrofit.Net;
@@ -60,12 +61,12 @@ namespace PersonerosWeb.Models {
             return response;
         }
 
-        public Response<Usuario> loginUsuario() {
+        public Response<Usuario> loginUsuario(Login userLogin) {
             var response = new Response<Usuario>();
             try {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IUsuarioServicio service = adapter.Create<IUsuarioServicio>();
-                RestResponse<Response<Usuario>> usuarioResponse = service.loginUsuario(this);
+                RestResponse<Response<Usuario>> usuarioResponse = service.loginUsuario(userLogin);
                 if(usuarioResponse.StatusCode == HttpStatusCode.OK) {
                     response = usuarioResponse.Data;
                 }
