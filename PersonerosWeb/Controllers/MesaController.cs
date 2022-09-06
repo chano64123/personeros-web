@@ -17,8 +17,12 @@ namespace PersonerosWeb.Controllers
         // GET: Mesa
         public ActionResult Index() {
             var response = mesa.obtenerMesas();
+            var result = from p in response.result.OrderBy(x => x.institucion.nombre).ThenBy(x => x.numero).ToList()
+                         group p by p.institucion.nombre into mesa
+                         select mesa;
             ViewBag.captionTable = response.displayMessage;
-            return View(response.result.ToList());
+            return View(result);
+            //return View(response.result.ToList());
         }
 
         public ActionResult DetalleMesa(string id) {
