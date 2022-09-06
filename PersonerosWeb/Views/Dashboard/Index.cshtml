@@ -41,9 +41,7 @@
         var usuario = document.getElementById("Usuario");
 
 
-        const url = `http://localhost:5001/api/Reporte/totales/${@tipoDeUsuario}`;
-
-        console.log(url)
+        const url = `https://personerosbackend.herokuapp.com/api/Reporte/totales/${@tipoDeUsuario}`;
 
         fetch(url).then(request => request.json())
             .then(data => {
@@ -52,7 +50,6 @@
 
 
         function completarDatos(data) {
-            console.log(data)
             var cantidadActas = data.result.cantidadActas;
             var cantidadDistritos = data.result.cantidadDistritos;
             var cantidadInstituciones = data.result.cantidadInstituciones;

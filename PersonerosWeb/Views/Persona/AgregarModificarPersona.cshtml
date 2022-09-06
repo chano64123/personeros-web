@@ -107,7 +107,6 @@
     btnBuscarPersonReniec.addEventListener("click", function (event) {
         let dni = txtDni.value;
         var longitudDni = dni.length;
-        console.log(dni);
         //valida que se haya escrito algo
         if (dni == undefined || dni == "" || dni == null) {
             Swal.fire("Error", "Tiene ingresar un Número de Documento para buscar", "error")
@@ -123,8 +122,7 @@
         var base = "https://dniruc.apisperu.com/api/v1/dni/"
         var token = "?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InByb21vMjAxNjc0QGdtYWlsLmNvbSJ9.SDxqQGi2nMScGlxP_EP6TXOo-mwksYzZgA4y-GvB5oc"
 
-        var endpoint = base + dni + token;
-        console.log(endpoint)
+        var url = base + dni + token;
 
         Swal.fire({
             //title: `Buscando datos del DNI ${dni}`,
@@ -133,32 +131,33 @@
                 Swal.showLoading();
             }
         });
-        fetch(endpoint).then(request => request.text())
+        fetch(url).then(request => request.text())
             .then(data => {
-                completarDatos(data)
+                var seEncontro = completarDatos(data)
                 Swal.close();
+                if (!seEncontro) {
+                    Swal.fire("Error", `No se encontraron datos del DNI ${dni}, ingreselos manualmente`, "error")
+                }
             });
 
         function completarDatos(data) {
             var persona = JSON.parse(data);
-            var nombres = capitalizeWords(persona.nombres);
-            var apellidoPaterno = capitalizeWords(persona.apellidoPaterno);
-            var apellidoMaterno = capitalizeWords(persona.apellidoMaterno);
+            try {
+                var nombres = capitalizeWords(persona.nombres);
+                var apellidoPaterno = capitalizeWords(persona.apellidoPaterno);
+                var apellidoMaterno = capitalizeWords(persona.apellidoMaterno);
 
-            console.log(nombres);
+                var txtNombres = document.getElementById("nombres");
+                var txtApellidoPaterno = document.getElementById("apellidoPaterno");
+                var txtApellidoMaterno = document.getElementById("apellidoMaterno");
 
-            if (nombres == undefined || nombres == "" || nombres == null) {
-                Swal.fire("Error", `No se encontraron datos del DNI ${dni}, ingreselos manualmente`, "error")
-                return;
+                txtNombres.value = nombres;
+                txtApellidoPaterno.value = apellidoPaterno;
+                txtApellidoMaterno.value = apellidoMaterno;
+                return true;
+            } catch (e) {
+                return false;
             }
-
-            var txtNombres = document.getElementById("nombres");
-            var txtApellidoPaterno = document.getElementById("apellidoPaterno");
-            var txtApellidoMaterno = document.getElementById("apellidoMaterno");
-
-            txtNombres.value = nombres;
-            txtApellidoPaterno.value = apellidoPaterno;
-            txtApellidoMaterno.value = apellidoMaterno;
         }
     });
 </script>
