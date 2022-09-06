@@ -4,6 +4,7 @@ using PersonerosWeb.Resourses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 
@@ -18,7 +19,11 @@ namespace PersonerosWeb.Controllers
         public ActionResult Index() {
             var response = institucion.obtenerInstituciones();
             ViewBag.captionTable = response.displayMessage;
-            return View(response.result.OrderBy(x => x.distrito.nombre).ToList());
+            var result = from p in response.result.OrderBy(x => x.distrito.nombre).ToList()
+                         group p by p.distrito.nombre into institucion
+                         select institucion;
+            //return View(response.result.OrderBy(x => x.distrito.nombre).ToList());
+            return View(result);
         }
 
         public ActionResult DetalleInstitucion(string id) {

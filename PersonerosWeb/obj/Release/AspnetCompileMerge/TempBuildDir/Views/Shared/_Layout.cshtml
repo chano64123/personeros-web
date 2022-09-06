@@ -5,15 +5,16 @@
 @{
     Layout = null;
     Usuario usuario = SessionHelper.GetUser();
-    List<MenuHelper> opcionesMenu = new List<MenuHelper>{ 
-        new MenuHelper(Controlador.acta, Ruta.acta, Icono.acta, Opcion.acta, false),
-        new MenuHelper(Controlador.distrito, Ruta.distrito, Icono.distrito, Opcion.distrito, true),
-        new MenuHelper(Controlador.institucion, Ruta.institucion, Icono.institucion, Opcion.institucion, true),
-        new MenuHelper(Controlador.mesa, Ruta.mesa, Icono.mesa, Opcion.mesa, true),
-        new MenuHelper(Controlador.persona, Ruta.persona, Icono.persona, Opcion.persona, true),
-        new MenuHelper(Controlador.tipoEleccion, Ruta.tipoEleccion, Icono.tipoEleccion, Opcion.tipoEleccion, true),
-        new MenuHelper(Controlador.tipoUsuario, Ruta.tipoUsuario, Icono.tipoUsuario, Opcion.tipoUsuario, true),
-        new MenuHelper(Controlador.usuario, Ruta.usuario, Icono.usuario, Opcion.usuario, true)
+    List<MenuHelper> opcionesMenu = new List<MenuHelper>{
+        new MenuHelper(Controlador.dashboard, Ruta.dashboard, Icono.dashboard, Opcion.dashboard, true, new List<int>{ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) }),
+        new MenuHelper(Controlador.acta, Ruta.acta, Icono.acta, Opcion.acta, false, new List<int>{ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) }),
+        new MenuHelper(Controlador.distrito, Ruta.distrito, Icono.distrito, Opcion.distrito, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador) }),
+        new MenuHelper(Controlador.institucion, Ruta.institucion, Icono.institucion, Opcion.institucion, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) }),
+        new MenuHelper(Controlador.mesa, Ruta.mesa, Icono.mesa, Opcion.mesa, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) }),
+        new MenuHelper(Controlador.persona, Ruta.persona, Icono.persona, Opcion.persona, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) }),
+        new MenuHelper(Controlador.tipoEleccion, Ruta.tipoEleccion, Icono.tipoEleccion, Opcion.tipoEleccion, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) }),
+        new MenuHelper(Controlador.tipoUsuario, Ruta.tipoUsuario, Icono.tipoUsuario, Opcion.tipoUsuario, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador) }),
+        new MenuHelper(Controlador.usuario, Ruta.usuario, Icono.usuario, Opcion.usuario, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) })
     };
 }
 
@@ -59,6 +60,8 @@
     <!--Select2-->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <!--Utility-->
+    <script src="~/Assets/js/models/utility.js"></script>
 </head>
 <body>
     <div class="sidebar close">
@@ -72,7 +75,7 @@
         </div>
         <ul class="nav-links pe-1">
             @foreach(MenuHelper menu in opcionesMenu) {
-                if(menu.muestra) {
+                if(menu.muestra && menu.permisos.Contains(usuario.tipoUsuario.identificador)) {
                     <li class="py-2 @Html.IsActive(menu.controlador, Ruta.accionIndex)">
                         <a href="~/@menu.ruta">
                             <i class='@menu.icono'></i>

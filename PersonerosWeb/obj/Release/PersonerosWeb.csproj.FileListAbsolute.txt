@@ -102,3 +102,5 @@ C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Relea
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Release\PersonerosWeb.csproj.CopyComplete
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Release\PersonerosWeb.dll
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Release\PersonerosWeb.pdb
+C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Release\PersonerosWeb.Resources.ColorFondo.resources
+C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Release\PersonerosWeb.Resources.TipoDeUsuario.resources
