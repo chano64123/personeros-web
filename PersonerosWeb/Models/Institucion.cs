@@ -6,8 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace PersonerosWeb.Models {
@@ -32,9 +30,7 @@ namespace PersonerosWeb.Models {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IInstitucionServicio service = adapter.Create<IInstitucionServicio>();
                 RestResponse<Response<List<Institucion>>> institucionResponse = service.obtenerInstituciones();
-                if(institucionResponse.StatusCode == HttpStatusCode.OK) {
-                    response = institucionResponse.Data;
-                }
+                response = institucionResponse.Data;
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorObtenerInstituciones, new List<string> { ex.ToString() });
             }
@@ -47,9 +43,7 @@ namespace PersonerosWeb.Models {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IInstitucionServicio service = adapter.Create<IInstitucionServicio>();
                 RestResponse<Response<Institucion>> institucionResponse = service.obtenerInstitucion(id);
-                if(institucionResponse.StatusCode == HttpStatusCode.OK) {
-                    response = institucionResponse.Data;
-                }
+                response = institucionResponse.Data;
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorBuscarInstitucion, new List<string> { ex.ToString() });
             }

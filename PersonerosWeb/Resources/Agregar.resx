@@ -117,34 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="administrador" xml:space="preserve">
-    <value>5</value>
+  <data name="acta" xml:space="preserve">
+    <value>Agregar Acta</value>
   </data>
-  <data name="administradorTexto" xml:space="preserve">
-    <value>Administrador</value>
+  <data name="distrito" xml:space="preserve">
+    <value>Agregar Distrito</value>
   </data>
-  <data name="base" xml:space="preserve">
-    <value>4</value>
+  <data name="institucion" xml:space="preserve">
+    <value>Agregar Institución</value>
   </data>
-  <data name="baseTexto" xml:space="preserve">
-    <value>Base</value>
+  <data name="mesa" xml:space="preserve">
+    <value>Agregar Mesa</value>
   </data>
-  <data name="coordinador" xml:space="preserve">
-    <value>2</value>
+  <data name="persona" xml:space="preserve">
+    <value>Agregar Persona</value>
   </data>
-  <data name="coordinadorTexto" xml:space="preserve">
-    <value>Coordinador</value>
+  <data name="tipoEleccion" xml:space="preserve">
+    <value>Agregar Tipo de Elección</value>
   </data>
-  <data name="enlace" xml:space="preserve">
-    <value>3</value>
+  <data name="tipoUsuario" xml:space="preserve">
+    <value>Agregar Tipo de Usuario</value>
   </data>
-  <data name="enlaceTexto" xml:space="preserve">
-    <value>Enlace</value>
-  </data>
-  <data name="personero" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="personeroTexto" xml:space="preserve">
-    <value>Personero</value>
+  <data name="usuario" xml:space="preserve">
+    <value>Agregar Usuario</value>
   </data>
 </root>

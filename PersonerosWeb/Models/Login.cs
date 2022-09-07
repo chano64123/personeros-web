@@ -31,8 +31,8 @@ namespace PersonerosWeb.Models {
             response.ok = usuarioResponse.Data.success;
             response.msg = usuarioResponse.Data.displayMessage;
 
-            if(usuarioResponse.StatusCode == HttpStatusCode.OK) {
-                var usuario = usuarioResponse.Data.result;
+            var usuario = usuarioResponse.Data.result;
+            if(usuario != null) {
                 SessionHelper.AddUserToSession(usuario);
             }
 

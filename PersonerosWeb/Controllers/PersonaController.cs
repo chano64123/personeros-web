@@ -16,8 +16,12 @@ namespace PersonerosWeb.Controllers {
         // GET: Persona
         public ActionResult Index() {
             var response = persona.obtenerPersonas();
+            var result = from p in response.result.OrderBy(x => x. institucionVotacion.distrito.nombre).ThenBy(x => x.institucionVotacion.nombre).ThenByDescending(x => x.idPersona).ToList()
+                         group p by p.institucionVotacion.nombre into persona
+                         select persona;
             ViewBag.captionTable = response.displayMessage;
-            return View(response.result);
+            return View(result);
+            //return View(response.result);
         }
 
         public ActionResult DetallePersona(string id) {

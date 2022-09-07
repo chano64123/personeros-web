@@ -7,6 +7,8 @@
 
     List<SelectListItem> personas = (List<SelectListItem>)ViewBag.personas;
     List<SelectListItem> tiposUsuario = (List<SelectListItem>)ViewBag.tiposUsuario;
+
+    ViewBag.idTipoUsuario = Model.tipoUsuario != null ? Model.tipoUsuario.idTipoUsuario : 0;
 }
 
 @using(Html.BeginForm("GuardarUsuario", "Usuario", FormMethod.Post, new { @class = "needs-validation", @novalidate = "novalidate" })) {
@@ -41,13 +43,13 @@
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.clave, null, new { @class = "text-danger" })
             </div>
-            <div class="form-floating mb-3">
+            <div class="form-floating mb-3" id="cantidadInstituciones">
                 @Html.TextBoxFor(model => model.cantidadMaximaInstituciones, null, new { @class = "form-control", @placeholder = "Cantidad máxima de instituciones", @type = "number", @required = "required", @maxlength = "100" })
                 @Html.LabelFor(model => model.cantidadMaximaInstituciones)
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.cantidadMaximaInstituciones, null, new { @class = "text-danger" })
             </div>
-            <div class="form-floating mb-3">
+            <div class="form-floating mb-3" id="cantidadMesas">
                 @Html.TextBoxFor(model => model.cantidadMaximaMesas, null, new { @class = "form-control", @placeholder = "Cantidad máxima de mesas", @type = "number", @required = "required", max = "100" })
                 @Html.LabelFor(model => model.cantidadMaximaMesas)
                 <div class="invalid-feedback">Algo está mal!</div>
@@ -77,4 +79,56 @@
         placeholder: 'Seleccione un Tipo de Usuario',
         language: "es"
     });
+
+    var divCantidadMesas = document.getElementById("cantidadMesas");
+    var divCantidadInstituciones = document.getElementById("cantidadInstituciones");
+
+    var txtCantidadMesas = document.getElementById("cantidadMaximaMesas")
+    var txtCantidadInstituciones = document.getElementById("cantidadMaximaInstituciones")
+
+    function establecerCantidades(tipoUsuario) {
+        if (tipoUsuario == 5 || tipoUsuario == 4) {
+            //ocultar ambos
+            ocultar(divCantidadMesas);
+            ocultar(divCantidadInstituciones);
+
+            txtCantidadMesas.value = 0;
+            txtCantidadInstituciones.value = 0;
+        } else if (tipoUsuario == 3 || tipoUsuario == 2) {
+            //ocultar mesas
+            ocultar(divCantidadMesas);
+            mostrar(divCantidadInstituciones);
+
+            txtCantidadMesas.value = 0;
+        } else if (tipoUsuario == 1) {
+            //ocultar mesas
+            mostrar(divCantidadMesas);
+            ocultar(divCantidadInstituciones);
+
+            txtCantidadInstituciones.value = 0;
+        }
+    }
+
+    $(document).ready(function () {
+        var idTipoUsuario = `@ViewBag.idTipoUsuario`;
+        console.log(idTipoUsuario);
+        if (idTipoUsuario > 0) {
+            establecerCantidades(idTipoUsuario);
+            console.log(idTipoUsuario);
+        }
+    })
+
+    $('#tipoUsuario_idTipoUsuario').on('select2:select', function (e) {
+        var data = e.params.data;
+        var idTipoUsuario = data.id;
+        establecerCantidades(idTipoUsuario);
+    });
+
+    function ocultar(elemento) {
+        elemento.style.display = "none";
+    }
+
+    function mostrar(elemento) {
+        elemento.style.display = "block";
+    }
 </script>

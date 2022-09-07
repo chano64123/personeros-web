@@ -60,15 +60,25 @@
             var cantidadUsuarios = data.result.cantidadUsuarios;
 
             if (@tipoDeUsuario == 5) {
-                distrito.innerHTML = cantidadDistritos;
-                tipoUsuario.innerHTML = cantidadTiposUsuario;
+                //distrito.innerHTML = cantidadDistritos;
+                //tipoUsuario.innerHTML = cantidadTiposUsuario;
+                count(cantidadDistritos, "#Distrito")
+                count(cantidadTiposUsuario, "#TipoUsuario")
             }
 
-            institucion.innerHTML = cantidadInstituciones;
-            mesa.innerHTML = cantidadMesas;
-            persona.innerHTML = cantidadPersona;
-            tipoEleccion.innerHTML = cantidadTiposEleccion;
-            usuario.innerHTML = cantidadUsuarios;
+            //seco
+            //institucion.innerHTML = cantidadInstituciones;
+            //mesa.innerHTML = cantidadMesas;
+            //persona.innerHTML = cantidadPersona;
+            //tipoEleccion.innerHTML = cantidadTiposEleccion;
+            //usuario.innerHTML = cantidadUsuarios;
+
+            //con animacion
+            count(cantidadInstituciones, "#Institucion")
+            count(cantidadMesas, "#Mesa")
+            count(cantidadPersona, "#Persona")
+            count(cantidadTiposEleccion, "#TipoEleccion")
+            count(cantidadUsuarios, "#Usuario")
         }
     });
 </script>

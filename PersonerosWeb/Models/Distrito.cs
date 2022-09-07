@@ -6,10 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using System.Xml.Linq;
 
 namespace PersonerosWeb.Models {
     public class Distrito {
@@ -24,9 +21,7 @@ namespace PersonerosWeb.Models {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IDistritoServicio service = adapter.Create<IDistritoServicio>();
                 RestResponse<Response<List<Distrito>>> distritoResponse = service.obtenerDistritos();
-                if(distritoResponse.StatusCode == HttpStatusCode.OK) {
-                    response = distritoResponse.Data;
-                }
+                response = distritoResponse.Data;
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorObtenerDistritos, new List<string> { ex.ToString() });
             }
@@ -39,9 +34,7 @@ namespace PersonerosWeb.Models {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IDistritoServicio service = adapter.Create<IDistritoServicio>();
                 RestResponse<Response<Distrito>> distritoResponse = service.obtenerDistrito(id);
-                if(distritoResponse.StatusCode == HttpStatusCode.OK) {
-                    response = distritoResponse.Data;
-                }
+                response = distritoResponse.Data;
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorBuscarDistrito, new List<string> { ex.ToString() });
             }
@@ -96,7 +89,7 @@ namespace PersonerosWeb.Models {
             };
 
             List<SelectListItem> distritos = obtenerDistritos().result.OrderBy(x => x.nombre).ToList().ConvertAll(d => {
-                
+
                 return new SelectListItem() {
                     Text = d.nombre,
                     Value = d.idDistrito.ToString(),

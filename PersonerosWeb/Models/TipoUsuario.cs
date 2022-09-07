@@ -30,9 +30,7 @@ namespace PersonerosWeb.Models {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 ITipoUsuarioServicio service = adapter.Create<ITipoUsuarioServicio>();
                 RestResponse<Response<List<TipoUsuario>>> tipoUsuarioResponse = service.obtenerTiposUsuario();
-                if(tipoUsuarioResponse.StatusCode == HttpStatusCode.OK) {
                     response = tipoUsuarioResponse.Data;
-                }
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorObtenerTiposUsuario, new List<string> { ex.ToString() });
             }

@@ -16,12 +16,12 @@ function capitalizeWords(val) {
 
 function count(maxValue, idElement) {
     var counter = { var: 0 };
-    TweenMax.to(counter, 3, {
+    var anim = TweenMax.to(counter, 5, {
         var: maxValue,
         onUpdate: function () {
             var number = Math.ceil(counter.var);
             $(idElement).html(number);
-            if (number === counter.var) { count.kill(); }
+            if (number === counter.var) { anim.kill(); }
         },
         onComplete: function () {
             count();

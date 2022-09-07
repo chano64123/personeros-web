@@ -1,4 +1,5 @@
-﻿@using PersonerosWeb.Models
+﻿@using PersonerosWeb.Models;
+@using PersonerosWeb.Resourses;
 @model IEnumerable<IGrouping<string, Mesa>>
 @{
     ViewBag.Title = "Mesas";
@@ -6,12 +7,6 @@
     ViewBag.messageAlert = Session["messageAlert"];
     ViewBag.titleAlert = Session["titleAlert"];
     ViewBag.iconAlert = Session["iconAlert"];
-
-    IEnumerable<IGrouping<string, Mesa>> mesas = Model;
-
-    if(mesas == null) {
-        //mesas = new List<Mesa>();
-    }
 }
 
 <div class="row mt-3">
@@ -25,11 +20,11 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
         <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
     </svg>
-    Agregar Mesa
+    @Agregar.mesa
 </button>
 
 <div class="row">
-    @foreach(var institucion in mesas) {
+    @foreach(var institucion in Model) {
         <div class="rounded-3 border border-secondary m-3 p-2 bg-light">
             <div class="col-12 table-responsive mx-auto">
                 <h3 class="col mt-3 text-center fw-bold">@institucion.Key</h3>

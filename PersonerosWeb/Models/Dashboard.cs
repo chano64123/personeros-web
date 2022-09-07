@@ -1,13 +1,8 @@
-﻿using Newtonsoft.Json;
-using PersonerosWeb.Resourses;
+﻿using PersonerosWeb.Resourses;
 using PersonerosWeb.Service;
 using RestSharp;
 using Retrofit.Net;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
 
 namespace PersonerosWeb.Models {
     public class Dashboard {
@@ -27,7 +22,7 @@ namespace PersonerosWeb.Models {
         public int cantidadPersona { get; set; }
         public int cantidadTiposEleccion { get; set; }
         public int cantidadTiposUsuario { get; set; }
-        public int cantidadUsuarios{ get; set; }
+        public int cantidadUsuarios { get; set; }
 
         //constructores
         public Dashboard() {
@@ -49,10 +44,7 @@ namespace PersonerosWeb.Models {
             RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
             IDashboardServicio service = adapter.Create<IDashboardServicio>();
             RestResponse<Response<Dashboard>> reporteResonse = service.obtenerTotales(usuario.tipoUsuario.identificador);
-            if(reporteResonse.StatusCode == HttpStatusCode.OK) {
-                totales = reporteResonse.Data;
-                //totales = JsonConvert.DeserializeObject<Response<Dashboard>>(reporteResonse.Content);
-            }
+            totales = reporteResonse.Data;
             return totales.result;
         }
     }

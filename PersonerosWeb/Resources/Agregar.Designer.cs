@@ -22,14 +22,14 @@ namespace PersonerosWeb.Resourses {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class TipoDeUsuario {
+    public class Agregar {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal TipoDeUsuario() {
+        internal Agregar() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PersonerosWeb.Resourses {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PersonerosWeb.Resources.TipoDeUsuario", typeof(TipoDeUsuario).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PersonerosWeb.Resources.Agregar", typeof(Agregar).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,92 +61,74 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a 4.
+        ///   Busca una cadena traducida similar a Agregar Acta.
         /// </summary>
-        public static string _base {
+        public static string acta {
             get {
-                return ResourceManager.GetString("base", resourceCulture);
+                return ResourceManager.GetString("acta", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a 5.
+        ///   Busca una cadena traducida similar a Agregar Distrito.
         /// </summary>
-        public static string administrador {
+        public static string distrito {
             get {
-                return ResourceManager.GetString("administrador", resourceCulture);
+                return ResourceManager.GetString("distrito", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Administrador.
+        ///   Busca una cadena traducida similar a Agregar Institución.
         /// </summary>
-        public static string administradorTexto {
+        public static string institucion {
             get {
-                return ResourceManager.GetString("administradorTexto", resourceCulture);
+                return ResourceManager.GetString("institucion", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Base.
+        ///   Busca una cadena traducida similar a Agregar Mesa.
         /// </summary>
-        public static string baseTexto {
+        public static string mesa {
             get {
-                return ResourceManager.GetString("baseTexto", resourceCulture);
+                return ResourceManager.GetString("mesa", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a 2.
+        ///   Busca una cadena traducida similar a Agregar Persona.
         /// </summary>
-        public static string coordinador {
+        public static string persona {
             get {
-                return ResourceManager.GetString("coordinador", resourceCulture);
+                return ResourceManager.GetString("persona", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Coordinador.
+        ///   Busca una cadena traducida similar a Agregar Tipo de Elección.
         /// </summary>
-        public static string coordinadorTexto {
+        public static string tipoEleccion {
             get {
-                return ResourceManager.GetString("coordinadorTexto", resourceCulture);
+                return ResourceManager.GetString("tipoEleccion", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a 3.
+        ///   Busca una cadena traducida similar a Agregar Tipo de Usuario.
         /// </summary>
-        public static string enlace {
+        public static string tipoUsuario {
             get {
-                return ResourceManager.GetString("enlace", resourceCulture);
+                return ResourceManager.GetString("tipoUsuario", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Enlace.
+        ///   Busca una cadena traducida similar a Agregar Usuario.
         /// </summary>
-        public static string enlaceTexto {
+        public static string usuario {
             get {
-                return ResourceManager.GetString("enlaceTexto", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a 1.
-        /// </summary>
-        public static string personero {
-            get {
-                return ResourceManager.GetString("personero", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Personero.
-        /// </summary>
-        public static string personeroTexto {
-            get {
-                return ResourceManager.GetString("personeroTexto", resourceCulture);
+                return ResourceManager.GetString("usuario", resourceCulture);
             }
         }
     }

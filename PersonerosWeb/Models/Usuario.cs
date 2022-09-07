@@ -37,9 +37,7 @@ namespace PersonerosWeb.Models {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IUsuarioServicio service = adapter.Create<IUsuarioServicio>();
                 RestResponse<Response<List<Usuario>>> usuarioResponse = service.obtenerUsuarios();
-                if(usuarioResponse.StatusCode == HttpStatusCode.OK) {
                     response = usuarioResponse.Data;
-                }
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorObtenerUsuarios, new List<string> { ex.ToString() });
             }
@@ -52,9 +50,7 @@ namespace PersonerosWeb.Models {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IUsuarioServicio service = adapter.Create<IUsuarioServicio>();
                 RestResponse<Response<Usuario>> usuarioResponse = service.obtenerUsuario(id);
-                if(usuarioResponse.StatusCode == HttpStatusCode.OK) {
                     response = usuarioResponse.Data;
-                }
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorBuscarUsuario, new List<string> { ex.ToString() });
             }
@@ -67,9 +63,7 @@ namespace PersonerosWeb.Models {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IUsuarioServicio service = adapter.Create<IUsuarioServicio>();
                 RestResponse<Response<Usuario>> usuarioResponse = service.loginUsuario(userLogin);
-                if(usuarioResponse.StatusCode == HttpStatusCode.OK) {
                     response = usuarioResponse.Data;
-                }
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorLoginUsuario, new List<string> { ex.ToString() });
             }

@@ -27,9 +27,7 @@ namespace PersonerosWeb.Models {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 ITipoEleccionServicio service = adapter.Create<ITipoEleccionServicio>();
                 RestResponse<Response<List<TipoEleccion>>> tipoEleccionResponse = service.obtenerTiposElecciones();
-                if(tipoEleccionResponse.StatusCode == HttpStatusCode.OK) {
                     response = tipoEleccionResponse.Data;
-                }
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorObtenerTiposUsuario, new List<string> { ex.ToString() });
             }

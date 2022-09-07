@@ -272,6 +272,11 @@
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Agregar.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Agregar.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\ColorFondo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -374,6 +379,11 @@
     <Folder Include="Views\Acta\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Agregar.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Agregar.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PersonerosWeb.Resourses</CustomToolNamespace>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\ColorFondo.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ColorFondo.Designer.cs</LastGenOutput>

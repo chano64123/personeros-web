@@ -13,3 +13,19 @@ function capitalizeWords(val) {
         .map(v => v[0].toUpperCase() + v.substr(1))
         .join(' ');
 }
+
+function count(maxValue, idElement) {
+    var counter = { var: 0 };
+    TweenMax.to(counter, 3, {
+        var: maxValue,
+        onUpdate: function () {
+            var number = Math.ceil(counter.var);
+            $(idElement).html(number);
+            if (number === counter.var) { count.kill(); }
+        },
+        onComplete: function () {
+            count();
+        },
+        ease: Circ.easeOut
+    });
+}

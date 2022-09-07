@@ -40,9 +40,7 @@ namespace PersonerosWeb.Models {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IPersonaServicio service = adapter.Create<IPersonaServicio>();
                 RestResponse<Response<List<Persona>>> personaResponse = service.obtenerPersonas();
-                if(personaResponse.StatusCode == HttpStatusCode.OK) {
                     response = personaResponse.Data;
-                }
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorObtenerPersonas, new List<string> { ex.ToString() });
             }
@@ -55,9 +53,7 @@ namespace PersonerosWeb.Models {
                 RestAdapter adapter = new RestAdapter(Recursos.baseUrlApi);
                 IPersonaServicio service = adapter.Create<IPersonaServicio>();
                 RestResponse<Response<Persona>> personaResponse = service.obtenerPersona(id);
-                if(personaResponse.StatusCode == HttpStatusCode.OK) {
                     response = personaResponse.Data;
-                }
             } catch(Exception ex) {
                 response = response.createErrorResponse(ErrorMessage.errorBuscarPersona, new List<string> { ex.ToString() });
             }
