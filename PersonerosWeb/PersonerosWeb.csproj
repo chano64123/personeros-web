@@ -225,6 +225,9 @@
     <Content Include="Content\bootstrap-chosen.less" />
     <Content Include="Assets\chosen\Content\bootstrap-chosen.less" />
     <Content Include="Assets\chosen\Content\bootstrap-chosen.scss" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\personeros-ft - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\registry.hub.docker.com_chano64123.pubxml" />
     <None Include="Scripts\jquery-1.6.4-vsdoc.js" />
     <Content Include="Img\icon.png" />
     <Content Include="Img\login\fondoLogin.png" />

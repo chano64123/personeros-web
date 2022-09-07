@@ -18,10 +18,8 @@ namespace PersonerosWeb.Controllers
         // GET: Institucion
         public ActionResult Index() {
             var response = institucion.obtenerInstituciones();
+            var result = response.result.OrderBy(x => x.distrito.nombre).ToList().GroupBy(x => x.distrito.nombre);
             ViewBag.captionTable = response.displayMessage;
-            var result = from p in response.result.OrderBy(x => x.distrito.nombre).ToList()
-                         group p by p.distrito.nombre into institucion
-                         select institucion;
             //return View(response.result.OrderBy(x => x.distrito.nombre).ToList());
             return View(result);
         }

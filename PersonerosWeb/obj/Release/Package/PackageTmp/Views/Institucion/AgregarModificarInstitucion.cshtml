@@ -31,13 +31,13 @@
                 @Html.ValidationMessageFor(model => model.nombre, null, new { @class = "text-danger" })
             </div>
             <div class="form-floating mb-3">
-                @Html.TextBoxFor(model => model.cantidadMesas, new { @class = "form-control", @placeholder = "Cantidad de mesas", @type = "number", @required = "required", @max = "10000" })
+                @Html.TextBoxFor(model => model.cantidadMesas, new { @class = "form-control", @placeholder = "Cantidad de mesas", @type = "tel", @pattern = "[0-9]+", @onkeypress = "return valideKeyNumber(event);", @required = "required", @max = "10000" })
                 @Html.LabelFor(model => model.cantidadMesas)
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.cantidadMesas, null, new { @class = "text-danger" })
             </div>
             <div class="form-floating mb-3">
-                @Html.TextBoxFor(model => model.cantidadElectores, new { @class = "form-control", @placeholder = "Cantidad de electores", @type = "number", @required = "required", @max = "10000" })
+                @Html.TextBoxFor(model => model.cantidadElectores, new { @class = "form-control", @placeholder = "Cantidad de electores", @type = "tel", @pattern = "[0-9]+", @onkeypress = "return valideKeyNumber(event);", @required = "required", @max = "10000" })
                 @Html.LabelFor(model => model.cantidadElectores)
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.cantidadElectores, null, new { @class = "text-danger" })

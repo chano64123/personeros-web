@@ -16,9 +16,7 @@ namespace PersonerosWeb.Controllers {
         // GET: Persona
         public ActionResult Index() {
             var response = persona.obtenerPersonas();
-            var result = from p in response.result.OrderBy(x => x. institucionVotacion.distrito.nombre).ThenBy(x => x.institucionVotacion.nombre).ThenByDescending(x => x.idPersona).ToList()
-                         group p by p.institucionVotacion.nombre into persona
-                         select persona;
+            var result = response.result.OrderBy(x => x.institucionVotacion.distrito.nombre).ThenBy(x => x.institucionVotacion.nombre).ThenByDescending(x => x.idPersona).ToList().GroupBy(x => x.institucionVotacion.nombre);
             ViewBag.captionTable = response.displayMessage;
             return View(result);
             //return View(response.result);

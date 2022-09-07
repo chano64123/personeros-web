@@ -1,4 +1,5 @@
 ﻿@using PersonerosWeb.Models;
+@using PersonerosWeb.Resourses;
 @model Usuario
 @{
     ViewBag.Title = "Detalle de la Persona";
@@ -17,14 +18,18 @@
                     <dt>Tipo de usuario</dt>
                     <dd>@Model.tipoUsuario.nombre</dd>
                 </div>
-                <div class="col-6">
-                    <dt>Cantidad máxima de mesas a asignar</dt>
-                    <dd>@Model.cantidadMaximaMesas</dd>
-                </div>
-                <div class="col-6">
-                    <dt>Cantidad máxima de instituciones a asignar</dt>
-                    <dd>@Model.cantidadMaximaInstituciones</dd>
-                </div>
+                @if(Model.tipoUsuario.idTipoUsuario == 1) {
+                    <div class="col-6">
+                        <dt>Cantidad máxima de mesas a asignar</dt>
+                        <dd>@Model.cantidadMaximaMesas</dd>
+                    </div>
+                }
+                @if(Model.tipoUsuario.idTipoUsuario == 2 || Model.tipoUsuario.idTipoUsuario == 3) {
+                    <div class="col-6">
+                        <dt>Cantidad máxima de instituciones a asignar</dt>
+                        <dd>@Model.cantidadMaximaInstituciones</dd>
+                    </div>
+                }
             </div>
             <dt>DNI</dt>
             <dd>@Model.persona.dni</dd>

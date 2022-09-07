@@ -104,3 +104,4 @@ C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Relea
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Release\PersonerosWeb.pdb
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Release\PersonerosWeb.Resources.ColorFondo.resources
 C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Release\PersonerosWeb.Resources.TipoDeUsuario.resources
+C:\Users\JoseCarlosGUTIERREZP\Desktop\Real\PersonerosWeb\PersonerosWeb\obj\Release\PersonerosWeb.Resources.Agregar.resources
