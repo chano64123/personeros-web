@@ -120,6 +120,9 @@
   <data name="acta" xml:space="preserve">
     <value>bx bx-file-blank</value>
   </data>
+  <data name="asignar" xml:space="preserve">
+    <value>bx bx-briefcase</value>
+  </data>
   <data name="dashboard" xml:space="preserve">
     <value>bx bxs-dashboard</value>
   </data>

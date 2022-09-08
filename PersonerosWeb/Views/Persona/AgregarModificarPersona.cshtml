@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-10">
                     <div class="form-floating mb-3">
-                        @Html.TextBoxFor(model => model.dni, null, new { @class = "form-control", @placeholder = "Documento de Identidad", @required = "required", @minlength= "8",  @maxlength = "8", @type = "tel", @pattern = "[0-9]+", @onkeypress = "return valideKeyNumber(event);" })
+                        @Html.TextBoxFor(model => model.dni, null, new { @class = "form-control", @placeholder = "Documento de Identidad", @required = "required", @autocomplete = "off", @minlength= "8",  @maxlength = "8", @type = "tel", @pattern = "[0-9]+", @onkeypress = "return valideKeyNumber(event);" })
                         @Html.LabelFor(model => model.dni)
                         <div class="invalid-feedback">Algo está mal!</div>
                         @Html.ValidationMessageFor(model => model.dni, null, new { @class = "text-danger" })
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="form-floating mb-3">
-                @Html.TextBoxFor(model => model.nombres, null, new { @class = "form-control", @placeholder = "Nombres", @required = "required", @maxlength = "75" })
+                @Html.TextBoxFor(model => model.nombres, null, new { @class = "form-control", @placeholder = "Nombres", @required = "required", @autocomplete = "off", @maxlength = "75" })
                 @Html.LabelFor(model => model.nombres)
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.nombres, null, new { @class = "text-danger" })
@@ -36,7 +36,7 @@
             <div class="row">
                 <div class="col">
                     <div class="form-floating mb-3">
-                        @Html.TextBoxFor(model => model.apellidoPaterno, null, new { @class = "form-control", @placeholder = "Apellido Paterno", @required = "required", @maxlength = "75" })
+                        @Html.TextBoxFor(model => model.apellidoPaterno, null, new { @class = "form-control", @placeholder = "Apellido Paterno", @required = "required", @autocomplete = "off", @maxlength = "75" })
                         @Html.LabelFor(model => model.apellidoPaterno)
                         <div class="invalid-feedback">Algo está mal!</div>
                         @Html.ValidationMessageFor(model => model.apellidoPaterno, null, new { @class = "text-danger" })
@@ -44,7 +44,7 @@
                 </div>
                 <div class="col">
                     <div class="form-floating mb-3">
-                        @Html.TextBoxFor(model => model.apellidoMaterno, null, new { @class = "form-control", @placeholder = "Apellido Materno", @maxlength = "75" })
+                        @Html.TextBoxFor(model => model.apellidoMaterno, null, new { @class = "form-control", @placeholder = "Apellido Materno", @autocomplete = "off", @maxlength = "75" })
                         @Html.LabelFor(model => model.apellidoMaterno)
                         <div class="invalid-feedback">Algo está mal!</div>
                         @Html.ValidationMessageFor(model => model.apellidoMaterno, null, new { @class = "text-danger" })
@@ -53,25 +53,25 @@
             </div>
 
             <div class="form-floating mb-3">
-                @Html.TextBoxFor(model => model.celular, null, new { @class = "form-control", @placeholder = "Teléfono/Celular", @required = "required", @maxlength = "12" })
+                @Html.TextBoxFor(model => model.celular, null, new { @class = "form-control", @placeholder = "Teléfono/Celular", @required = "required", @autocomplete = "off", @maxlength = "12" })
                 @Html.LabelFor(model => model.celular)
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.celular, null, new { @class = "text-danger" })
             </div>
             <div class="form-floating mb-3">
-                @Html.TextBoxFor(model => model.direccion, null, new { @class = "form-control", @placeholder = "Dirección", @required = "required", @maxlength = "255" })
+                @Html.TextBoxFor(model => model.direccion, null, new { @class = "form-control", @placeholder = "Dirección", @required = "required", @autocomplete = "off", @maxlength = "255" })
                 @Html.LabelFor(model => model.direccion)
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.direccion, null, new { @class = "text-danger" })
             </div>
             <div class="form-floating mb-3">
-                @Html.DropDownListFor(model => model.distritoResidencia.idDistrito, distritos, new { @class = "form-select", @required = "required" })
+                @Html.DropDownListFor(model => model.distritoResidencia.idDistrito, distritos, new { @class = "form-select", @required = "required", @autocomplete = "off" })
                 @*@Html.LabelFor(model => model.idDistritoDireccion)*@
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.distritoResidencia.idDistrito, null, new { @class = "text-danger" })
             </div>
             <div class="form-floating mb-3">
-                @Html.DropDownListFor(model => model.institucionVotacion.idInstitucion, instituciones, new { @class = "form-select", @required = "required" })
+                @Html.DropDownListFor(model => model.institucionVotacion.idInstitucion, instituciones, new { @class = "form-select", @required = "required", @autocomplete = "off" })
                 @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
                 <div class="invalid-feedback">Algo está mal!</div>
                 @Html.ValidationMessageFor(model => model.institucionVotacion.idInstitucion, null, new { @class = "text-danger" })
@@ -92,12 +92,16 @@
     $('#distritoResidencia_idDistrito').select2({
         dropdownParent: $('#modalPersona'),
         placeholder: 'Seleccione Distrito de Residencia',
-        language: "es"
+        language: "es",
+        theme: "bootstrap-5",
+        selectionCssClass: "select2--large" // For Select2 v4.1
     });
     $('#institucionVotacion_idInstitucion').select2({
         dropdownParent: $('#modalPersona'),
         placeholder: 'Seleccione una Institución de Votación',
-        language: "es"
+        language: "es",
+        theme: "bootstrap-5",
+        selectionCssClass: "select2--large" // For Select2 v4.1
     });
 
     //para buscar la persona

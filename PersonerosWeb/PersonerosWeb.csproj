@@ -247,6 +247,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ActaController.cs" />
+    <Compile Include="Controllers\AsignarController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\DistritoController.cs" />
     <Compile Include="Controllers\InstitucionController.cs" />
@@ -370,6 +371,9 @@
     <Content Include="Views\Usuario\AgregarModificarUsuario.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Asignar\Index.cshtml" />
+    <Content Include="Views\Asignar\AgregarPersonero.cshtml" />
+    <Content Include="Views\Asignar\AgregarCoordinadorEnlace.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

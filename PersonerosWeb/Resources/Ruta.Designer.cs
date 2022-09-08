@@ -79,6 +79,15 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Asignar/Index.
+        /// </summary>
+        public static string asignar {
+            get {
+                return ResourceManager.GetString("asignar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Dashboard/Index.
         /// </summary>
         public static string dashboard {

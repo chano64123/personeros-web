@@ -313,16 +313,17 @@
 
 #project-title {
     background-color: #11101d;
-    border-radius: 3px;
-    padding-top:4em;
-    padding-left:4em;
+    border-radius: 12px;
+    padding-top:2em;
+    padding-left:2em;
+    padding-bottom:0.1em;
 }
 
-    #project-title h2 {
-        color: #fff;
-        font-size: 3em;
-        font-weight: 500;
-    }
+#project-title h2 {
+    color: #fff;
+    font-size: 3em;
+    font-weight: 500;
+}
 
 .project-metodologia {
     font-size: .9em;
@@ -347,7 +348,7 @@
 }
 
 .project-description {
-    padding: 4em;
+    padding-top: 2em;
 }
 
 .project-description h4 {
@@ -379,6 +380,16 @@
     background-color: #11101d;
 }
 
-    .project-description ul .nav-link {
-        color: #11101d;
-    }
+.project-description ul .nav-link {
+    color: #11101d;
+}
+
+.select2-results__group {
+    text-decoration: underline;
+    font-style: italic;
+    color: #000000;
+}
+
+.select2-selection__placeholder, .select2-selection__rendered {
+    font-size: 1rem
+}

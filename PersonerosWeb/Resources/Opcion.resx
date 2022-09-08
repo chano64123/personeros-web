@@ -120,6 +120,9 @@
   <data name="acta" xml:space="preserve">
     <value>Actas</value>
   </data>
+  <data name="asignar" xml:space="preserve">
+    <value>Responsabilidades</value>
+  </data>
   <data name="dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>

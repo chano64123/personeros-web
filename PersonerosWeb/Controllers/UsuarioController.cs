@@ -21,7 +21,7 @@ namespace PersonerosWeb.Controllers
         public ActionResult Index() {
             var response = usuario.obtenerUsuarios();
             ViewBag.captionTable = response.displayMessage;
-            var result = response.result.Where(x => x.tipoUsuario.identificador <= Convert.ToInt32(usuarioLogueado.tipoUsuario.identificador)).ToList().GroupBy(x => x.tipoUsuario.nombre);
+            var result = response.result.Where(x => x.tipoUsuario.identificador <= Convert.ToInt32(usuarioLogueado.tipoUsuario.identificador)).OrderByDescending(x => x.tipoUsuario.identificador).ToList().GroupBy(x => x.tipoUsuario.nombre);
             return View(result);
         }
 

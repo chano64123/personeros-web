@@ -1,0 +1,188 @@
+﻿@using PersonerosWeb.Resourses;
+@using PersonerosWeb.Models;
+@{
+    ViewBag.Title = "Asignar Responsabilidades";
+    List<SelectListItem> tiposUsuario = (List<SelectListItem>)ViewBag.tiposUsuario;
+    List<SelectListItem> usuarios = (List<SelectListItem>)ViewBag.usuarios;
+    usuarios = new List<SelectListItem>();
+    ViewBag.urlBase = Recursos.baseUrlApi;
+}
+
+<div class="row mt-3">
+    <div class="col text-black">
+        <h2 class="text-center">@ViewBag.Title</h2>
+        <hr />
+    </div>
+</div>
+@using(Html.BeginForm("GuardarUsuarioInstitucion", "Asignar", FormMethod.Post, new { @class = "needs-validation", @novalidate = "novalidate" })) {
+    @*@Html.HiddenFor(m => m.idPersona)*@
+    <div class="card">
+        <div class="card-body">
+            <div class="form-floating mb-3">
+                @Html.DropDownList("idTipoUsuario", tiposUsuario, new { @class = "form-select", @required = "required" })
+                @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
+                <div class="invalid-feedback">Algo está mal!</div>
+            </div>
+            <div class="form-floating mb-3">
+                @Html.DropDownList("idUsuario", tiposUsuario, new { @class = "form-select", @required = "required" })
+                @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
+                <div class="invalid-feedback">Algo está mal!</div>
+            </div>
+            <div class="form-floating mb-3">
+                @Html.DropDownList("idInstitucion", usuarios, new { @class = "form-select", @required = "required" })
+                @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
+                <div class="invalid-feedback">Algo está mal!</div>
+            </div>
+            <div class="form-floating mb-3">
+                @Html.DropDownList("idMesa", usuarios, new { @class = "form-select", @required = "required" })
+                @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
+                <div class="invalid-feedback">Algo está mal!</div>
+            </div>
+            <div class="row">
+                <div class="col d-grid">
+                    <button @*data-bs-dismiss="modal"*@ type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                </div>
+                <div class="col d-grid">
+                    <a data-bs-dismiss="modal" class="btn btn-danger btn-lg">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Assets/js/validation/validation.bootstrap.js"></script>
+<script type="text/javascript">
+    //asignacion de selects
+    $('#idTipoUsuario').select2({
+        //dropdownParent: $('#modalPersona'),
+        placeholder: 'Seleccione un Tipo de Usuario',
+        language: "es",
+        theme: "bootstrap-5",
+        selectionCssClass: "select2--large" // For Select2 v4.1
+    });
+    $('#idUsuario').select2({
+        //dropdownParent: $('#modalPersona'),
+        placeholder: 'Seleccione un Usuario',
+        language: "es",
+        theme: "bootstrap-5",
+        selectionCssClass: "select2--large" // For Select2 v4.1
+    });
+    $('#idInstitucion').select2({
+        //dropdownParent: $('#modalPersona'),
+        placeholder: 'Seleccione una Institución',
+        language: "es",
+        theme: "bootstrap-5",
+        selectionCssClass: "select2--large" // For Select2 v4.1
+    });
+    $('#idMesa').select2({
+        //dropdownParent: $('#modalPersona'),
+        placeholder: 'Seleccione una Mesa',
+        language: "es",
+        theme: "bootstrap-5",
+        selectionCssClass: "select2--large" // For Select2 v4.1
+    });
+
+    //para soporte
+    var usuarios;
+    var urlbase = "https://personerosbackend.herokuapp.com/";
+
+
+    //eventos
+    $('#idTipoUsuario').on('select2:select', function (e) {
+        var data = e.params.data;
+        var idTipoUsuario = data.id;
+
+        var endpoint = "api/Usuario/TipoUsuario/";
+        var url = urlbase + endpoint + idTipoUsuario;
+
+        opcionCambiada()
+
+
+
+        $("#idUsuario").empty()
+
+        
+        $("#idUsuario").append($("<option>", {
+            value: "",
+            text: "--Seleccione trámite--"
+        }));
+
+        mostrarAlertBusqueda("Buscando usuarios del tipo " + data.text);
+        fetch(url).then(request => request.json())
+            .then(response => {
+                usuarios = response.result;
+                var cantidadUsuarios = usuarios.length
+                console.log(usuarios.length)
+                console.log(usuarios)
+                Swal.close();
+                if (cantidadUsuarios => 1) {
+                    introducirData(response)
+                    Swal.fire("Bien", `Se cnontraron ${cantidadUsuarios} usuarios`, "success")
+                } else {
+                    Swal.fire("Error", `No se encontraron usuarios del tipo ${data.text}, primero cree uno`, "error")
+                }
+            });
+    });
+
+    const opcionCambiada = () => {
+        console.log("Cambio");
+    };
+
+    function introducirData(response) {
+
+    }
+
+    function mostrarAlertBusqueda(text) {
+        Swal.fire({
+            title: text,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+    }
+</script>
+
+
+
+
+@*<div class="project-description">
+
+    <h4>Descripción de proyecto</h4>
+    <ul class="nav nav-pills pb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-enlaces-tab" data-bs-toggle="pill" data-bs-target="#pills-enlaces" type="button" role="tab" aria-controls="pills-enlaces" aria-selected="false">
+                Enlaces
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-coordinadores-tab" data-bs-toggle="pill" data-bs-target="#pills-coordinadores" type="button" role="tab" aria-controls="pills-coordinadores" aria-selected="false">
+                Coordinadores
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-personeros-tab" data-bs-toggle="pill" data-bs-target="#pills-personeros" type="button" role="tab" aria-controls="pills-personeros" aria-selected="false">
+                Personeros
+            </button>
+        </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-enlaces" role="tabpanel" aria-labelledby="pills-enlaces-tab">
+            <div class="col-12 table-responsive mt-2 mx-auto">
+                Aca lo de enlaces
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="pills-coordinadores" role="tabpanel" aria-labelledby="pills-coordinadores-tab">
+            <div class="col-12 table-responsive mt-2 mx-auto">
+                Aca lo de coordinadores
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-personeros" role="tabpanel" aria-labelledby="pills-personeros-tab">
+            <div class="col-12 table-responsive mt-2 mx-auto">
+                Aca lo de personeros
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-reporte" role="tabpanel" aria-labelledby="pills-reporte-tab">
+            <div id="container"></div>
+        </div>
+    </div>
+</div>*@

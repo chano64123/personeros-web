@@ -70,6 +70,15 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a bx bx-briefcase.
+        /// </summary>
+        public static string asignar {
+            get {
+                return ResourceManager.GetString("asignar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a bx bxs-dashboard.
         /// </summary>
         public static string dashboard {

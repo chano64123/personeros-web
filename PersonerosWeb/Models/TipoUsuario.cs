@@ -110,5 +110,25 @@ namespace PersonerosWeb.Models {
 
             return tiposUsuario;
         }
+
+        public List<SelectListItem> inicializarTiposUsuarioElegible() {
+            var seleccione = new SelectListItem() {
+                Text = "Seleccione Tipo de Usuario",
+                Value = "",
+                Selected = true,
+                Disabled = true
+            };
+
+            List<SelectListItem> tiposUsuario = obtenerTiposUsuario().result.Where(x => x.identificador <= Convert.ToInt32(TipoDeUsuario.enlace)).OrderByDescending(x => x.identificador).ToList().ConvertAll(d => {
+                return new SelectListItem() {
+                    Text = d.nombre,
+                    Value = d.idTipoUsuario.ToString(),
+                    Selected = false
+                };
+            });
+            tiposUsuario.Insert(0, seleccione);
+
+            return tiposUsuario;
+        }
     }
 }

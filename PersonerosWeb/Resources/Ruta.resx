@@ -123,6 +123,9 @@
   <data name="acta" xml:space="preserve">
     <value>Acta/Index</value>
   </data>
+  <data name="asignar" xml:space="preserve">
+    <value>Asignar/Index</value>
+  </data>
   <data name="dashboard" xml:space="preserve">
     <value>Dashboard/Index</value>
   </data>

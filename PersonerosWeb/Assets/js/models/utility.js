@@ -14,6 +14,10 @@ function capitalizeWords(val) {
         .join(' ');
 }
 
+function isNumber(val) {
+    return !isNaN(val)
+}
+
 function count(maxValue, idElement) {
     var counter = { var: 0 };
     var anim = TweenMax.to(counter, 5, {
