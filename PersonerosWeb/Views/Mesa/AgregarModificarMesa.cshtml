@@ -50,13 +50,7 @@
 <script src="~/Asses/js/validation/validation.bootstrap.js"></script>
 
 <script type="text/javascript">
-    $('#institucion_idInstitucion').select2({
-        dropdownParent: $('#modalMesa'),
-        placeholder: 'Seleccione una Institución',
-        language: "es",
-        theme: "bootstrap-5",
-        selectionCssClass: "select2--large" // For Select2 v4.1
-    });
+    crearComboBusqueda($('#institucion_idInstitucion'), 'Seleccione una Institución', $('#modalMesa'))
 
     var cantidadElectores = document.getElementById("cantidadElectores")
 

@@ -9,17 +9,17 @@ using System.Web.Mvc;
 namespace PersonerosWeb.Controllers
 {
     [Autenticado]
-    [OnlyAdmin]
+    //[OnlyAdmin]
     public class AsignarController : Controller
     {
         TipoUsuario tipoUsuario = new TipoUsuario();
-        Usuario usuario = new Usuario();
+        Institucion insitutcion = new Institucion();
         // GET: Asignar
         public ActionResult Index()
         {
             //ViewBag.personas = persona.inicializarPersonasPorDistritoDeResidencia();
             ViewBag.tiposUsuario = tipoUsuario.inicializarTiposUsuarioElegible();
-            ViewBag.usuarios = usuario.inicializarUsuariosPorDistritoResidencia();
+            ViewBag.instituciones = insitutcion.inicializarInstituciones();
             return View();
         }
 

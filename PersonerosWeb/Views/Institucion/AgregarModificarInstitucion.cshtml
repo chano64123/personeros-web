@@ -56,13 +56,7 @@
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 
 <script type="text/javascript">
-    $('#distrito_idDistrito').select2({
-        dropdownParent: $('#modalInstitucion'),
-        placeholder: 'Seleccione un Distrito',
-        language: "es",
-        theme: "bootstrap-5",
-        selectionCssClass: "select2--large" // For Select2 v4.1
-    });
+    crearComboBusqueda($('#distrito_idDistrito'), 'Seleccione un Distrito', $('#modalInstitucion'))
 
     var cantidadMesas = document.getElementById("cantidadMesas");
     var cantidadElectores = document.getElementById("cantidadElectores");

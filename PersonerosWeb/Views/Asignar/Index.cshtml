@@ -3,8 +3,7 @@
 @{
     ViewBag.Title = "Asignar Responsabilidades";
     List<SelectListItem> tiposUsuario = (List<SelectListItem>)ViewBag.tiposUsuario;
-    List<SelectListItem> usuarios = (List<SelectListItem>)ViewBag.usuarios;
-    usuarios = new List<SelectListItem>();
+    List<SelectListItem> instituciones = (List<SelectListItem>)ViewBag.instituciones;
     ViewBag.urlBase = Recursos.baseUrlApi;
 }
 
@@ -18,32 +17,42 @@
     @*@Html.HiddenFor(m => m.idPersona)*@
     <div class="card">
         <div class="card-body">
-            <div class="form-floating mb-3">
-                @Html.DropDownList("idTipoUsuario", tiposUsuario, new { @class = "form-select", @required = "required" })
-                @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
-                <div class="invalid-feedback">Algo está mal!</div>
-            </div>
-            <div class="form-floating mb-3">
-                @Html.DropDownList("idUsuario", tiposUsuario, new { @class = "form-select", @required = "required" })
-                @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
-                <div class="invalid-feedback">Algo está mal!</div>
-            </div>
-            <div class="form-floating mb-3">
-                @Html.DropDownList("idInstitucion", usuarios, new { @class = "form-select", @required = "required" })
-                @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
-                <div class="invalid-feedback">Algo está mal!</div>
-            </div>
-            <div class="form-floating mb-3">
-                @Html.DropDownList("idMesa", usuarios, new { @class = "form-select", @required = "required" })
-                @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
-                <div class="invalid-feedback">Algo está mal!</div>
-            </div>
             <div class="row">
-                <div class="col d-grid">
-                    <button @*data-bs-dismiss="modal"*@ type="submit" class="btn btn-primary btn-lg">Guardar</button>
+                <fieldset class="col">
+                    <legend>Usuario</legend>
+                    <div class="form-floating mb-3">
+                        @Html.DropDownList("idTipoUsuario", tiposUsuario, new { @class = "form-select", @required = "required" })
+                        @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
+                        <div class="invalid-feedback">Algo está mal!</div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        @Html.DropDownList("idUsuario", new List<SelectListItem>(), new { @class = "form-select", @required = "required" })
+                        @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
+                        <div class="invalid-feedback">Algo está mal!</div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="col">
+                    <legend>Institución - Mesa</legend>
+                    <div class="form-floating mb-3">
+                        @Html.DropDownList("idInstitucion", instituciones, new { @class = "form-select", @required = "required" })
+                        @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
+                        <div class="invalid-feedback">Algo está mal!</div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        @Html.DropDownList("idMesa", new List<SelectListItem>(), new { @class = "form-select", @required = "required" })
+                        @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
+                        <div class="invalid-feedback">Algo está mal!</div>
+                    </div>
+                </fieldset>
+            </div>
+            
+            <div class="row">
+                <div class="col align-self-center">
+                    <button @*data-bs-dismiss="modal"*@ type="submit" class="col-12 btn btn-primary btn-lg">Guardar</button>
                 </div>
-                <div class="col d-grid">
-                    <a data-bs-dismiss="modal" class="btn btn-danger btn-lg">Cancelar</a>
+                <div class="col align-self-center">
+                    <a data-bs-dismiss="modal" class="col-12 btn btn-danger btn-lg">Cancelar</a>
                 </div>
             </div>
         </div>
@@ -51,84 +60,104 @@
 }
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 <script type="text/javascript">
-    //asignacion de selects
-    $('#idTipoUsuario').select2({
-        //dropdownParent: $('#modalPersona'),
-        placeholder: 'Seleccione un Tipo de Usuario',
-        language: "es",
-        theme: "bootstrap-5",
-        selectionCssClass: "select2--large" // For Select2 v4.1
+    $(document).ready(function () {
+        var cmbTipoUsuario = $('#idTipoUsuario');
+        var cmbUsuario = $('#idUsuario');
+        var cmbInstitucion = $('#idInstitucion');
+        var cmbMesa = $('#idMesa');
+
+        crearComboBusqueda(cmbTipoUsuario, 'Seleccione un Tipo de Usuario');
+        crearComboBusqueda(cmbUsuario, 'Selecicone un Usuario');
+        crearComboBusqueda(cmbInstitucion, 'Seleccione una Institución');
+        crearComboBusqueda(cmbMesa, 'Seleccione una Mesa');
+
+        //para soporte
+        var usuarios;
+        var instituciones;
+        var mesas;
+        var urlbase = "https://personerosbackend.herokuapp.com/";
+
+        //eventos
+        $('#idTipoUsuario').on('select2:select', function (e) {
+            var data = e.params.data;
+            var idTipoUsuario = data.id;
+
+            var endpoint = "api/Usuario/TipoUsuario/";
+            var url = urlbase + endpoint + idTipoUsuario;
+
+            limpiarCombo(cmbUsuario);
+            mostrarAlertBusqueda("Buscando usuarios del tipo " + data.text);
+            fetch(url).then(request => request.json())
+                .then(response => {
+                    usuarios = response.result;
+                    var cantidadUsuarios = usuarios.length
+                    Swal.close();
+                    if (cantidadUsuarios => 1) {
+                        var datos = armarObjetoUsuario(usuarios);
+                        //aca se cargan los nuevos elementos al combo
+                        crearOpcionVacia(cmbUsuario)
+                        crearComboBusqueda(cmbUsuario, "Seleccione un Usuario",'',datos)
+                        Swal.fire("Bien", `Se encontrarón ${cantidadUsuarios} usuarios`, "success")
+                    } else {
+                        Swal.fire("Error", `No se encontraron usuarios del tipo ${data.text}, primero cree uno`, "error")
+                    }
+                });
+        });
+
+        $('#idInstitucion').on('select2:select', function (e) {
+            var data = e.params.data;
+            var idInstitucion = data.id;
+
+            var endpoint = "api/Mesa/Institucion/";
+            var url = urlbase + endpoint + idInstitucion;
+
+            limpiarCombo(cmbMesa);
+            mostrarAlertBusqueda("Buscando mesas de la intitución " + data.text);
+            fetch(url).then(request => request.json())
+                .then(response => {
+                    mesas = response.result;
+                    var cantidadMesas = mesas.length
+                    Swal.close();
+                    if (cantidadMesas => 1) {
+                        var datos = armarObjetoMesa(mesas);
+                        //aca se cargan los nuevos elementos al combo
+                        crearOpcionVacia(cmbMesa)
+                        crearComboBusqueda(cmbMesa, "Seleccione una Mesa", '', datos)
+                        Swal.fire("Bien", `Se encontrarón ${cantidadMesas} mesas`, "success")
+                    } else {
+                        Swal.fire("Error", `No se encontraron mesas de la institución ${data.text}, primero cree una`, "error")
+                    }
+                });
+        });
     });
-    $('#idUsuario').select2({
-        //dropdownParent: $('#modalPersona'),
-        placeholder: 'Seleccione un Usuario',
-        language: "es",
-        theme: "bootstrap-5",
-        selectionCssClass: "select2--large" // For Select2 v4.1
-    });
-    $('#idInstitucion').select2({
-        //dropdownParent: $('#modalPersona'),
-        placeholder: 'Seleccione una Institución',
-        language: "es",
-        theme: "bootstrap-5",
-        selectionCssClass: "select2--large" // For Select2 v4.1
-    });
-    $('#idMesa').select2({
-        //dropdownParent: $('#modalPersona'),
-        placeholder: 'Seleccione una Mesa',
-        language: "es",
-        theme: "bootstrap-5",
-        selectionCssClass: "select2--large" // For Select2 v4.1
-    });
-
-    //para soporte
-    var usuarios;
-    var urlbase = "https://personerosbackend.herokuapp.com/";
 
 
-    //eventos
-    $('#idTipoUsuario').on('select2:select', function (e) {
-        var data = e.params.data;
-        var idTipoUsuario = data.id;
+    function limpiarCombo(elemento) {
+        elemento.empty();
+    }
 
-        var endpoint = "api/Usuario/TipoUsuario/";
-        var url = urlbase + endpoint + idTipoUsuario;
+    function crearOpcionVacia(elemento) {
+        elemento.append($('<option />', {}));
+    }
 
-        opcionCambiada()
-
-
-
-        $("#idUsuario").empty()
-
-        
-        $("#idUsuario").append($("<option>", {
-            value: "",
-            text: "--Seleccione trámite--"
+    function armarObjetoUsuario(usuarios) {
+        nombres = usuarios.map(x => ({
+            id: x.idUsuario,
+            text: x.persona.nombres + " " + x.persona.apellidoPaterno + " " + x.persona.apellidoMaterno,
+            selected: false
         }));
 
-        mostrarAlertBusqueda("Buscando usuarios del tipo " + data.text);
-        fetch(url).then(request => request.json())
-            .then(response => {
-                usuarios = response.result;
-                var cantidadUsuarios = usuarios.length
-                console.log(usuarios.length)
-                console.log(usuarios)
-                Swal.close();
-                if (cantidadUsuarios => 1) {
-                    introducirData(response)
-                    Swal.fire("Bien", `Se cnontraron ${cantidadUsuarios} usuarios`, "success")
-                } else {
-                    Swal.fire("Error", `No se encontraron usuarios del tipo ${data.text}, primero cree uno`, "error")
-                }
-            });
-    });
+        return nombres;
+    }
 
-    const opcionCambiada = () => {
-        console.log("Cambio");
-    };
+    function armarObjetoMesa(mesas) {
+        numeros = mesas.map(x => ({
+            id: x.idMesa,
+            text: x.numero,
+            selected: false
+        }));
 
-    function introducirData(response) {
-
+        return numeros;
     }
 
     function mostrarAlertBusqueda(text) {
