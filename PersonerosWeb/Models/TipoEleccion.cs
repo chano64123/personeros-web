@@ -103,7 +103,7 @@ namespace PersonerosWeb.Models {
                     Selected = false
                 };
             });
-            tiposElecciones.Insert(0, seleccione);
+            //tiposElecciones.Insert(0, seleccione);
 
             return tiposElecciones;
         }

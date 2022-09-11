@@ -14,6 +14,32 @@ function capitalizeWords(val) {
         .join(' ');
 }
 
+function crearComboBusqueda(elemento, placeholder, padre, data) {
+    var objeto = new Object();
+
+    objeto.placeholder = placeholder;
+    objeto.allowClear = true;
+    objeto.language = {
+        noResults: function () {
+            return "No se encontraron resultados";
+        },
+        searching: function () {
+            return "Buscando...";
+        }
+    };
+    objeto.theme = "bootstrap-5";
+    objeto.selectionCssClass = "select2--large";
+
+    if (padre != null || padre != "") {
+        objeto.dropdownParent = padre;
+    }
+    if (data != null || data != "") {
+        objeto.data = data;
+    }
+
+    elemento.select2(objeto);
+}
+
 function isNumber(val) {
     return !isNaN(val)
 }

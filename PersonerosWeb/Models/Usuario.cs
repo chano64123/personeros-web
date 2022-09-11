@@ -135,7 +135,7 @@ namespace PersonerosWeb.Models {
                     Selected = false
                 };
             });
-            personasItems.Insert(0, seleccione);
+            //personasItems.Insert(0, seleccione);
 
             return personasItems;
         }

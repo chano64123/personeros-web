@@ -115,7 +115,7 @@ namespace PersonerosWeb.Models {
                     Selected = false
                 };
             });
-            institucionesItems.Insert(0, seleccione);
+            //institucionesItems.Insert(0, seleccione);
 
             return institucionesItems;
         }

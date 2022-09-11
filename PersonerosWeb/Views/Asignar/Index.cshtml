@@ -13,7 +13,7 @@
         <hr />
     </div>
 </div>
-@using(Html.BeginForm("GuardarUsuarioInstitucion", "Asignar", FormMethod.Post, new { @class = "needs-validation", @novalidate = "novalidate" })) {
+@using(Html.BeginForm("Agregar", "Asignar", FormMethod.Post, new { @class = "needs-validation", @novalidate = "novalidate" })) {
     @*@Html.HiddenFor(m => m.idPersona)*@
     <div class="card">
         <div class="card-body">
@@ -34,12 +34,12 @@
 
                 <fieldset class="col">
                     <legend>Institución - Mesa</legend>
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mb-3" id="divInstituciones">
                         @Html.DropDownList("idInstitucion", instituciones, new { @class = "form-select", @required = "required" })
                         @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
                         <div class="invalid-feedback">Algo está mal!</div>
                     </div>
-                    <div class="form-floating mb-3">
+                    <div class="form-floating mb-3" id="divMesas">
                         @Html.DropDownList("idMesa", new List<SelectListItem>(), new { @class = "form-select", @required = "required" })
                         @*@Html.LabelFor(model => model.idInstitucionVotacion)*@
                         <div class="invalid-feedback">Algo está mal!</div>
@@ -60,88 +60,140 @@
 }
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 <script type="text/javascript">
+    //TIPOS DE USUARIO
+    const idUsuarioPersonero = 1;
+    const idUsuarioCordinador = 2;
+    const idUsuarioEnlace = 3;
+
+    var cmbTipoUsuario = $('#idTipoUsuario');
+    var cmbUsuario = $('#idUsuario');
+    var cmbInstitucion = $('#idInstitucion');
+    var cmbMesa = $('#idMesa');
+    var divMesas = document.getElementById('divMesas');
+    var divInstituciones = document.getElementById('divInstituciones');
+
+    //variables globales
+    var urlbase = "https://personerosbackend.herokuapp.com/";
+     
+    //variables para los id selccionados de los divcersos combos     
+    var idUsuarioSeleccionado = 0;
+    var idTipoUsuarioSeleccionado = 0;
+    var idInstitucionSeleccionada = 0;
+    var idMesaSelccionada = 0;
+
+    //para las cantidades maximas
+    var maxMesa;
+    var maxInstitucion;
+
+    //variables para los objetos
+    var usuarios;
+    var instituciones;
+    var mesas;
+    var institucionesData;
+
     $(document).ready(function () {
-        var cmbTipoUsuario = $('#idTipoUsuario');
-        var cmbUsuario = $('#idUsuario');
-        var cmbInstitucion = $('#idInstitucion');
-        var cmbMesa = $('#idMesa');
+
+        instituciones = @Html.Raw(Json.Encode(ViewBag.instituciones));
+
+        institucionesData = armarObjetoInstituciones(instituciones);
+        console.log(institucionesData)
 
         crearComboBusqueda(cmbTipoUsuario, 'Seleccione un Tipo de Usuario');
         crearComboBusqueda(cmbUsuario, 'Selecicone un Usuario');
         crearComboBusqueda(cmbInstitucion, 'Seleccione una Institución');
         crearComboBusqueda(cmbMesa, 'Seleccione una Mesa');
 
-        //para soporte
-        var usuarios;
-        var instituciones;
-        var mesas;
-        var urlbase = "https://personerosbackend.herokuapp.com/";
-
         //eventos
         $('#idTipoUsuario').on('select2:select', function (e) {
             var data = e.params.data;
-            var idTipoUsuario = data.id;
-
-            var endpoint = "api/Usuario/TipoUsuario/";
-            var url = urlbase + endpoint + idTipoUsuario;
+            idTipoUsuarioSeleccionado = data.id;
 
             limpiarCombo(cmbUsuario);
             mostrarAlertBusqueda("Buscando usuarios del tipo " + data.text);
-            fetch(url).then(request => request.json())
-                .then(response => {
-                    usuarios = response.result;
-                    var cantidadUsuarios = usuarios.length
-                    Swal.close();
-                    if (cantidadUsuarios => 1) {
-                        var datos = armarObjetoUsuario(usuarios);
-                        //aca se cargan los nuevos elementos al combo
-                        crearOpcionVacia(cmbUsuario)
-                        crearComboBusqueda(cmbUsuario, "Seleccione un Usuario",'',datos)
-                        Swal.fire("Bien", `Se encontrarón ${cantidadUsuarios} usuarios`, "success")
-                    } else {
-                        Swal.fire("Error", `No se encontraron usuarios del tipo ${data.text}, primero cree uno`, "error")
-                    }
-                });
+            fetchUsersByUserTypeId(idTipoUsuarioSeleccionado).then(users => {
+                usuarios = users
+                var cantidadUsuarios = usuarios.length;
+                if (cantidadUsuarios >= 1) {
+                    var datos = armarObjetoUsuario(usuarios);
+                    //aca se cargan los nuevos elementos al combo
+                    crearComboBusqueda(cmbUsuario, 'Seleccione un Usuario', '', datos)
+                    Swal.fire("Bien", `Se encontrarón ${cantidadUsuarios} usuarios del tipo ${data.text}`, "success")
+                } else {
+                    Swal.fire("Error", `No se encontraron usuarios del tipo ${data.text}, primero cree uno`, "error")
+                }
+            });
+            asignarComboInstitucionMesa(idTipoUsuarioSeleccionado);
+        });
+
+        $('#idUsuario').on('select2:select', function (e) {
+            var data = e.params.data;
+            idUsuarioSeleccionado = data.id;
+            maxMesa = obtenerCantidadMaximaMesas(idUsuarioSeleccionado);
+            maxInstitucion = obtenerCantidadMaximaInstituciones(idUsuarioSeleccionado);
+
+            limpiarCombo(cmbInstitucion)
+            if (idTipoUsuarioSeleccionado == idUsuarioPersonero) {
+                crearComboBusqueda(cmbInstitucion, "Seleccione una institucion", '', institucionesData, false, maxInstitucion);
+                crearComboBusqueda(cmbMesa, "Seleccione una o más mesas", '', '', true, maxMesa);
+            } else if (idTipoUsuarioSeleccionado == idUsuarioEnlace || idTipoUsuarioSeleccionado == idUsuarioCordinador) {
+                crearComboBusqueda(cmbInstitucion, "Seleccione una o más instituciones", '', institucionesData, true, maxInstitucion);
+            }
+
+            console.log("maxMesa => " + maxMesa)
+            console.log("maxInstitucion => " + maxInstitucion)
         });
 
         $('#idInstitucion').on('select2:select', function (e) {
             var data = e.params.data;
-            var idInstitucion = data.id;
+            idInstitucionSeleccionada = data.id;
 
-            var endpoint = "api/Mesa/Institucion/";
-            var url = urlbase + endpoint + idInstitucion;
+            if (idTipoUsuarioSeleccionado == idUsuarioEnlace || idTipoUsuarioSeleccionado == idUsuarioCordinador) {
+                console.log("me salgo p")
+                return;
+            }
+
+
 
             limpiarCombo(cmbMesa);
-            mostrarAlertBusqueda("Buscando mesas de la intitución " + data.text);
-            fetch(url).then(request => request.json())
-                .then(response => {
-                    mesas = response.result;
-                    var cantidadMesas = mesas.length
-                    Swal.close();
-                    if (cantidadMesas => 1) {
-                        var datos = armarObjetoMesa(mesas);
-                        //aca se cargan los nuevos elementos al combo
-                        crearOpcionVacia(cmbMesa)
-                        crearComboBusqueda(cmbMesa, "Seleccione una Mesa", '', datos)
-                        Swal.fire("Bien", `Se encontrarón ${cantidadMesas} mesas`, "success")
-                    } else {
-                        Swal.fire("Error", `No se encontraron mesas de la institución ${data.text}, primero cree una`, "error")
+            mostrarAlertBusqueda("Buscando mesas de la institución " + data.text);
+            fetchMesasByInstitucionId(idInstitucionSeleccionada).then(tables => {
+                mesas = tables;
+                var cantidadMesas = mesas.length;
+                if (cantidadMesas >= 1) {
+                    var datos = armarObjetoMesa(mesas);
+                    if (idUsuarioSeleccionado != 0) {
+                        crearComboBusqueda(cmbMesa, "Seleccione una o más mesas", '', datos, true, maxMesa)
                     }
-                });
+                    Swal.fire("Bien", `Se encontrarón ${cantidadMesas} mesas`, "success")
+                } else {
+                    Swal.fire("Error", `No se encontraron mesas de la institución ${data.text}, primero cree una`, "error")
+                }
+            });
         });
     });
 
-
-    function limpiarCombo(elemento) {
-        elemento.empty();
+    //BUSQUEDAS DE DATOS
+    async function fetchUsersByUserTypeId(idTipoUsuario) {
+        var endpoint = "api/Usuario/TipoUsuario/";
+        var url = urlbase + endpoint + idTipoUsuario;
+        const response = await fetch(url);
+        const result = await response.json();
+        const users = await result.result;
+        return users;
     }
 
-    function crearOpcionVacia(elemento) {
-        elemento.append($('<option />', {}));
+    async function fetchMesasByInstitucionId(idInstitucion) {
+        var endpoint = "api/Mesa/Institucion/";
+        var url = urlbase + endpoint + idInstitucion;
+        const response = await fetch(url);
+        const result = await response.json();
+        const tables = await result.result;
+        return tables;
     }
 
+    //ARMANDO OBJETOS DE COMBOS
     function armarObjetoUsuario(usuarios) {
-        nombres = usuarios.map(x => ({
+        let nombres = usuarios.map(x => ({
             id: x.idUsuario,
             text: x.persona.nombres + " " + x.persona.apellidoPaterno + " " + x.persona.apellidoMaterno,
             selected: false
@@ -151,7 +203,7 @@
     }
 
     function armarObjetoMesa(mesas) {
-        numeros = mesas.map(x => ({
+        let numeros = mesas.map(x => ({
             id: x.idMesa,
             text: x.numero,
             selected: false
@@ -160,13 +212,81 @@
         return numeros;
     }
 
-    function mostrarAlertBusqueda(text) {
-        Swal.fire({
-            title: text,
-            didOpen: () => {
-                Swal.showLoading();
-            }
+    function armarObjetoInstituciones(instituciones) {
+        let distritosUnicos = obtenerElementosUnicos(instituciones)
+        let nombres = distritosUnicos.map(x => ({
+            text: x,
+            children: crearObjetoInstitucion(x, instituciones)
+        }));
+        return nombres;
+    }
+
+    function crearObjetoInstitucion(distrito, instituciones) {
+        return instituciones.filter(x => x.Group.Name == distrito).map(y => ({
+            id: y.Value,
+            text: y.Text,
+            selected: false
+        }));
+    }
+
+    //FILTROS UNICOS
+    function obtenerElementosUnicos(instituciones){
+        let todosDistritos = instituciones.map(item => {
+            return item.Group.Name;
         });
+        const dataArr = new Set(todosDistritos);
+        let distritos = [...dataArr];
+        return distritos;
+    }
+
+    //OCULTANDO O MOSTRANDO LOS COMBOS
+    function asignarComboInstitucionMesa(idTipoUsuario) {
+        limpiarCombo(cmbInstitucion);
+        switch (parseInt(idTipoUsuario)) {
+            case idUsuarioPersonero:
+                mostrarElemento(divMesas)
+                cmbMesa.attr("required","required")
+                crearComboBusqueda(cmbInstitucion, "Seleccione una Institución", '', institucionesData, false)
+                break;
+            case idUsuarioCordinador:
+                ocultarElemento(divMesas)
+                cmbMesa.removeAttr("required")
+                crearComboBusqueda(cmbInstitucion, "Seleccione una o más instituciones", '', institucionesData, true)
+                break;
+            case idUsuarioEnlace:
+                ocultarElemento(divMesas);
+                cmbMesa.removeAttr("required")
+                crearComboBusqueda(cmbInstitucion, "Seleccione una o más instituciones", '', institucionesData, true)
+                break;
+        }
+        //limpiarCombo(cmbInstitucion)
+        limpiarSeleccion(cmbInstitucion);
+        limpiarCombo(cmbMesa);
+    }
+
+    function fetchUserById(idUsuario) {
+        return usuarios.find(x => x.idUsuario == idUsuario)
+    }
+
+    //PARA OBTENER MAXIMOS
+    function obtenerCantidadMaximaInstituciones(idUsuario) {
+        var cantidadMaxima = fetchUserById(idUsuario).cantidadMaximaInstituciones
+        return cantidadMaxima;
+    }
+
+    function obtenerCantidadMaximaMesas(idUsuario) {
+        var cantidadMaxima = fetchUserById(idUsuario).cantidadMaximaMesas
+        return cantidadMaxima;
+    }
+
+
+    //APOYO
+    function limpiarSeleccion(elemento) {
+        elemento.val(null).trigger("change");
+    }
+
+    function limpiarCombo(elemento) {
+        elemento.empty();
     }
 </script>
 

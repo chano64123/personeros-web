@@ -115,7 +115,7 @@ namespace PersonerosWeb.Models {
                     Selected = false
                 };
             });
-            mesasItems.Insert(0, seleccione);
+            //mesasItems.Insert(0, seleccione);
 
             return mesasItems;
         }

@@ -96,7 +96,7 @@ namespace PersonerosWeb.Models {
                     Selected = false
                 };
             });
-            distritos.Insert(0, seleccione);
+            //distritos.Insert(0, seleccione);
 
             return distritos;
         }

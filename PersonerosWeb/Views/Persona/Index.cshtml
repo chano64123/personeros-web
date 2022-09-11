@@ -37,7 +37,7 @@
                             <th scope="col">Nombres</th>
                             <th scope="col">Teléfono/Celular</th>
                             <th scope="col">Direccion</th>
-                            <th scope="col">Centro de Votación</th>
+                            <th scope="col">@*Centro de Votación*@</th>
                             <th scope="col">Acción</th>
                         </tr>
                     </thead>
@@ -49,7 +49,7 @@
                                 <td>@persona.apellidoPaterno @persona.apellidoMaterno, @persona.nombres</td>
                                 <td>@persona.celular</td>
                                 <td>@persona.direccion (@persona.distritoResidencia.nombre)</td>
-                                <td>@persona.institucionVotacion.nombre</td>
+                                <td>@*@persona.institucionVotacion.nombre*@</td>
                                 <td>
                                     <button class="btn btn-primary btnDetallePersona" type="button" data-id="@persona.idPersona" data-bs-title="Detalle de la Persona" data-bs-target="#modalPersona" data-bs-toggle="modal">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">

@@ -106,7 +106,7 @@ namespace PersonerosWeb.Models {
                     Selected = false
                 };
             });
-            tiposUsuario.Insert(0, seleccione);
+            //tiposUsuario.Insert(0, seleccione);
 
             return tiposUsuario;
         }
@@ -126,7 +126,7 @@ namespace PersonerosWeb.Models {
                     Selected = false
                 };
             });
-            tiposUsuario.Insert(0, seleccione);
+            //tiposUsuario.Insert(0, seleccione);
 
             return tiposUsuario;
         }

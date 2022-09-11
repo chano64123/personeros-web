@@ -23,8 +23,17 @@ namespace PersonerosWeb.Controllers
             return View();
         }
 
-        public ActionResult AgregarPersonero() {
-            return View();
+        public ActionResult Agregar(string idUsuario, string[] idMesa, string[] idInstitucion) {
+            if(!String.IsNullOrEmpty(idUsuario)) {
+
+            }
+            if(!String.IsNullOrEmpty(idMesa[0])) {
+
+            }
+            if(!String.IsNullOrEmpty(idInstitucion[0])) {
+
+            }
+            return Redirect("~/Asignar/Index");
         }
 
         public ActionResult AgregarCoordinadorEnlace () {

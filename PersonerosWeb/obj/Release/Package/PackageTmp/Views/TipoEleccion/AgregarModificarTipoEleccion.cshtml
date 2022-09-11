@@ -38,11 +38,5 @@
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 
 <script type="text/javascript">
-    $('#personaCandidato_idPersona').select2({
-        dropdownParent: $('#modalTipoEleccion'),
-        placeholder: 'Seleccione un Candidato',
-        language: "es",
-        theme: "bootstrap-5",
-        selectionCssClass: "select2--large" // For Select2 v4.1
-    });
+    crearComboBusqueda($('#personaCandidato_idPersona'), 'Seleccione un Candidato', $('#modalTipoEleccion'))
 </script>

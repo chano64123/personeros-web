@@ -89,20 +89,8 @@
 }
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 <script type="text/javascript">
-    $('#distritoResidencia_idDistrito').select2({
-        dropdownParent: $('#modalPersona'),
-        placeholder: 'Seleccione Distrito de Residencia',
-        language: "es",
-        theme: "bootstrap-5",
-        selectionCssClass: "select2--large" // For Select2 v4.1
-    });
-    $('#institucionVotacion_idInstitucion').select2({
-        dropdownParent: $('#modalPersona'),
-        placeholder: 'Seleccione una Institución de Votación',
-        language: "es",
-        theme: "bootstrap-5",
-        selectionCssClass: "select2--large" // For Select2 v4.1
-    });
+    crearComboBusqueda($('#distritoResidencia_idDistrito'), 'Seleccione Distrito de Residencia', $('#modalPersona'))
+    crearComboBusqueda($('#institucionVotacion_idInstitucion'), 'Seleccione una Institución de Votación', $('#modalPersona'))
 
     //para buscar la persona
     var txtDni = document.getElementById("dni");

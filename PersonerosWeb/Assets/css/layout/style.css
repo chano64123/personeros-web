@@ -406,6 +406,11 @@
     color: #000000;
 }
 
+.select2-container--bootstrap-5 .select2--large.select2-selection--multiple .select2-selection__rendered .select2-selection__choice {
+    padding: 0.35em 0.65em;
+    font-size: 1rem;
+}
+
 fieldset {
     margin: 8px;
     border: 1px solid silver;
