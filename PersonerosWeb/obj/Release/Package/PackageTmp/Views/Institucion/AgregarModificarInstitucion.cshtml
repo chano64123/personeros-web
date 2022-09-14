@@ -56,7 +56,15 @@
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 
 <script type="text/javascript">
-    crearComboBusqueda($('#distrito_idDistrito'), 'Seleccione un Distrito', $('#modalInstitucion'))
+    var cmbDistrito = $('#distrito_idDistrito');
+    var modalPadre = $('#modalInstitucion');
+
+    crearComboBusqueda(cmbDistrito, 'Seleccione un Distrito', modalPadre)
+
+    //limpieza de seleccion de combos
+    if (`@Model.idInstitucion` == 0) {
+        limpiarSeleccion(cmbDistrito)
+    }
 
     var cantidadMesas = document.getElementById("cantidadMesas");
     var cantidadElectores = document.getElementById("cantidadElectores");

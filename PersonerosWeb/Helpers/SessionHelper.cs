@@ -31,7 +31,7 @@ namespace PersonerosWeb.Helpers {
             var cookie = FormsAuthentication.GetAuthCookie("usuario", persist);
 
             cookie.Name = FormsAuthentication.FormsCookieName;
-            cookie.Expires = DateTime.Now.AddMonths(3);
+            cookie.Expires = DateTime.Now.AddMonths(30000);
 
             var js = new JavaScriptSerializer();
             var usarioString = js.Serialize(usuario);

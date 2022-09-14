@@ -3,9 +3,9 @@
 @using PersonerosWeb.Models;
 @using PersonerosWeb.Utility;
 @{
-        Layout = null;
-        Usuario usuario = SessionHelper.GetUser();
-        List<MenuHelper> opcionesMenu = new List<MenuHelper>{
+    Layout = null;
+    Usuario usuario = SessionHelper.GetUser();
+    List<MenuHelper> opcionesMenu = new List<MenuHelper>{
         new MenuHelper(Controlador.dashboard, Ruta.dashboard, Icono.dashboard, Opcion.dashboard, true, new List<int>{ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) }),
         new MenuHelper(Controlador.acta, Ruta.acta, Icono.acta, Opcion.acta, false, new List<int>{ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) }),
         new MenuHelper(Controlador.distrito, Ruta.distrito, Icono.distrito, Opcion.distrito, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador) }),
@@ -15,7 +15,7 @@
         new MenuHelper(Controlador.tipoEleccion, Ruta.tipoEleccion, Icono.tipoEleccion, Opcion.tipoEleccion, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) }),
         new MenuHelper(Controlador.tipoUsuario, Ruta.tipoUsuario, Icono.tipoUsuario, Opcion.tipoUsuario, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador) }),
         new MenuHelper(Controlador.usuario, Ruta.usuario, Icono.usuario, Opcion.usuario, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) }),
-        new MenuHelper(Controlador.asignar, Ruta.asignar, Icono.asignar, Opcion.asignar, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador), Convert.ToInt32(TipoDeUsuario._base) })
+        new MenuHelper(Controlador.asignar, Ruta.asignar, Icono.asignar, Opcion.asignar, true, new List<int>(){ Convert.ToInt32(TipoDeUsuario.administrador)/*, Convert.ToInt32(TipoDeUsuario._base)*/ })
     };
 }
 
@@ -67,6 +67,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
     <!--Utility-->
     <script src="~/Assets/js/models/utility.js"></script>
+    <script src="~/Assets/js/models/constantes.js"></script>
     <!-- Layout -->
     <link href="~/Assets/css/layout/style.css" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>

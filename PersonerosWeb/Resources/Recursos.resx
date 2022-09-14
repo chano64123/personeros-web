@@ -120,6 +120,9 @@
   <data name="baseUrlApi" xml:space="preserve">
     <value>https://personerosbackend.herokuapp.com/</value>
   </data>
+  <data name="baseUrlApiLocal" xml:space="preserve">
+    <value>http://localhost:5001/</value>
+  </data>
   <data name="baseUrlApiReniec" xml:space="preserve">
     <value>https://dniruc.apisperu.com/api/v1/dni/</value>
   </data>

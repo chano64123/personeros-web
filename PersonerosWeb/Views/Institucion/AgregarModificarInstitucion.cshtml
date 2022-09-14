@@ -61,6 +61,11 @@
 
     crearComboBusqueda(cmbDistrito, 'Seleccione un Distrito', modalPadre)
 
+    //limpieza de seleccion de combos
+    if (`@Model.idInstitucion` == 0) {
+        limpiarSeleccion(cmbDistrito)
+    }
+
     var cantidadMesas = document.getElementById("cantidadMesas");
     var cantidadElectores = document.getElementById("cantidadElectores");
     var electoresPorMesa = 300

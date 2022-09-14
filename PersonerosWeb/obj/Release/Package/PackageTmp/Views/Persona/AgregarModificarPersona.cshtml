@@ -89,8 +89,18 @@
 }
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 <script type="text/javascript">
-    crearComboBusqueda($('#distritoResidencia_idDistrito'), 'Seleccione Distrito de Residencia', $('#modalPersona'))
-    crearComboBusqueda($('#institucionVotacion_idInstitucion'), 'Seleccione una Institución de Votación', $('#modalPersona'))
+    var cmbDistrito = $('#distritoResidencia_idDistrito');
+    var cmbInstitucion = $('#institucionVotacion_idInstitucion');
+    var modalPadre = $('#modalPersona');
+
+    crearComboBusqueda(cmbDistrito, 'Seleccione Distrito de Residencia', modalPadre)
+    crearComboBusqueda(cmbInstitucion, 'Seleccione una Institución de Votación', modalPadre)
+
+    //limpieza de seleccion de combos
+    if (`@Model.idPersona` == 0) {
+        limpiarSeleccion(cmbInstitucion)
+        limpiarSeleccion(cmbDistrito)
+    }
 
     //para buscar la persona
     var txtDni = document.getElementById("dni");
@@ -116,13 +126,7 @@
 
         var url = base + dni + token;
 
-        Swal.fire({
-            //title: `Buscando datos del DNI ${dni}`,
-            title: "Buscando datos del DNI " + dni,
-            didOpen: () => {
-                Swal.showLoading();
-            }
-        });
+        mostrarAlertBusqueda(`Buscando datos del DNI ${dni}`)
         fetch(url).then(request => request.text())
             .then(data => {
                 var seEncontro = completarDatos(data)

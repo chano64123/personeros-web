@@ -14,8 +14,14 @@ function capitalizeWords(val) {
         .join(' ');
 }
 
-function crearComboBusqueda(elemento, placeholder, padre, data) {
+function crearComboBusqueda(elemento, placeholder, padre, data, isMultiple, maxQuantity) {
     var objeto = new Object();
+
+    if (isMultiple == true) {
+        console.log(isMultiple)
+        elemento.prepend($('<option />', {}));
+    }
+
 
     objeto.placeholder = placeholder;
     objeto.allowClear = true;
@@ -25,23 +31,59 @@ function crearComboBusqueda(elemento, placeholder, padre, data) {
         },
         searching: function () {
             return "Buscando...";
-        }
+        },
+        maximumSelected: function (args) {
+            return 'Solo puedes seleccionar ' + args.maximum + ' elementos';
+        },
     };
     objeto.theme = "bootstrap-5";
     objeto.selectionCssClass = "select2--large";
 
-    if (padre != null || padre != "") {
+    if (padre != null && padre != "") {
         objeto.dropdownParent = padre;
     }
-    if (data != null || data != "") {
+    if (data != null && data != "") {
         objeto.data = data;
+    }
+    if (isMultiple) {
+        objeto.multiple = true;
+    } else {
+        objeto.multiple = false;
+    }
+    if (maxQuantity != 0 && maxQuantity != null) {
+        objeto.maximumSelectionLength = maxQuantity;
     }
 
     elemento.select2(objeto);
 }
 
+function mostrarAlertBusqueda(text) {
+    Swal.fire({
+        title: text,
+        didOpen: () => {
+            Swal.showLoading();
+        }
+    });
+}
+
+function limpiarSeleccion(elemento) {
+    elemento.val(null).trigger("change");
+}
+
+function limpiarCombo(elemento) {
+    elemento.empty();
+}
+
 function isNumber(val) {
     return !isNaN(val)
+}
+
+function ocultarElemento(elemento) {
+    elemento.style.display = "none";
+}
+
+function mostrarElemento(elemento) {
+    elemento.style.display = "block";
 }
 
 function count(maxValue, idElement) {

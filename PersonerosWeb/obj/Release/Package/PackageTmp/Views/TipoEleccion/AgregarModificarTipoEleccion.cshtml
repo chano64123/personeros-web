@@ -38,5 +38,13 @@
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 
 <script type="text/javascript">
-    crearComboBusqueda($('#personaCandidato_idPersona'), 'Seleccione un Candidato', $('#modalTipoEleccion'))
+    var cmbPersona = $('#personaCandidato_idPersona');
+
+    crearComboBusqueda(cmbPersona, 'Seleccione un Candidato', $('#modalTipoEleccion'))
+
+    //limpieza de seleccion de combos
+    if (`@Model.idTipoEleccion` == 0) {
+        limpiarSeleccion(cmbPersona)
+    }
+
 </script>

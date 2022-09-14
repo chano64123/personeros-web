@@ -70,6 +70,15 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al buscar el Personero.
+        /// </summary>
+        public static string errorBuscarDesignacionMesa {
+            get {
+                return ResourceManager.GetString("errorBuscarDesignacionMesa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al buscar el Distrito.
         /// </summary>
         public static string errorBuscarDistrito {
@@ -142,6 +151,15 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al crear el Personero.
+        /// </summary>
+        public static string errorCrearDesignacionMesa {
+            get {
+                return ResourceManager.GetString("errorCrearDesignacionMesa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al crear el Distrito.
         /// </summary>
         public static string errorCrearDistrito {
@@ -210,6 +228,15 @@ namespace PersonerosWeb.Resourses {
         public static string errorEliminarActa {
             get {
                 return ResourceManager.GetString("errorEliminarActa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al eliminar el Personero.
+        /// </summary>
+        public static string errorEliminarDesignacionMesa {
+            get {
+                return ResourceManager.GetString("errorEliminarDesignacionMesa", resourceCulture);
             }
         }
         
@@ -295,6 +322,15 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al modificar el Personero.
+        /// </summary>
+        public static string errorModificarDesignacionMesa {
+            get {
+                return ResourceManager.GetString("errorModificarDesignacionMesa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al modificar el Distrito.
         /// </summary>
         public static string errorModificarDistrito {
@@ -363,6 +399,15 @@ namespace PersonerosWeb.Resourses {
         public static string errorObtenerActas {
             get {
                 return ResourceManager.GetString("errorObtenerActas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al obtener los Personeros.
+        /// </summary>
+        public static string errorObtenerDesignacionesMesas {
+            get {
+                return ResourceManager.GetString("errorObtenerDesignacionesMesas", resourceCulture);
             }
         }
         

@@ -47,10 +47,18 @@
         </div>
     </div>
 }
-<script src="~/Asses/js/validation/validation.bootstrap.js"></script>
+<script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 
 <script type="text/javascript">
-    crearComboBusqueda($('#institucion_idInstitucion'), 'Seleccione una Institución', $('#modalMesa'))
+
+    var cmbInstitucion = $('#institucion_idInstitucion');
+
+    crearComboBusqueda(cmbInstitucion, 'Seleccione una Institución', $('#modalMesa'))
+
+    //limpieza de seleccion de combos
+    if (`@Model.idMesa` == 0) {
+        limpiarSeleccion(cmbInstitucion)
+    }
 
     var cantidadElectores = document.getElementById("cantidadElectores")
 

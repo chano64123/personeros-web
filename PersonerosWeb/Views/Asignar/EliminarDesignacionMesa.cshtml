@@ -1,0 +1,23 @@
+﻿@using PersonerosWeb.Models;
+@model DesignacionMesa
+@{
+    Layout = null;
+}
+
+@using(Html.BeginForm("EliminarDesignacionMesa", "Asignar", FormMethod.Post)) {
+    @Html.HiddenFor(m => m.idDesignacionMesa)
+    <div class="card">
+        <div class="card-body">
+            <p>¿Seguro que deseas eliminar la designacion del personero <span class="fw-bold">@Model.usuario.persona.nombres.Split(' ')[0] @Model.usuario.persona.apellidoPaterno</span> de la institución <span class="fw-bold">@Model.mesa.institucion.nombre</span>?</p>
+            <p class="fst-italic">*Se borrarán todos los datos asociados a la asignación.</p>
+            <div class="row">
+                <div class="col d-grid">
+                    <button data-bs-dismiss="modal" type="submit" class="btn btn-primary btn-lg">Sí</button>
+                </div>
+                <div class="col d-grid">
+                    <a data-bs-dismiss="modal" class="btn btn-danger btn-lg">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}

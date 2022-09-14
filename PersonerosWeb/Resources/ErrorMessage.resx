@@ -120,6 +120,9 @@
   <data name="errorBuscarActa" xml:space="preserve">
     <value>Error al buscar la Acta</value>
   </data>
+  <data name="errorBuscarDesignacionMesa" xml:space="preserve">
+    <value>Error al buscar el Personero</value>
+  </data>
   <data name="errorBuscarDistrito" xml:space="preserve">
     <value>Error al buscar el Distrito</value>
   </data>
@@ -144,6 +147,9 @@
   <data name="errorCrearActa" xml:space="preserve">
     <value>Error al crear la Acta</value>
   </data>
+  <data name="errorCrearDesignacionMesa" xml:space="preserve">
+    <value>Error al crear el Personero</value>
+  </data>
   <data name="errorCrearDistrito" xml:space="preserve">
     <value>Error al crear el Distrito</value>
   </data>
@@ -167,6 +173,9 @@
   </data>
   <data name="errorEliminarActa" xml:space="preserve">
     <value>Error al eliminar la Acta</value>
+  </data>
+  <data name="errorEliminarDesignacionMesa" xml:space="preserve">
+    <value>Error al eliminar el Personero</value>
   </data>
   <data name="errorEliminarDistrito" xml:space="preserve">
     <value>Error al eliminar el Distrito</value>
@@ -195,6 +204,9 @@
   <data name="errorModificarActa" xml:space="preserve">
     <value>Error al modificar la Acta</value>
   </data>
+  <data name="errorModificarDesignacionMesa" xml:space="preserve">
+    <value>Error al modificar el Personero</value>
+  </data>
   <data name="errorModificarDistrito" xml:space="preserve">
     <value>Error al modificar el Distrito</value>
   </data>
@@ -218,6 +230,9 @@
   </data>
   <data name="errorObtenerActas" xml:space="preserve">
     <value>Error al obtener las Actas</value>
+  </data>
+  <data name="errorObtenerDesignacionesMesas" xml:space="preserve">
+    <value>Error al obtener los Personeros</value>
   </data>
   <data name="errorObtenerDistritos" xml:space="preserve">
     <value>Error al obtener los Distritos</value>

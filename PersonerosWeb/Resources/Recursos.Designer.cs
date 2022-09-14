@@ -70,6 +70,15 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a http://localhost:5001/.
+        /// </summary>
+        public static string baseUrlApiLocal {
+            get {
+                return ResourceManager.GetString("baseUrlApiLocal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a https://dniruc.apisperu.com/api/v1/dni/.
         /// </summary>
         public static string baseUrlApiReniec {

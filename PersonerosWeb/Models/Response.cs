@@ -17,6 +17,5 @@ namespace PersonerosWeb.Models {
             this.errorMessage = errorMessage;
             return this;
         }
-
     }
 }

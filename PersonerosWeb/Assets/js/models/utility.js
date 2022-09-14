@@ -66,6 +66,14 @@ function mostrarAlertBusqueda(text) {
     });
 }
 
+function limpiarSeleccion(elemento) {
+    elemento.val(null).trigger("change");
+}
+
+function limpiarCombo(elemento) {
+    elemento.empty();
+}
+
 function isNumber(val) {
     return !isNaN(val)
 }

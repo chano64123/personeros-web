@@ -207,6 +207,9 @@
     <Content Include="Assets\js\login\jquery.validate.min.js" />
     <Content Include="Assets\js\login\jquery.validate.unobtrusive.min.js" />
     <Content Include="Assets\js\login\registro.js" />
+    <Content Include="Assets\js\models\constantes.js" />
+    <Content Include="Assets\js\models\designacionMesa.js" />
+    <Content Include="Assets\js\models\designacionInstitucion.js" />
     <Content Include="Assets\js\models\utility.js" />
     <Content Include="Assets\js\models\mesa.js" />
     <Content Include="Assets\js\models\tipoEleccion.js" />
@@ -258,6 +261,8 @@
     <Compile Include="Helpers\MenuHelper.cs" />
     <Compile Include="Models\Acta.cs" />
     <Compile Include="Models\Dashboard.cs" />
+    <Compile Include="Models\DesignacionInstitucion.cs" />
+    <Compile Include="Models\DesignacionMesa.cs" />
     <Compile Include="Models\Distrito.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\TipoUsuarioController.cs" />
@@ -332,6 +337,7 @@
       <DependentUpon>TitutloAlert.resx</DependentUpon>
     </Compile>
     <Compile Include="Service\IDashboardServicio.cs" />
+    <Compile Include="Service\IDesignacionMesaServicio.cs" />
     <Compile Include="Service\IDistritoServicio.cs" />
     <Compile Include="Service\IActaServicio.cs" />
     <Compile Include="Service\IMesaServicio.cs" />
@@ -374,6 +380,7 @@
     <Content Include="Views\Asignar\Index.cshtml" />
     <Content Include="Views\Asignar\AgregarPersonero.cshtml" />
     <Content Include="Views\Asignar\AgregarCoordinadorEnlace.cshtml" />
+    <Content Include="Views\Asignar\EliminarDesignacionMesa.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

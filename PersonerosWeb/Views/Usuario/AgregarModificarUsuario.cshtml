@@ -83,34 +83,48 @@
     crearComboBusqueda(cmbPersona, 'Seleccione una Persona', modalPadre)
     crearComboBusqueda(cmbTipoUsuario, 'Seleccione un Tipo de Usuario', modalPadre)
 
+    //limpieza de seleccion de combos
+    if (`@Model.idUsuario` == 0) {
+        limpiarSeleccion(cmbPersona)
+        limpiarSeleccion(cmbTipoUsuario)
+    }
+
     var divCantidadMesas = document.getElementById("cantidadMesas");
     var divCantidadInstituciones = document.getElementById("cantidadInstituciones");
 
     var txtCantidadMesas = document.getElementById("cantidadMaximaMesas")
     var txtCantidadInstituciones = document.getElementById("cantidadMaximaInstituciones")
 
-    function establecerCantidades(tipoUsuario) {
-        if (tipoUsuario == 5 || tipoUsuario == 4) {
+    mostrarOcultarCantidades(`@ViewBag.idTipoUsuario`)
+
+    function mostrarOcultarCantidades(idTipoUsuario) {
+        if (idTipoUsuario == ID_USUARIO_ADMINISTRADOR || idTipoUsuario == ID_USUARIO_BASE) {
             //ocultarElemento ambos
             ocultarElemento(divCantidadMesas);
             ocultarElemento(divCantidadInstituciones);
-
-            txtCantidadMesas.value = 0;
-            txtCantidadInstituciones.value = 0;
-        } else if (tipoUsuario == 3 || tipoUsuario == 2) {
+        } else if (idTipoUsuario == ID_USUARIO_ENLACE || idTipoUsuario == ID_USUARIO_COORDINADOR) {
             //ocultarElemento mesas
             ocultarElemento(divCantidadMesas);
             mostrarElemento(divCantidadInstituciones);
-
-            txtCantidadMesas.value = 0;
-            if (tipoUsuario == 2) {
-                txtCantidadInstituciones.value = 1;
-            }
-        } else if (tipoUsuario == 1) {
+        } else if (idTipoUsuario == ID_USUARIO_PERSONERO) {
             //ocultarElemento mesas
             mostrarElemento(divCantidadMesas);
             ocultarElemento(divCantidadInstituciones);
+        } else {
+            ocultarElemento(divCantidadMesas);
+            ocultarElemento(divCantidadInstituciones);
+        }
+    }
 
+    function establecerCantidades(idTipoUsuario) {
+        console.log(idTipoUsuario)
+        if (idTipoUsuario == ID_USUARIO_ADMINISTRADOR || idTipoUsuario == ID_USUARIO_BASE) {
+            txtCantidadMesas.value = 0;
+            txtCantidadInstituciones.value = 0;
+        } else if (idTipoUsuario == ID_USUARIO_ENLACE || idTipoUsuario == ID_USUARIO_COORDINADOR) {
+            txtCantidadMesas.value = 0;
+            txtCantidadInstituciones.value = 1;
+        } else if (idTipoUsuario == ID_USUARIO_PERSONERO) {
             txtCantidadInstituciones.value = 0;
             txtCantidadMesas.value = 1;
         }
@@ -122,7 +136,7 @@
         var idTipoUsuario = `@ViewBag.idTipoUsuario`;
         console.log(idTipoUsuario);
         if (idTipoUsuario > 0) {
-            establecerCantidades(idTipoUsuario);
+            mostrarOcultarCantidades(idTipoUsuario);
             console.log(idTipoUsuario);
         }
     })
@@ -130,6 +144,9 @@
     $('#tipoUsuario_idTipoUsuario').on('select2:select', function (e) {
         var data = e.params.data;
         var idTipoUsuario = data.id;
-        establecerCantidades(idTipoUsuario);
+        mostrarOcultarCantidades(idTipoUsuario);
+        establecerCantidades(idTipoUsuario)
+        if (idTipoUsuario == 0) {
+        }
     });
 </script>

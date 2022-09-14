@@ -89,16 +89,18 @@
 }
 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-
-    });
-
     var cmbDistrito = $('#distritoResidencia_idDistrito');
     var cmbInstitucion = $('#institucionVotacion_idInstitucion');
     var modalPadre = $('#modalPersona');
 
     crearComboBusqueda(cmbDistrito, 'Seleccione Distrito de Residencia', modalPadre)
     crearComboBusqueda(cmbInstitucion, 'Seleccione una Institución de Votación', modalPadre)
+
+    //limpieza de seleccion de combos
+    if (`@Model.idPersona` == 0) {
+        limpiarSeleccion(cmbInstitucion)
+        limpiarSeleccion(cmbDistrito)
+    }
 
     //para buscar la persona
     var txtDni = document.getElementById("dni");
