@@ -1,0 +1,61 @@
+﻿@using PersonerosWeb.Models;
+@model DesignacionMesa
+@{
+    ViewBag.Title = "Detalle de Designacion";
+    Layout = null;
+}
+
+<div class="card">
+    <div class="card-body">
+        <dl class="dl-horizontal">
+            <div class="row">
+                <div class="col-6">
+                    <dt>ID</dt>
+                    <dd>@Model.idDesignacionMesa</dd>
+                </div>
+                <div class="col-6">
+                    <dt>Tipo de Usuario</dt>
+                    <dd>@Model.usuario.tipoUsuario.nombre</dd>
+                </div>
+                <div class="col-6">
+                    <dt>Institución Designada</dt>
+                    <dd>@Model.mesa.institucion.nombre</dd>
+                </div>
+                <div class="col-3">
+                    <dt>Aula</dt>
+                    <dd>@Model.mesa.aula</dd>
+                </div>
+                <div class="col-3">
+                    <dt>Mesa</dt>
+                    <dd>@Model.mesa.numero</dd>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <dt>DNI</dt>
+                    <dd>@Model.usuario.persona.dni</dd>
+                </div>
+                <div class="col-6">
+                    <dt>Nombres</dt>
+                    <dd>@Model.usuario.persona.nombres</dd>
+                </div>
+                <div class="col">
+                    <dt>Apellido Paterno</dt>
+                    <dd>@Model.usuario.persona.apellidoPaterno</dd>
+                </div>
+                @if(@Model.usuario.persona.apellidoMaterno != null) {
+                    <div class="col">
+                        <dt>Apellido Mateno</dt>
+                        <dd>@Model.usuario.persona.apellidoMaterno</dd>
+                    </div>
+                }
+            </div>
+            <dt>Teléfono/Celular</dt>
+            <dd>@Model.usuario.persona.celular</dd>
+            <dt>Dirección de Residencia</dt>
+            <dd>@Model.usuario.persona.direccion (@Model.usuario.persona.distritoResidencia.nombre)</dd>
+            <dt>Centro de Votación</dt>
+            <dd>@Model.usuario.persona.institucionVotacion.nombre (@Model.usuario.persona.institucionVotacion.distrito.nombre)</dd>
+        </dl>
+    </div>
+</div>

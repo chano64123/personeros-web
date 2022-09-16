@@ -17,7 +17,7 @@ function capitalizeWords(val) {
 function crearComboBusqueda(elemento, placeholder, padre, data, isMultiple, maxQuantity) {
     var objeto = new Object();
 
-    if (isMultiple == true) {
+    if (isMultiple != true) {
         console.log(isMultiple)
         elemento.prepend($('<option />', {}));
     }

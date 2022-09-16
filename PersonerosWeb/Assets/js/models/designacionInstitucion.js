@@ -2,32 +2,32 @@
     window.document.querySelector("#modalDesignacionInstitucionContenido").innerHTML = '';
 }
 
-function openModal(vista, id) {
+function openModalInstitucion(vista, id) {
     if (id > 0) {
-        $("#modalDesignacionInstitucionContenido").load("/DesignacionInstitucion/" + vista + "/" + id);
+        $("#modalDesignacionInstitucionContenido").load("/Asignar/" + vista + "/" + id);
     } else {
-        $("#modalDesignacionInstitucionContenido").load("/DesignacionInstitucion/" + vista + "/");
+        $("#modalDesignacionInstitucionContenido").load("/Asignar/" + vista + "/");
     }
 }
 
 $("#btnAgregarDesignacionInstitucion").click(function (eve) {
     resetModal();
-    openModal("AgregarModificarDesignacionInstitucion");
+    openModalInstitucion("AgregarModificarDesignacionInstitucion");
 });
 
 $(".btnDetalleDesignacionInstitucion").click(function (eve) {
     resetModal();
-    openModal("DetalleDesignacionInstitucion", $(this).data("id"))
+    openModalInstitucion("DetalleDesignacionInstitucion", $(this).data("id"))
 });
 
 $(".btnModificarDesignacionInstitucion").click(function (eve) {
     resetModal();
-    openModal("AgregarModificarDesignacionInstitucion", $(this).data("id"))
+    openModalInstitucion("AgregarModificarDesignacionInstitucion", $(this).data("id"))
 });
 
 $(".btnEliminarDesignacionInstitucion").click(function (eve) {
     resetModal();
-    openModal("EliminarDesignacionInstitucion", $(this).data("id"))
+    openModalInstitucion("EliminarDesignacionInstitucion", $(this).data("id"))
 });
 
 var modalDesignacionInstitucion = document.getElementById('modalDesignacionInstitucion')

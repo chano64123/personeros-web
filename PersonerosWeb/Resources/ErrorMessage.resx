@@ -120,6 +120,9 @@
   <data name="errorBuscarActa" xml:space="preserve">
     <value>Error al buscar la Acta</value>
   </data>
+  <data name="errorBuscarDesignacionInstitucion" xml:space="preserve">
+    <value>Error al buscar el Coordinador o Enlace</value>
+  </data>
   <data name="errorBuscarDesignacionMesa" xml:space="preserve">
     <value>Error al buscar el Personero</value>
   </data>
@@ -147,6 +150,9 @@
   <data name="errorCrearActa" xml:space="preserve">
     <value>Error al crear la Acta</value>
   </data>
+  <data name="errorCrearDesignacionInstitucion" xml:space="preserve">
+    <value>Error al crear el Coordinador o Enlace</value>
+  </data>
   <data name="errorCrearDesignacionMesa" xml:space="preserve">
     <value>Error al crear el Personero</value>
   </data>
@@ -173,6 +179,9 @@
   </data>
   <data name="errorEliminarActa" xml:space="preserve">
     <value>Error al eliminar la Acta</value>
+  </data>
+  <data name="errorEliminarDesignacionInstitucion" xml:space="preserve">
+    <value>Error al eliminar el Coordinador o Enlace</value>
   </data>
   <data name="errorEliminarDesignacionMesa" xml:space="preserve">
     <value>Error al eliminar el Personero</value>
@@ -204,6 +213,9 @@
   <data name="errorModificarActa" xml:space="preserve">
     <value>Error al modificar la Acta</value>
   </data>
+  <data name="errorModificarDesignacionInstitucion" xml:space="preserve">
+    <value>Error al modificar el Coordinador o Enlace</value>
+  </data>
   <data name="errorModificarDesignacionMesa" xml:space="preserve">
     <value>Error al modificar el Personero</value>
   </data>
@@ -230,6 +242,9 @@
   </data>
   <data name="errorObtenerActas" xml:space="preserve">
     <value>Error al obtener las Actas</value>
+  </data>
+  <data name="errorObtenerDesignacionesInstituciones" xml:space="preserve">
+    <value>Error al obtener los Coordinadores y Enlaces</value>
   </data>
   <data name="errorObtenerDesignacionesMesas" xml:space="preserve">
     <value>Error al obtener los Personeros</value>

@@ -11,8 +11,10 @@
     ViewBag.iconAlert = Session["iconAlert"];
 
     //separado por persona (enlace)
+    IEnumerable<IGrouping<string, DesignacionInstitucion>> designacionEnlaces = (IEnumerable<IGrouping<string, DesignacionInstitucion>>)ViewBag.designacionEnlaces;
 
     //separado por normalito (coordinador)
+    IEnumerable<IGrouping<string, DesignacionInstitucion>> designacionCoordinadores = (IEnumerable<IGrouping<string, DesignacionInstitucion>>)ViewBag.designacionCoordinadores;
 
     //separado por institucion (personero)
     IEnumerable<IGrouping<string, DesignacionMesa>> designacionPersoneros = (IEnumerable<IGrouping<string, DesignacionMesa>>)ViewBag.designacionPersoneros;
@@ -348,12 +350,108 @@
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-enlaces" role="tabpanel" aria-labelledby="pills-enlaces-tab">
             <div class="col-12 table-responsive mt-2 mx-auto">
-                Aca lo de enlaces
+                @foreach(var persona in designacionEnlaces) {
+                    <div class="rounded-3 border border-secondary m-3 p-3 bg-light">
+                        <div class="col-12 table-responsive mx-auto">
+                            <h3 class="col mb-3 text-center fw-bold">@persona.Key.Split('|')[0]</h3>
+                            <table id="table1" class="display table table-striped align-middle">
+                                @*<caption>@ViewBag.captionTable</caption>*@
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th scope="col">N°</th>
+                                        <th scope="col">Institución</th>
+                                        <th scope="col">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="vertical-align:middle; text-align: center;">
+                                    @{ int i = 1; }
+                                    @foreach(var enlace in persona) {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@enlace.institucion.nombre</td>
+                                            <td>
+                                                <button class="btn btn-primary btnDetalleDesignacionInstitucion" type="button" data-id="@enlace.idDesignacionInstitucion" data-bs-title="Detalle de la Institución del Enlace" data-bs-target="#modalDesignacionInstitucion" data-bs-toggle="modal">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                                    </svg>
+                                                </button>
+                                                @*<button class="btn btn-success btnModificarDesignacionInstitucion" type="button" data-id="@enlace.idDesignacionInstitucion" data-bs-title="Actualizar Institución del Enlace" data-bs-target="#modalDesignacionInstitucion" data-bs-toggle="modal">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg>
+                                                </button>*@
+                                                <button class="btn btn-danger btnEliminarDesignacionInstitucion" type="button" data-id="@enlace.idDesignacionInstitucion" data-bs-title="Eliminar Institución del Enlace" data-bs-target="#modalDesignacionInstitucion" data-bs-toggle="modal">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        i++;
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
         <div class="tab-pane fade" id="pills-coordinadores" role="tabpanel" aria-labelledby="pills-coordinadores-tab">
             <div class="col-12 table-responsive mt-2 mx-auto">
-                Aca lo de coordinadores
+                @foreach(var distrito in designacionCoordinadores) {
+                    <div class="rounded-3 border border-secondary m-3 p-3 bg-light">
+                        <div class="col-12 table-responsive mx-auto">
+                            <h3 class="col mb-3 text-center fw-bold">@distrito.Key</h3>
+                            <table id="table1" class="display table table-striped align-middle">
+                                @*<caption>@ViewBag.captionTable</caption>*@
+                                <thead style="text-align: center;">
+                                    <tr>
+                                        <th scope="col">N°</th>
+                                        <th scope="col">Institución</th>
+                                        <th scope="col">Nombres</th>
+                                        <th scope="col">Teléfono/Celular</th>
+                                        <th scope="col">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="vertical-align:middle; text-align: center;">
+                                    @{ int i = 1; }
+                                    @foreach(var coordinador in distrito) {
+                                        <tr>
+                                            <td>@i</td>
+                                            <td>@coordinador.institucion.nombre</td>
+                                            <td>@coordinador.usuario.persona.nombres @coordinador.usuario.persona.apellidoPaterno @coordinador.usuario.persona.apellidoMaterno</td>
+                                            <td>@coordinador.usuario.persona.celular</td>
+                                            <td>
+                                                <button class="btn btn-primary btnDetalleDesignacionInstitucion" type="button" data-id="@coordinador.idDesignacionInstitucion" data-bs-title="Detalle de la Institución del Coordinador" data-bs-target="#modalDesignacionInstitucion" data-bs-toggle="modal">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z" />
+                                                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
+                                                    </svg>
+                                                </button>
+                                                @*<button class="btn btn-success btnModificarDesignacionInstitucion" type="button" data-id="@coordinador.idDesignacionInstitucion" data-bs-title="Actualizar Institución del Coordinador" data-bs-target="#modalDesignacionInstitucion" data-bs-toggle="modal">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                                                    </svg>
+                                                </button>*@
+                                                <button class="btn btn-danger btnEliminarDesignacionInstitucion" type="button" data-id="@coordinador.idDesignacionInstitucion" data-bs-title="Eliminar Institución del Coordinador" data-bs-target="#modalDesignacionInstitucion" data-bs-toggle="modal">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
+                                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
+                                                    </svg>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        i++;
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
         <div class="tab-pane fade" id="pills-personeros" role="tabpanel" aria-labelledby="pills-personeros-tab">
@@ -382,7 +480,7 @@
                                         <tr>
                                             <td>@i</td>
                                             <td>@personero.mesa.numero</td>
-                                            <td>@personero.usuario.persona.nombres @personero.usuario.persona.apellidoPaterno, @personero.usuario.persona.apellidoMaterno</td>
+                                            <td>@personero.usuario.persona.nombres @personero.usuario.persona.apellidoPaterno @personero.usuario.persona.apellidoMaterno</td>
                                             <td>@personero.usuario.persona.celular</td>
                                             <td>
                                                 <button class="btn btn-primary btnDetalleDesignacionMesa" type="button" data-id="@personero.idDesignacionMesa" data-bs-title="Detalle del Personero" data-bs-target="#modalDesignacionMesa" data-bs-toggle="modal">
@@ -391,12 +489,12 @@
                                                         <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z" />
                                                     </svg>
                                                 </button>
-                                                <button class="btn btn-success btnModificarDesignacionMesa" type="button" data-id="@personero.idDesignacionMesa" data-bs-title="Actualizar Personero" data-bs-target="#modalDesignacionMesa" data-bs-toggle="modal">
+                                                @*<button class="btn btn-success btnModificarDesignacionMesa" type="button" data-id="@personero.idDesignacionMesa" data-bs-title="Actualizar Personero" data-bs-target="#modalDesignacionMesa" data-bs-toggle="modal">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
                                                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                                     </svg>
-                                                </button>
+                                                </button>*@
                                                 <button class="btn btn-danger btnEliminarDesignacionMesa" type="button" data-id="@personero.idDesignacionMesa" data-bs-title="Eliminar Personero" data-bs-target="#modalDesignacionMesa" data-bs-toggle="modal">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
@@ -423,24 +521,37 @@
                     </div>
                 }
             </div>
-            <div class="modal fade" id="modalDesignacionMesa" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalCourseTitle"></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="modalDesignacionMesaContenido"></div>@* Contenido del Modal *@
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @*<script src="~/Assets/js/models/designacionInstitucion.js"></script>*@
-            <script src="~/Assets/js/models/designacionMesa.js"></script>
         </div>
         <div class="tab-pane fade" id="pills-reporte" role="tabpanel" aria-labelledby="pills-reporte-tab">
             <div id="container"></div>
         </div>
+        <div class="modal fade" id="modalDesignacionMesa" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCourseTitle"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="modalDesignacionMesaContenido"></div>@* Contenido del Modal *@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="modalDesignacionInstitucion" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCourseTitle"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="modalDesignacionInstitucionContenido"></div>@* Contenido del Modal *@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="~/Assets/js/models/designacionInstitucion.js"></script>
+        <script src="~/Assets/js/models/designacionMesa.js"></script>
     </div>
 </div>

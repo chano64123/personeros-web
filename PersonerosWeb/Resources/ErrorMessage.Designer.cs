@@ -70,6 +70,15 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al buscar el Coordinador o Enlace.
+        /// </summary>
+        public static string errorBuscarDesignacionInstitucion {
+            get {
+                return ResourceManager.GetString("errorBuscarDesignacionInstitucion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al buscar el Personero.
         /// </summary>
         public static string errorBuscarDesignacionMesa {
@@ -151,6 +160,15 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al crear el Coordinador o Enlace.
+        /// </summary>
+        public static string errorCrearDesignacionInstitucion {
+            get {
+                return ResourceManager.GetString("errorCrearDesignacionInstitucion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al crear el Personero.
         /// </summary>
         public static string errorCrearDesignacionMesa {
@@ -228,6 +246,15 @@ namespace PersonerosWeb.Resourses {
         public static string errorEliminarActa {
             get {
                 return ResourceManager.GetString("errorEliminarActa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al eliminar el Coordinador o Enlace.
+        /// </summary>
+        public static string errorEliminarDesignacionInstitucion {
+            get {
+                return ResourceManager.GetString("errorEliminarDesignacionInstitucion", resourceCulture);
             }
         }
         
@@ -322,6 +349,15 @@ namespace PersonerosWeb.Resourses {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Error al modificar el Coordinador o Enlace.
+        /// </summary>
+        public static string errorModificarDesignacionInstitucion {
+            get {
+                return ResourceManager.GetString("errorModificarDesignacionInstitucion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error al modificar el Personero.
         /// </summary>
         public static string errorModificarDesignacionMesa {
@@ -399,6 +435,15 @@ namespace PersonerosWeb.Resourses {
         public static string errorObtenerActas {
             get {
                 return ResourceManager.GetString("errorObtenerActas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Error al obtener los Coordinadores y Enlaces.
+        /// </summary>
+        public static string errorObtenerDesignacionesInstituciones {
+            get {
+                return ResourceManager.GetString("errorObtenerDesignacionesInstituciones", resourceCulture);
             }
         }
         

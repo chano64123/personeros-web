@@ -29,6 +29,8 @@
     <link href="~/Assets/css/bootstrap/bootstrap.css" rel="stylesheet" />
     <!-- Sweet Alert 2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Utility -->
+    <script src="~/Assets/js/models/utility.js"></script>
 </head>
 <body>
     <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
@@ -58,7 +60,7 @@
                                         @Html.LabelFor(model => model.clave)
                                         @Html.ValidationMessageFor(model => model.clave, null, new { @class = "text-danger" })
                                     </div>
-                                    <button type="submit" class="btn btn-block login-btn mb-4">Iniciar Sesión</button>
+                                    <button id="btnIniciarSesion" type="submit" class="btn btn-block login-btn mb-4">Iniciar Sesión</button>
                                 }
                                 <script src="~/Assets/js/validation/validation.bootstrap.js"></script>
 
@@ -77,15 +79,16 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <!-- Registro -->
-    <script src="~/Assets/js/login/registro.js"></script>
     <!-- Bootstrap -->
     <script src="~/Assets/js/bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript">
         @ViewBag.result
     </script>
     <script type="text/javascript">
-        if (@ViewBag.alert) {
+        var btnIniciarSesion = document.getElementById("btnIniciarSesion");
+
+        if(@ViewBag.alert) {
+            Swal.close();
             Swal.fire("Error!", "@ViewBag.message", "error")
         }
     </script>

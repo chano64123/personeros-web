@@ -2,7 +2,7 @@
     window.document.querySelector("#modalDesignacionMesaContenido").innerHTML = '';
 }
 
-function openModal(vista, id) {
+function openModalMesa(vista, id) {
     if (id > 0) {
         $("#modalDesignacionMesaContenido").load("/Asignar/" + vista + "/" + id);
     } else {
@@ -12,23 +12,22 @@ function openModal(vista, id) {
 
 $("#btnAgregarDesignacionMesa").click(function (eve) {
     resetModal();
-    openModal("AgregarModificarDesignacionMesa");
+    openModalMesa("AgregarModificarDesignacionMesa");
 });
 
 $(".btnDetalleDesignacionMesa").click(function (eve) {
     resetModal();
-    openModal("DetalleDesignacionMesa", $(this).data("id"))
+    openModalMesa("DetalleDesignacionMesa", $(this).data("id"))
 });
 
 $(".btnModificarDesignacionMesa").click(function (eve) {
     resetModal();
-    openModal("AgregarModificarDesignacionMesa", $(this).data("id"))
+    openModalMesa("AgregarModificarDesignacionMesa", $(this).data("id"))
 });
 
 $(".btnEliminarDesignacionMesa").click(function (eve) {
-    console.log($(this).data("id"))
     resetModal();
-    openModal("EliminarDesignacionMesa", $(this).data("id"))
+    openModalMesa("EliminarDesignacionMesa", $(this).data("id"))
 });
 
 var modalDesignacionMesa = document.getElementById('modalDesignacionMesa')
