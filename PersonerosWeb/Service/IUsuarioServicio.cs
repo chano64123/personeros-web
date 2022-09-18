@@ -25,7 +25,7 @@ namespace PersonerosWeb.Service {
         [Delete("api/Usuario/{id}")]
         RestResponse<Response<Usuario>> eliminarUsuario([Path("id")] int id);
 
-        [Post("api/Usuario/login")]
+        [Post("api/Usuario/login/web")]
         RestResponse<Response<Usuario>> loginUsuario([Body] Login login);
     }
 }
